@@ -1,14 +1,16 @@
-public abstract class User {
+import java.lang.*;
 
-	String username;
-	String password;
-	String name;
+public interface User {
 
-	public abstract void setUsername (String username);
-	public abstract void setPassword (String password);
-	public abstract void setName (String name);
+	public String username = new String ("Unknown");
+	public String password = new String ("Unknown");
+	public String name = new String ("Unknown");
 
-	public abstract String getUsername();
-	public abstract String getPassword();
-	public abstract String getName();
+	public void setUsername (String username);
+	public void setPassword (String password);
+	public void setName (String name);
+
+	public String getUsername();
+	public String getPassword();
+	public String getName();
 }

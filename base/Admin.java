@@ -1,4 +1,10 @@
-public abstract class Admin implements User Serializable {
+import java.io.Serializable;
+
+public abstract class Admin implements User, Serializable {
+
+	String username;
+	String password;
+	String name;
 
 	public void setUsername(String username)
 	{
@@ -17,7 +23,7 @@ public abstract class Admin implements User Serializable {
 
 	public String getUsername ()
 	{
-		return Username;
+		return username;
 	}
 
 	public String getPassword()

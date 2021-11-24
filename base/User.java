@@ -2,9 +2,9 @@ import java.lang.*;
 
 public interface User {
 
-	public String username = new String ("Unknown");
-	public String password = new String ("Unknown");
-	public String name = new String ("Unknown");
+	String username = new String ("Unknown");
+	String password = new String ("Unknown");
+	String name = new String ("Unknown");
 
 	public void setUsername (String username);
 	public void setPassword (String password);

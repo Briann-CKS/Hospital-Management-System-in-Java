@@ -20,7 +20,7 @@ public class Doctor extends Admin implements Serializable {
 		doctor.readNotification();*/
 	}
 
-	Doctor() 
+	public Doctor() 
 	{
 		super();
 		this.username = "Unknown";
@@ -28,7 +28,7 @@ public class Doctor extends Admin implements Serializable {
 		this.name = "Unknown";
 	}
 
-	Doctor (String username, String password, String name)
+	public Doctor (String username, String password, String name)
 	{
 		super();
 		this.username = username;
@@ -40,26 +40,29 @@ public class Doctor extends Admin implements Serializable {
 
 	public void readNotification()
 	{
-		System.out.println ("You have " + notification.size() + " new notification(s): \n");
+		System.out.println ("You have " + notification.size() + " notification(s): \n");
 		for (int i = 0; i< notification.size(); i++)
 		{
 			System.out.println (i+1 + ") " + notification.get(i));
 		}
 		System.out.println ("");
-
+		if (notification.size() > 10)
+		{
+			System.out.println ("Looks like you have quite a few notifications stored in your account. Clearing some old messages will help you organize better!\n");
+		}
 	}
 
 	public void deleteNotification(int num)
 	{
 		int ind = num -1;
-		if (notification.size() >= ind)
+		if (notification.size() >= num)
 		{
 			notification.remove(ind);
-			System.out.print("Message has been deleted.");
+			System.out.println("Message has been deleted!\n");
 		}
 		else
 		{
-			System.out.println("Cannot find the message you intend to delete. Sorry!");
+			System.out.println("Cannot find the message you intend to delete. Sorry!\n");
 		}
 	}
 
@@ -69,6 +72,4 @@ public class Doctor extends Admin implements Serializable {
 	}
 
 	
-	
-
 }

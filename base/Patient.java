@@ -38,11 +38,6 @@ public class Patient implements User, Serializable {
 		this.diagnosis = diagnosis;
 	}
 
-	public void setPrescription (String prescription)
-	{
-		this.prescription = prescription;
-	}
-
 	//public void setAppointment (Date appointment)
 	//{
 	//	this.appointment = appointment;

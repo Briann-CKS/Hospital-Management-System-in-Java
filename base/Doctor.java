@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Doctor extends Admin implements Serializable {
 
-	ArrayList<String> notification = new ArrayList<String>();
+	public static ArrayList<String> notification = new ArrayList<String>();
 	String username;
 	String password;
 	String name;
@@ -34,7 +34,7 @@ public class Doctor extends Admin implements Serializable {
 		this.username = username;
 		this.password = password;
 		this.name = name;
-	}	
+	}
 
 	//public void listPatient
 
@@ -46,10 +46,10 @@ public class Doctor extends Admin implements Serializable {
 			System.out.println (i+1 + ") " + notification.get(i));
 		}
 		System.out.println ("");
-		if (notification.size() > 10)
+		/*if (notification.size() > 10)
 		{
 			System.out.println ("Looks like you have quite a few notifications stored in your account. Clearing some old messages will help you organize better!\n");
-		}
+		}*/
 	}
 
 	public void deleteNotification(int num)

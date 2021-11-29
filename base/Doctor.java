@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Doctor extends Admin implements Serializable {
 
-	private static ArrayList<String> notification = new ArrayList<String>();
+	public static ArrayList<String> notification = new ArrayList<String>();
 	private String username;
 	private String password;
 	private String name;

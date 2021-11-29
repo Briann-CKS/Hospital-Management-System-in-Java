@@ -1,8 +1,8 @@
 import java.io.*;
+import java.lang.*;
 import java.util.Scanner;
 import java.util.Vector;
 
-@SuppressWarnings("serial")
 public class Hospital implements Serializable{
 
 	public static Vector<Doctor> doc = new Vector<Doctor>();
@@ -13,22 +13,23 @@ public class Hospital implements Serializable{
 	public static void main (String[] args)
 	{
 		Hospital account = new Hospital();
-		Doctor doc1 = new Doctor();
-		doc1 = addDoctor();
-		doc.add(doc1);
+		doc.add(addDoctor());
+		//saveDoctor(doc.get(0));
+		saveDoctorA();
+		loadDoctor();
 		Doctor doc2 = new Doctor ();
 		for (int i = 0; i<doc.size(); i++)
 		{
 			doc2 = doc.get(i);
 			System.out.println (doc2.getUsername() + " " + doc2.getPassword() + " " + doc2.getName() + "\n");
 		}
-		doc2 = doc.get(0);
-		doc2.setNotification("Meeting at 1pm");
-		doc2.setNotification("Appointment at 3pm");		
-		doc2.readNotification();
+		//doc2 = doc.get(0);
+		//doc2.setNotification("Meeting at 1pm");
+		//doc2.setNotification("Appointment at 3pm");		
+		//doc2.readNotification();
 		//saveDoctor(doc2);
 		//DoctorMainMenu mmd = new DoctorMainMenu (doc2);
-		this.main_menu();
+		account.main_menu();
 	}
 
 	public Hospital ()
@@ -37,7 +38,7 @@ public class Hospital implements Serializable{
 	}
 
 	@SuppressWarnings("unchecked")
-	public void loadDoctor()
+	public static void loadDoctor()
 	{
 		try{
 		FileInputStream doc_file = new FileInputStream("Doctors.dat");
@@ -75,6 +76,19 @@ public class Hospital implements Serializable{
                         System.out.println(e.getMessage());
                 }
 	}
+
+	public static void saveDoctorA()
+	{
+		try{
+                FileOutputStream doc_file = new FileOutputStream("Doctors.dat");
+                ObjectOutputStream out = new ObjectOutputStream(doc_file);
+                out.writeObject(doc);
+                out.close();
+                doc_file.close();
+                } catch(Exception e){
+                        System.out.println(e.getMessage());
+                }
+	}
 	
 	//public static Doctor addDoctor (String username, String password, String name)
 	public static Doctor addDoctor()
@@ -97,7 +111,6 @@ public class Hospital implements Serializable{
 				if (doc2.getUsername() == untry)
 				{
 					not_exist = false;
-					System.out.println("\n\nFALSE\n\n");
 				}	
 			}
 			if (not_exist == false)
@@ -167,7 +180,7 @@ public class Hospital implements Serializable{
 		return p1;
 	}*/
 
-	public static void main_menu()
+	public void main_menu()
 	{
 		int type;
 		Scanner input4 = new Scanner (System.in);
@@ -175,7 +188,8 @@ public class Hospital implements Serializable{
 		System.out.println ("Welcome to CSCI240 Hospital System!\n");	
 		System.out.println ("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
 		boolean not_valid = true;
-		while (not_valid)
+		//while (not_valid)
+		do
 		{
 			System.out.println ("Please select your User Type:\n");
 			System.out.println ("1. Doctor\n2. Nurse\n3. Front Desk\n4. Patient");
@@ -187,186 +201,186 @@ public class Hospital implements Serializable{
 			else 			
 			{
 				System.out.println ("That is not a valid choice. Please try again!");
-				continue;
 			}
-		}
+		} while (not_valid);
 		System.out.println ("What do you want to do?:\n");
 		System.out.println ("1. Log in to an existing account\n2. Create a new account\n"); 
 		Scanner input5 = new Scanner (System.in);
+		Scanner input6 = new Scanner (System.in);
+		Scanner input7 = new Scanner (System.in);
 		int choice = input5.nextInt();	
 		boolean keep_going = true;
 		boolean uexist = false;
-		while (keep_going)	
+		if (choice == 1)
 		{
-			if (choice == 1)
+			System.out.println ("Welcome back! Please enter your username:\n");
+			String un = input6.nextLine();
+			System.out.println ("\nPlease enter your password:\n");
+			String pw = input7.nextLine();
+			if (type == 1)
 			{
-				System.out.println ("Welcome back! Please enter your username:\n");
-				String un = input5.nextLine();
-				System.out.println ("\nPlease enter your password:\n");
-				String pw = input5.nextLine();
-				if (type == 1)
+				for (int i = 0; i < doc.size(); i++)
 				{
-					for (int i = 0; i < doc.size(); i++)
+					Doctor doc1 = new Doctor();
+        	     			doc1 = doc.get(i);
+                 			String une = doc1.getUsername();
+                        		String pwd = doc1.getPassword();
+					if(un == une)
 					{
-						Doctor doc1 = new Doctor();
-        	     				doc1 = doc.get(i);
-                 				String une = doc1.getUsername();
-                        			String pwd = doc1.getPassword();
-						if(un == une)
+       	        				if (pw == pwd)
 						{
-       	        					if (pw == pwd)
-							{
-								uexist = true;
-								System.out.println("Hello Doctor!");
-								DoctorMainMenu(doc1);
-								exit(0);	
-							}
-							else 
-							{
-								System.out.println ("Sorry, wrong password.Try again next time!");
-								exit(0);
-							}
-                				}
-						
+							uexist = true;
+							System.out.println("Hello Doctor!");
+							DoctorMainMenu dmm = new DoctorMainMenu (doc1);
+							System.exit(0);	
+						}
 						else 
 						{
-							System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
-							exit(0);
+							System.out.println ("Sorry, wrong password.Try again next time!");
+							System.exit(0);
 						}
+               				}
+						
+					else 
+					{
+						System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
+						System.exit(0);
 					}
 				}
+			}
+			
 
-			/*	else if (type == 2)
-				{
-					for (int i = 0; i < nur.size(); i++)
-                                        {       
-                                                Nurse nur1 = new Nurse();
-                                                nur1 = nur.get(i);
-                                                String une = nur1.getUsername();
-                                                String pwd = nur1.getPassword();
-                                                if(un == une)
-                                                {
-                                                        if (pw == pwd)
-                                                        {
-                                                                uexist = true;
-                                                                System.out.println (Hello Nurse!");
-								NurseMainMenu(nur1);
-                                                        	exit(0);
-							}
-                                                        else
-                                                        {
-                                                                System.out.println ("Sorry, wrong password.Try again next time!");
-                                                                exit(0);
-                                                        }
-                                                }
-
-                                                else
-                                                {
-                                                        System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
-                                                        exit(0);
-                                                }
-					}
-				}
-
-				else if (type == 3)
-				{
-					for (int i = 0; i < fd.size(); i++)
+			/*else if (type == 2)
+			{
+				for (int i = 0; i < nur.size(); i++)
+				{       
+					Nurse nur1 = new Nurse();
+                                        nur1 = nur.get(i);
+                                        String une = nur1.getUsername();
+                                        String pwd = nur1.getPassword();
+                                        if(un == une)
                                         {
-                                                FrontDesk fd1 = new FrontDesk();
-                                                fd1 = fd.get(i);
-                                                String une = fd1.getUsername();
-                                                String pwd = fd1.getPassword();
-                                                if(un == une)
-                                                {
-                                                        if (pw == pwd)
-                                                        {
-                                                                uexist = true;
-                                                        	System.out.println ("Hello Front Desk!");
-                                                        	FrontDeskMainMenu(fd1);
-                                                        	exit(0);
-							}
-                                                        else
-                                                        {
-                                                                System.out.println ("Sorry, wrong password.Try again next time!");
-                                                                exit(0);
-                                                        }
-                                                }
-
+                                        	if (pw == pwd)
+						{
+							uexist = true;
+							System.out.println (Hello Nurse!");
+							NurseMainMenu(nur1);
+                                                        exit(0);
+						}
                                                 else
                                                 {
-                                                        System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
+							System.out.println ("Sorry, wrong password.Try again next time!");
                                                         exit(0);
                                                 }
 					}
-				}
 
-				else 
-				{
-					for (int i = 0; i < fd.size(); i++)
+                                        else
                                         {
-                                                Patient pt1 = new Patient();
-                                                pt1 = pt.get(i);
-                                                String une = pt1.getUsername();
-                                                String pwd = pt1.getPassword();
-                                                if(un == une)
-                                                {
-                                                        if (pw == pwd)
-                                                        {
-                                                                uexist = true;
-                                                                System.out.println ("Hello Front Patient!");
-                                                        	PatientMainMenu();
-                                                        	exit(0);
-                                                        }
-                                                        else
-                                                        {
-                                                                System.out.println ("Sorry, wrong password.Try again next time!");
-                                                                exit(0);
-                                                        }
-                                                }
-
-                                                else
-                                                {
-                                                        System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
-                                                        exit(0);
-                                                }
+                        	                System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
+                                                exit(0);
                                         }
-
-				}*/
+				}
 			}
 
-			else if (choice == 2)
+			else if (type == 3)
 			{
-				if (type == 1)
-				{
-					addDoctor();
-					System.out.println ("\nWelcome to the CSCI Hospital, Doctor!\n");
-					DoctorMainMenu();
+				for (int i = 0; i < fd.size(); i++)
+                                {
+                                	FrontDesk fd1 = new FrontDesk();
+                                        fd1 = fd.get(i);
+                                        String une = fd1.getUsername();
+                                        String pwd = fd1.getPassword();
+                                        if(un == une)
+                                        {
+                                        	if (pw == pwd)
+                                                {
+                                                	uexist = true;
+                                                       	System.out.println ("Hello Front Desk!");
+                                                       	FrontDeskMainMenu(fd1);
+                                                       	exit(0);
+						}
+                                                else
+                                                {
+                                	                System.out.println ("Sorry, wrong password.Try again next time!");
+                                                        exit(0);
+                                                }
+					}
+
+                                        else
+                                        {
+                                                System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
+                                                exit(0);
+                                        }
 				}
-				/*else if (type == 2)
-				{
-					addNurse();
-					System.out.println ("\nWelcome to the CSCI Hospital, Nurse!\n");
-                                        NurseMainMenu();
-				}
-				else if (type == 3)
-				{
-					addFrontDesk();
-					System.out.println ("\nWelcome to the CSCI Hospital, FrontDesk!\n");
-                                        FrontDeskMainMenu();
-				}
-				else
-				{
-					addPatient();
-					System.out.println ("\nWelcome to the CSCI Hospital, Patient!\n");
-                                        PatientMainMenu();
-				}*/
 			}
 
 			else 
 			{
-				System.out.println ("Not a valid option. Please try again!");
-				continue;
+				for (int i = 0; i < fd.size(); i++)
+                                {
+                                	Patient pt1 = new Patient();
+                                        pt1 = pt.get(i);
+                                        String une = pt1.getUsername();
+                                        String pwd = pt1.getPassword();
+                                        if(un == une)
+                                        {
+						if (pw == pwd)
+						{
+							uexist = true;
+							System.out.println ("Hello Front Patient!");
+                                                        PatientMainMenu();
+                                                        exit(0);
+                                                }
+                                                else
+                                                {
+                                                        System.out.println ("Sorry, wrong password.Try again next time!");
+                                                        exit(0);
+                                                }
+					}
+
+                                        else
+                                        {
+                                                System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
+                                                exit(0);
+                                        }
+				}
+
+			}*/
+		}
+
+		else if (choice == 2)
+		{
+			if (type == 1)
+			{
+				doc.add(addDoctor());
+				System.out.println ("\nWelcome to the CSCI Hospital, Doctor!\n");
+				DoctorMainMenu dmm = new DoctorMainMenu();
+				//DoctorMainMenu();
 			}
+			/*else if (type == 2)
+			{
+				addNurse();
+				System.out.println ("\nWelcome to the CSCI Hospital, Nurse!\n");                                       
+				NurseMainMenu();
+			}
+			else if (type == 3)
+			{
+				addFrontDesk();
+				System.out.println ("\nWelcome to the CSCI Hospital, FrontDesk!\n");                              
+				FrontDeskMainMenu();
+			}
+			else
+			{
+				addPatient();
+				System.out.println ("\nWelcome to the CSCI Hospital, Patient!\n");               
+				PatientMainMenu();
+			}*/
+		}
+
+		else 
+		{
+			System.out.println ("Not a valid option. Please try again next time!");
 		}
 	}
+	
 }

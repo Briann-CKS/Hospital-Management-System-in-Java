@@ -5,10 +5,10 @@ import java.util.Vector;
 
 public class Hospital implements Serializable{
 
-	public static Vector<Doctor> doc = new Vector<Doctor>();
-	public static Vector<Nurse> nur = new Vector<Nurse>();
-	public static Vector<FrontDesk> fd = new Vector<FrontDesk>();
-	public static Vector<Patient> pt = new Vector<Patient>();
+	public Vector<Doctor> doc = new Vector<Doctor>();
+	public Vector<Nurse> nur = new Vector<Nurse>();
+	public Vector<FrontDesk> fd = new Vector<FrontDesk>();
+	public Vector<Patient> pt = new Vector<Patient>();
 	Doctor doc1 = new Doctor();
 	Doctor doc2 = new Doctor();
 
@@ -25,7 +25,6 @@ public class Hospital implements Serializable{
 		//doc2 = doc.get(0);
 		//doc2.setNotification("Meeting at 1pm");
 		//doc2.setNotification("Appointment at 3pm");		
-		//account.main_menu();
 	}
 
 	public Hospital ()
@@ -37,7 +36,6 @@ public class Hospital implements Serializable{
 		//doc.get(0).readNotification();
 		//saveDoctor();
 		this.main_menu();
-		//saveDoctorA();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -288,22 +286,21 @@ public class Hospital implements Serializable{
 			String un = input6.nextLine();
 			System.out.println ("\nPlease enter your password:\n");
 			String pw = input7.nextLine();
-			System.out.println (doc.get(1).getUsername() + " " + doc.get(1).getPassword() + " " + un + " " + pw);
-			/*if (type == 1)
+			//System.out.println (doc.get(1).getUsername() + " " + doc.get(1).getPassword() + " " + un + " " + pw);
+			if (type == 1)
 			{
 				for (int i = 0; i < doc.size(); i++)
 				{
-					//Doctor doc1 = new Doctor();
-        	     			doc1 = doc.get(i);
-                 			String une = doc1.getUsername();
-                        		String pwd = doc1.getPassword();
-					if(un == une)
+                 			String une = doc.get(i).getUsername();
+                        		String pwd = doc.get(i).getPassword();
+					if(un.equals(une))
 					{
-       	        				if (pw == pwd)
+       	        				if (pw.equals(pwd))
 						{
 							uexist = true;
 							System.out.println("Hello Doctor!");
 							DoctorMainMenu dmm = new DoctorMainMenu (doc1);
+							saveDoctor();
 							System.exit(0);	
 						}
 						else 
@@ -313,13 +310,15 @@ public class Hospital implements Serializable{
 						}
                				}
 						
-					else 
-					{
-						System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
-						System.exit(0);
-					}
 				}
-			}*/
+
+				if (uexist == false) 
+				{
+					System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
+					System.exit(0);
+				}
+			}
+		
 
 			
 

@@ -32,10 +32,10 @@ public class Hospital implements Serializable{
 	{
 		loadDoctor();
 		//doc.add(addDoctor());
-		System.out.println(doc.get(1).getUsername());
-		//doc.get(1).setNotification("Thanks man");
-		doc.get(1).readNotification();
-		//saveDoctorA();
+		//System.out.println(doc.get(1).getUsername());
+		doc.get(0).setNotification("Appointment at 1pm");
+		doc.get(0).readNotification();
+		saveDoctorA();
 		//this.main_menu();
 		//saveDoctorA();
 	}

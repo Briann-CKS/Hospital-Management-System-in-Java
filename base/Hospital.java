@@ -23,12 +23,12 @@ public class Hospital implements Serializable{
 			System.out.println (doc2.getUsername() + " " + doc2.getPassword() + " " + doc2.getName() + "\n");
 		}
 		doc2 = doc.get(0);
-		//doc2.setNotification("Meeting at 1pm");
-		//doc2.setNotification("Appointment at 3pm");		
+		doc2.setNotification("Meeting at 1pm");
+		doc2.setNotification("Appointment at 3pm");		
 		doc2.readNotification();
 		//saveDoctor(doc2);
 		//DoctorMainMenu mmd = new DoctorMainMenu (doc2);
-		//this.main_menu();
+		this.main_menu();
 	}
 
 	public Hospital ()
@@ -144,7 +144,7 @@ public class Hospital implements Serializable{
 		return doc1;
 	}
 	
-	public static Nurse addNurse (String username, String password, String name)
+	/*public static Nurse addNurse (String username, String password, String name)
 	{
 
 	}
@@ -165,10 +165,11 @@ public class Hospital implements Serializable{
 		p1.setPassword(password);
 		p1.setName(name);
 		return p1;
-	}
+	}*/
 
-	public void main_menu()
+	public static void main_menu()
 	{
+		int type;
 		Scanner input4 = new Scanner (System.in);
 		System.out.println ("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
 		System.out.println ("Welcome to CSCI240 Hospital System!\n");	
@@ -178,7 +179,7 @@ public class Hospital implements Serializable{
 		{
 			System.out.println ("Please select your User Type:\n");
 			System.out.println ("1. Doctor\n2. Nurse\n3. Front Desk\n4. Patient");
-			int type = input4.nextInt();
+			type = input4.nextInt();
 			if (type == 1 || type == 2 || type == 3 || type == 4)
 			{
 				not_valid = false;
@@ -216,7 +217,9 @@ public class Hospital implements Serializable{
        	        					if (pw == pwd)
 							{
 								uexist = true;
-								break;	
+								System.out.println("Hello Doctor!");
+								DoctorMainMenu(doc1);
+								exit(0);	
 							}
 							else 
 							{
@@ -225,12 +228,6 @@ public class Hospital implements Serializable{
 							}
                 				}
 						
-						if (uexist)
-						{
-							System.out.println ("Hello Doctor!");	
-							DoctorMainMenu();
-							exit(0);
-						}
 						else 
 						{
 							System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
@@ -239,7 +236,7 @@ public class Hospital implements Serializable{
 					}
 				}
 
-				else if (type == 2)
+			/*	else if (type == 2)
 				{
 					for (int i = 0; i < nur.size(); i++)
                                         {       
@@ -252,8 +249,10 @@ public class Hospital implements Serializable{
                                                         if (pw == pwd)
                                                         {
                                                                 uexist = true;
-                                                                break;
-                                                        }
+                                                                System.out.println (Hello Nurse!");
+								NurseMainMenu(nur1);
+                                                        	exit(0);
+							}
                                                         else
                                                         {
                                                                 System.out.println ("Sorry, wrong password.Try again next time!");
@@ -261,12 +260,6 @@ public class Hospital implements Serializable{
                                                         }
                                                 }
 
-                                                if (uexist)
-                                                {
-                                                        System.out.println ("Hello Nurse!");
-                                                        NurseMainMenu();
-                                                        exit(0);
-                                                }
                                                 else
                                                 {
                                                         System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
@@ -288,8 +281,10 @@ public class Hospital implements Serializable{
                                                         if (pw == pwd)
                                                         {
                                                                 uexist = true;
-                                                                break;
-                                                        }
+                                                        	System.out.println ("Hello Front Desk!");
+                                                        	FrontDeskMainMenu(fd1);
+                                                        	exit(0);
+							}
                                                         else
                                                         {
                                                                 System.out.println ("Sorry, wrong password.Try again next time!");
@@ -297,12 +292,6 @@ public class Hospital implements Serializable{
                                                         }
                                                 }
 
-                                                if (uexist)
-                                                {
-                                                        System.out.println ("Hello Front Desk!");
-                                                        FrontDeskMainMenu();
-                                                        exit(0);
-                                                }
                                                 else
                                                 {
                                                         System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
@@ -324,7 +313,9 @@ public class Hospital implements Serializable{
                                                         if (pw == pwd)
                                                         {
                                                                 uexist = true;
-                                                                break;
+                                                                System.out.println ("Hello Front Patient!");
+                                                        	PatientMainMenu();
+                                                        	exit(0);
                                                         }
                                                         else
                                                         {
@@ -333,12 +324,6 @@ public class Hospital implements Serializable{
                                                         }
                                                 }
 
-                                                if (uexist)
-                                                {
-                                                        System.out.println ("Hello Patient!");
-                                                        PatientMainMenu();
-                                                        exit(0);
-                                                }
                                                 else
                                                 {
                                                         System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
@@ -346,7 +331,7 @@ public class Hospital implements Serializable{
                                                 }
                                         }
 
-				}
+				}*/
 			}
 
 			else if (choice == 2)
@@ -357,7 +342,7 @@ public class Hospital implements Serializable{
 					System.out.println ("\nWelcome to the CSCI Hospital, Doctor!\n");
 					DoctorMainMenu();
 				}
-				else if (type == 2)
+				/*else if (type == 2)
 				{
 					addNurse();
 					System.out.println ("\nWelcome to the CSCI Hospital, Nurse!\n");
@@ -374,7 +359,7 @@ public class Hospital implements Serializable{
 					addPatient();
 					System.out.println ("\nWelcome to the CSCI Hospital, Patient!\n");
                                         PatientMainMenu();
-				}
+				}*/
 			}
 
 			else 

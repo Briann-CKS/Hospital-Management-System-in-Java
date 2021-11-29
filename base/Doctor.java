@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Doctor extends Admin implements Serializable {
 
-	public static ArrayList<String> notification = new ArrayList<String>();
+	public ArrayList<String> notification = new ArrayList<String>();
 	private String username;
 	private String password;
 	private String name;
@@ -14,14 +14,23 @@ public class Doctor extends Admin implements Serializable {
 		Doctor doctor = new Doctor ();
 	}
 
-	public Doctor() 
+	public Doctor(String username, String password, String name) 
 	{
 		super();
-		this.username = "Unknown";
-		this.password = "Unknown";
-		this.name = "Unknown";
+		this.username = username;
+		this.password = password;
+		this.name = name;
 		//notification = new ArrayList<String>();
 	}
+
+	public Doctor()
+	{
+		super();
+		this.username = "";
+		this.password = "";
+		this.name = "";
+		//c static ArrayList<String> notification = new ArrayList<String>();
+	}	
 
 	/*public void viewPatientInfo (Patient p)
 	{

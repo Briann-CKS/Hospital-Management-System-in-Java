@@ -9,36 +9,39 @@ public class Hospital implements Serializable{
 	public static Vector<Nurse> nur = new Vector<Nurse>();
 	public static Vector<FrontDesk> fd = new Vector<FrontDesk>();
 	public static Vector<Patient> pt = new Vector<Patient>();
+	Doctor doc1 = new Doctor();
+	Doctor doc2 = new Doctor();
+
 
 	public static void main (String[] args)
 	{
 		Hospital account = new Hospital();
-		doc.add(addDoctor());
+		//doc.add(addDoctor());
 		//saveDoctor(doc.get(0));
-		saveDoctorA();
-		loadDoctor();
-		Doctor doc2 = new Doctor ();
-		for (int i = 0; i<doc.size(); i++)
-		{
-			doc2 = doc.get(i);
-			System.out.println (doc2.getUsername() + " " + doc2.getPassword() + " " + doc2.getName() + "\n");
-		}
+		//saveDoctorA();
+		//loadDoctor();
+		//saveDoctorA();
+		//Doctor doc2 = new Doctor ();
 		//doc2 = doc.get(0);
 		//doc2.setNotification("Meeting at 1pm");
 		//doc2.setNotification("Appointment at 3pm");		
-		//doc2.readNotification();
-		//saveDoctor(doc2);
-		//DoctorMainMenu mmd = new DoctorMainMenu (doc2);
-		account.main_menu();
+		//account.main_menu();
 	}
 
 	public Hospital ()
 	{
 		loadDoctor();
+		//doc.add(addDoctor());
+		System.out.println(doc.get(1).getUsername());
+		//doc.get(1).setNotification("Thanks man");
+		doc.get(1).readNotification();
+		//saveDoctorA();
+		//this.main_menu();
+		//saveDoctorA();
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void loadDoctor()
+	public void loadDoctor()
 	{
 		try{
 		FileInputStream doc_file = new FileInputStream("Doctors.dat");
@@ -52,14 +55,14 @@ public class Hospital implements Serializable{
 		}
 	}
 
-	public static void saveDoctor (Doctor d)
+	public void saveDoctor (Doctor d)
 	{
 		try{
                 FileOutputStream doc_file = new FileOutputStream("Doctors.dat");
                 ObjectOutputStream out = new ObjectOutputStream(doc_file);
                 for(int i=0; i<doc.size(); i++)
 		{
-              		Doctor doc1 = new Doctor();
+              		//Doctor doc1 = new Doctor();
         	     	doc1 = doc.get(i);
                  	String un = doc1.getUsername();
                         String pw = doc1.getPassword();
@@ -77,7 +80,7 @@ public class Hospital implements Serializable{
                 }
 	}
 
-	public static void saveDoctorA()
+	public void saveDoctorA()
 	{
 		try{
                 FileOutputStream doc_file = new FileOutputStream("Doctors.dat");
@@ -91,14 +94,14 @@ public class Hospital implements Serializable{
 	}
 	
 	//public static Doctor addDoctor (String username, String password, String name)
-	public static Doctor addDoctor()
+	public Doctor addDoctor()
 	{
 		String username;
 		String password;
 		String name;
 		boolean not_exist = true;
-		Doctor doc1 = new Doctor ();
-		Doctor doc2 = new Doctor ();
+		//Doctor doc1 = new Doctor ();
+		//Doctor doc2 = new Doctor ();
 		boolean keep_going = true;
 		while (keep_going)
 		{
@@ -217,11 +220,12 @@ public class Hospital implements Serializable{
 			String un = input6.nextLine();
 			System.out.println ("\nPlease enter your password:\n");
 			String pw = input7.nextLine();
-			if (type == 1)
+			System.out.println (doc.get(1).getUsername() + " " + doc.get(1).getPassword() + " " + un + " " + pw);
+			/*if (type == 1)
 			{
 				for (int i = 0; i < doc.size(); i++)
 				{
-					Doctor doc1 = new Doctor();
+					//Doctor doc1 = new Doctor();
         	     			doc1 = doc.get(i);
                  			String une = doc1.getUsername();
                         		String pwd = doc1.getPassword();
@@ -247,7 +251,8 @@ public class Hospital implements Serializable{
 						System.exit(0);
 					}
 				}
-			}
+			}*/
+
 			
 
 			/*else if (type == 2)

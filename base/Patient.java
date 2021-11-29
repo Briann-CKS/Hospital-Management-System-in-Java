@@ -83,7 +83,7 @@ public class Patient implements User, Serializable {
 	{
 		if (this.bill == 0)
 		{
-			System.out.println ("You have paid your medical bills! Thanks for your cooperation.");
+			System.out.println ("You don't have any medical bills at the moment! Thanks for checking with us.");
 		}
 		else
 		{

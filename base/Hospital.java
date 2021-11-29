@@ -176,24 +176,20 @@ public class Hospital implements Serializable{
 		//Doctor doc1 = new Doctor ();
 		//Doctor doc2 = new Doctor ();
 		boolean keep_going = true;
+		Scanner input1 = new Scanner (System.in);
 		while (keep_going)
 		{
 			System.out.println("\nPlease enter a username:");
-			Scanner input1 = new Scanner (System.in);
+			//Scanner input1 = new Scanner (System.in);
 			String untry = input1.nextLine();
 			for (int i = 0; i< doc.size(); i++)
 			{
 				//doc2 = doc.get(i);
-				if (doc.get(i).getUsername() == untry)
+				if (untry.equals(doc.get(i).getUsername()))
 				{
 					not_exist = false;
-					System.out.println("\nSorry, this username has been used. Please try another username!");
 					break;
 				}
-				else
-				{
-					
-				}	
 			}
 			if (not_exist == false)
 			{

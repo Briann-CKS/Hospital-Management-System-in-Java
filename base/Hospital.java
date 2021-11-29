@@ -2,6 +2,7 @@ import java.io.*;
 import java.lang.*;
 import java.util.Scanner;
 import java.util.Vector;
+import java.util.*;
 
 public class Hospital implements Serializable{
 
@@ -10,32 +11,20 @@ public class Hospital implements Serializable{
 	public Vector<FrontDesk> fd = new Vector<FrontDesk>();
 	public Vector<Patient> pt = new Vector<Patient>();
 	Doctor doc1 = new Doctor();
-	Doctor doc2 = new Doctor();
-
+	Nurse nur1 = new Nurse();
+	FrontDesk fd1 = new FrontDesk();
+	Patient pt1 = new Patient();
 
 	public static void main (String[] args)
 	{
 		Hospital account = new Hospital();
-		//doc.add(addDoctor());
-		//saveDoctor(doc.get(0));
-		//saveDoctorA();
-		//loadDoctor();
-		//saveDoctorA();
-		//Doctor doc2 = new Doctor ();
-		//doc2 = doc.get(0);
-		//doc2.setNotification("Meeting at 1pm");
-		//doc2.setNotification("Appointment at 3pm");		
 	}
 
 	public Hospital ()
 	{
 		loadUser();
-		//doc.add(addDoctor());
-		//System.out.println(doc.get(1).getUsername());
-		//doc.get(0).setNotification("Appointment at 1pm");
-		//doc.get(0).readNotification();
-		//saveDoctor();
 		this.main_menu();
+		//saveDoctor();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -111,7 +100,7 @@ public class Hospital implements Serializable{
                 }
 	}*/
 
-	public void saveDoctor()
+	public void saveUser()
 	{
 		try{
                 FileOutputStream doc_file = new FileOutputStream("Doctors.dat");
@@ -122,10 +111,7 @@ public class Hospital implements Serializable{
                 } catch(Exception e){
                         System.out.println(e.getMessage());
                 }
-	}
-
-	public void saveNurse()
-	{
+	
 		try{
                 FileOutputStream nur_file = new FileOutputStream("Nurses.dat");
                 ObjectOutputStream out = new ObjectOutputStream(nur_file);
@@ -135,10 +121,7 @@ public class Hospital implements Serializable{
                 } catch(Exception e){
                         System.out.println(e.getMessage());
                 }
-	}
-
-	public void saveFrontDesk()
-	{
+	
 		try{
                 FileOutputStream fd_file = new FileOutputStream("FrontDesks.dat");
                 ObjectOutputStream out = new ObjectOutputStream(fd_file);
@@ -148,10 +131,7 @@ public class Hospital implements Serializable{
                 } catch(Exception e){
                         System.out.println(e.getMessage());
                 }
-	}
 
-	public void savePatient()
-	{
 		try{
                 FileOutputStream pt_file = new FileOutputStream("Patients.dat");
                 ObjectOutputStream out = new ObjectOutputStream(pt_file);
@@ -165,8 +145,6 @@ public class Hospital implements Serializable{
 	
 	public Doctor addDoctor()
 	{
-		String username;
-		String password;
 		String name;
 		boolean not_exist = true;
 		boolean keep_going = true;
@@ -176,16 +154,9 @@ public class Hospital implements Serializable{
 			not_exist = true;
 			System.out.println("\nPlease enter a username:");
 			String untry = input1.nextLine();
-			for (int i = 0; i< doc.size(); i++)
+			if (compareUsername(untry) == true)
 			{
-				if (untry.equals(doc.get(i).getUsername()))
-				{
-					not_exist = false;
-					break;
-				}
-			}
-			if (not_exist == false)
-			{
+				not_exist = false;
 				System.out.println("\nSorry, this username has been used. Please try another username!");
 			}
 			else	
@@ -201,16 +172,9 @@ public class Hospital implements Serializable{
 			not_exist = true;	
 			System.out.println("\nPlease enter a password:");
 			String pwtry = input1.nextLine();
-			for (int i = 0; i< doc.size(); i++)
+			if (comparePassword(pwtry))	
 			{
-				if (pwtry.equals(doc.get(i).getPassword()))
-				{
-					not_exist = false;
-					break;
-				}	
-			}
-			if (not_exist == false)
-			{
+				not_exist = false;
 				System.out.println("\nSorry, this password has been used. Please try another password!");
 			}
 			else	
@@ -228,25 +192,142 @@ public class Hospital implements Serializable{
 	
 	/*public static Nurse addNurse (String username, String password, String name)
 	{
+		String name;
+		boolean not_exist = true;
+		boolean keep_going = true;
+		Scanner input1 = new Scanner (System.in);
+		while (keep_going)
+		{
+			not_exist = true;
+			System.out.println("\nPlease enter a username:");
+			String untry = input1.nextLine();
+			if (compareUsername(untry) == true)
+			{
+				not_exist = false;
+				System.out.println("\nSorry, this username has been used. Please try another username!");
+			}
+			else	
+			{
+				nur1.setUsername(untry);
+				keep_going = false;
+			}
+		}
 
+		keep_going = true;
+		while (keep_going)
+		{
+			not_exist = true;	
+			System.out.println("\nPlease enter a password:");
+			String pwtry = input1.nextLine();
+			if (comparePassword(pwtry))	
+			{
+				not_exist = false;
+				System.out.println("\nSorry, this password has been used. Please try another password!");
+			}
+			else	
+			{
+				nur1.setPassword(pwtry);
+				keep_going = false;
+			}
+		}
+
+		System.out.println("\nPlease enter your Full Name:");
+		name = input1.nextLine();	
+		nur1.setName(name);
+		return nur1;
 	}
 
 	public static FrontDesk addFrontDesk (String username, String password, String name)
 	{
-		FrontDesk fd1 = new FrontDesk ();
-		fd1.setUsername(username);
-		fd1.setPassword(password);
+		String name;
+		boolean not_exist = true;
+		boolean keep_going = true;
+		Scanner input1 = new Scanner (System.in);
+		while (keep_going)
+		{
+			not_exist = true;
+			System.out.println("\nPlease enter a username:");
+			String untry = input1.nextLine();
+			if (compareUsername(untry) == true)
+			{
+				not_exist = false;
+				System.out.println("\nSorry, this username has been used. Please try another username!");
+			}
+			else	
+			{
+				fd1.setUsername(untry);
+				keep_going = false;
+			}
+		}
+
+		keep_going = true;
+		while (keep_going)
+		{
+			not_exist = true;	
+			System.out.println("\nPlease enter a password:");
+			String pwtry = input1.nextLine();
+			if (comparePassword(pwtry))	
+			{
+				not_exist = false;
+				System.out.println("\nSorry, this password has been used. Please try another password!");
+			}
+			else	
+			{
+				fd1.setPassword(pwtry);
+				keep_going = false;
+			}
+		}
+
+		System.out.println("\nPlease enter your Full Name:");
+		name = input1.nextLine();	
 		fd1.setName(name);
 		return fd1;
 	}
 
 	public static Patient addPatient (String username, String password, String name)
 	{
-		Patient p1 = new Patient ();
-		p1.setUsername(username);
-		p1.setPassword(password);
-		p1.setName(name);
-		return p1;
+		String name;
+		boolean not_exist = true;
+		boolean keep_going = true;
+		Scanner input1 = new Scanner (System.in);
+		while (keep_going)
+		{
+			not_exist = true;
+			System.out.println("\nPlease enter a username:");
+			String untry = input1.nextLine();
+			if (compareUsername(untry) == true)
+			{
+				not_exist = false;
+				System.out.println("\nSorry, this username has been used. Please try another username!");
+			}
+			else	
+			{
+				pt1.setUsername(untry);
+				keep_going = false;
+			}
+		}
+		keep_going = true;
+		while (keep_going)
+		{
+			not_exist = true;	
+			System.out.println("\nPlease enter a password:");
+			String pwtry = input1.nextLine();
+			if (comparePassword(pwtry))	
+			{
+				not_exist = false;
+				System.out.println("\nSorry, this password has been used. Please try another password!");
+			}
+			else	
+			{
+				pt1.setPassword(pwtry);
+				keep_going = false;
+			}
+		}
+
+		System.out.println("\nPlease enter your Full Name:");
+		name = input1.nextLine();	
+		pt1.setName(name);
+		return pt1;
 	}*/
 
 	public void main_menu()
@@ -257,7 +338,6 @@ public class Hospital implements Serializable{
 		System.out.println ("Welcome to CSCI240 Hospital System!\n");	
 		System.out.println ("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
 		boolean not_valid = true;
-		//while (not_valid)
 		do
 		{
 			System.out.println ("Please select your User Type:\n");
@@ -286,7 +366,6 @@ public class Hospital implements Serializable{
 			String un = input6.nextLine();
 			System.out.println ("\nPlease enter your password:\n");
 			String pw = input7.nextLine();
-			//System.out.println (doc.get(1).getUsername() + " " + doc.get(1).getPassword() + " " + un + " " + pw);
 			if (type == 1)
 			{
 				for (int i = 0; i < doc.size(); i++)
@@ -299,8 +378,8 @@ public class Hospital implements Serializable{
 						{
 							uexist = true;
 							System.out.println("Hello Doctor!");
-							DoctorMainMenu dmm = new DoctorMainMenu (doc1);
-							saveDoctor();
+							DoctorMainMenu dmm = new DoctorMainMenu (doc.get(i));
+							saveUser();
 							System.exit(0);	
 						}
 						else 
@@ -326,63 +405,62 @@ public class Hospital implements Serializable{
 			{
 				for (int i = 0; i < nur.size(); i++)
 				{       
-					Nurse nur1 = new Nurse();
-                                        nur1 = nur.get(i);
-                                        String une = nur1.getUsername();
-                                        String pwd = nur1.getPassword();
-                                        if(un == une)
+                                        String une = nur.get(i).getUsername();
+                                        String pwd = nur.get(i).getPassword();
+                                        if(un.equals(une))
                                         {
-                                        	if (pw == pwd)
+                                        	if (pw.equals(pwd))
 						{
 							uexist = true;
 							System.out.println (Hello Nurse!");
-							NurseMainMenu(nur1);
-                                                        exit(0);
+							NurseMainMenu nmm = new NurseMainMenu(nur.get(i));
+							saveUser();
+                                                        System.exit(0);
 						}
                                                 else
                                                 {
 							System.out.println ("Sorry, wrong password.Try again next time!");
-                                                        exit(0);
+                                                        System.exit(0);
                                                 }
 					}
 
-                                        else
-                                        {
-                        	                System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
-                                                exit(0);
-                                        }
+				}
+			
+				if (uexist == false);
+                                {                        	                
+					System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
+					System.exit(0);
 				}
 			}
+
 
 			else if (type == 3)
 			{
 				for (int i = 0; i < fd.size(); i++)
                                 {
-                                	FrontDesk fd1 = new FrontDesk();
-                                        fd1 = fd.get(i);
-                                        String une = fd1.getUsername();
-                                        String pwd = fd1.getPassword();
-                                        if(un == une)
+                                        String une = fd.get(i).getUsername();
+                                        String pwd = fd.get(i).getPassword();
+                                        if(un.equals(une))
                                         {
-                                        	if (pw == pwd)
+                                        	if (pw.equals(pwd))
                                                 {
                                                 	uexist = true;
                                                        	System.out.println ("Hello Front Desk!");
-                                                       	FrontDeskMainMenu(fd1);
-                                                       	exit(0);
+                                                       	FrontDeskMainMenu fdmm = new FrontDeskMainMenu(fd.get(i));
+                                                       	System.exit(0);
 						}
                                                 else
                                                 {
                                 	                System.out.println ("Sorry, wrong password.Try again next time!");
-                                                        exit(0);
+                                                        System.exit(0);
                                                 }
 					}
 
-                                        else
-                                        {
-                                                System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
-                                                exit(0);
-                                        }
+				}                  
+				if (uexist == false)
+                                {                
+					System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");                                                
+					System.exit(0);
 				}
 			}
 
@@ -390,31 +468,28 @@ public class Hospital implements Serializable{
 			{
 				for (int i = 0; i < fd.size(); i++)
                                 {
-                                	Patient pt1 = new Patient();
-                                        pt1 = pt.get(i);
-                                        String une = pt1.getUsername();
-                                        String pwd = pt1.getPassword();
-                                        if(un == une)
+                                        String une = pt.get(i).getUsername();
+                                        String pwd = pt.get(i).getPassword();
+                                        if(un.equals(une))
                                         {
-						if (pw == pwd)
+						if (pw.equals(pwd))
 						{
 							uexist = true;
 							System.out.println ("Hello Front Patient!");
-                                                        PatientMainMenu();
-                                                        exit(0);
+                                                        PatientMainMenu = new PatientMainMenu(pt.get(i));
+                                                        System.exit(0);
                                                 }
                                                 else
                                                 {
                                                         System.out.println ("Sorry, wrong password.Try again next time!");
-                                                        exit(0);
+                                                        System.exit(0);
                                                 }
 					}
-
-                                        else
-                                        {
-                                                System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
-                                                exit(0);
-                                        }
+				}
+				if (uexist == false)
+				{                                                
+					System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");                                                
+					System.exit(0);
 				}
 
 			}*/
@@ -426,25 +501,33 @@ public class Hospital implements Serializable{
 			{
 				doc.add(addDoctor());
 				System.out.println ("\nWelcome to the CSCI Hospital, Doctor!\n");
-				DoctorMainMenu dmm = new DoctorMainMenu();
+				DoctorMainMenu dmm = new DoctorMainMenu(doc.get(doc.size()-1));
+				//saveUser();
+				System.exit(0);
 			}
 			/*else if (type == 2)
 			{
-				addNurse();
+				nur.add(addNurse());
 				System.out.println ("\nWelcome to the CSCI Hospital, Nurse!\n");                                       
-				NurseMainMenu();
+				NurseMainMenu nmm = new NurseMainMenu(nur.get(nur.size()-1));
+				saveUser();
+				System.exit(0);
 			}
 			else if (type == 3)
 			{
-				addFrontDesk();
+				fd.add(addFrontDesk());
 				System.out.println ("\nWelcome to the CSCI Hospital, FrontDesk!\n");                              
-				FrontDeskMainMenu();
+				FrontDeskMainMenu fdmm = new FrontDeskMainMenu(fd.get(fd.size()-1));
+				saveUser();
+				System.exit(0);
 			}
 			else
 			{
-				addPatient();
+				pt.add(addPatient());
 				System.out.println ("\nWelcome to the CSCI Hospital, Patient!\n");               
-				PatientMainMenu();
+				PatientMainMenu ptmm = newPatientMainMenu(pt.get(pt.size()-1));
+				saveUser();
+				System.exit(0);
 			}*/
 		}
 
@@ -453,5 +536,66 @@ public class Hospital implements Serializable{
 			System.out.println ("Not a valid option. Please try again next time!");
 		}
 	}
-	
+
+	public boolean compareUsername(String username)
+	{
+		ArrayList<String> usern = new ArrayList<String>();
+		for (int i = 0; i< doc.size(); i++)
+		{
+			usern.add(doc.get(i).getUsername());
+		}
+		for (int i = 0; i< nur.size(); i++)
+		{
+			usern.add(nur.get(i).getUsername());
+		}	
+		for (int i = 0; i< fd.size(); i++)
+		{
+			usern.add(fd.get(i).getUsername());
+		}
+		for (int i = 0; i< pt.size(); i++)
+		{
+			usern.add(pt.get(i).getUsername());
+		}
+
+		for (int i = 0; i< usern.size(); i++)
+		{
+			if (username.equals(usern.get(i)))
+			{
+				return true;	
+			}
+		}
+		return false;
+	}
+
+	public boolean comparePassword(String password)
+	{
+		ArrayList<String> passw = new ArrayList<String>();
+		for (int i = 0; i< doc.size(); i++)
+		{
+			passw.add(doc.get(i).getPassword());
+		}
+		for (int i = 0; i< nur.size(); i++)
+		{
+			passw.add(nur.get(i).getPassword());
+		}	
+		for (int i = 0; i< fd.size(); i++)
+		{
+			passw.add(fd.get(i).getPassword());
+		}
+		for (int i = 0; i< pt.size(); i++)
+		{
+			passw.add(pt.get(i).getPassword());
+		}
+
+		for (int i = 0; i< passw.size(); i++)
+		{
+			if (password.equals(passw.get(i)))
+			{
+				return true;	
+			}
+		}
+		return false;
+	}
+
+		
 }

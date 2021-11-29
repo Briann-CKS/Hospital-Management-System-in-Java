@@ -8,22 +8,21 @@ public class Hospital implements Serializable{
 	public static Vector<Doctor> doc = new Vector<Doctor>();
 	public static Vector<Nurse> nur = new Vector<Nurse>();
 	public static Vector<FrontDesk> fd = new Vector<FrontDesk>();
-	//public static Vector<Patient> pt = new Vector<Patient>();
+	public static Vector<Patient> pt = new Vector<Patient>();
 
 	public static void main (String[] args)
 	{
 		Hospital account = new Hospital();
 		Doctor doc1 = new Doctor();
-		//doc1 = addDoctor();
-		//doc.add(doc1);
-		//doc.add(addDoctor("brcheong", "CSCI240", "Brian"));
+		doc1 = addDoctor();
+		doc.add(doc1);
 		Doctor doc2 = new Doctor ();
 		for (int i = 0; i<doc.size(); i++)
 		{
 			doc2 = doc.get(i);
 			System.out.println (doc2.getUsername() + " " + doc2.getPassword() + " " + doc2.getName() + "\n");
 		}
-		doc2 = doc.get(1);
+		doc2 = doc.get(0);
 		//doc2.setNotification("Meeting at 1pm");
 		//doc2.setNotification("Appointment at 3pm");		
 		doc2.readNotification();
@@ -147,11 +146,7 @@ public class Hospital implements Serializable{
 	
 	public static Nurse addNurse (String username, String password, String name)
 	{
-		Nurse nur1 = new Nurse ();
-		nur1.setUsername(username);
-		nur1.setPassword(password);
-		nur1.setName(name);
-		return nur1;
+
 	}
 
 	public static FrontDesk addFrontDesk (String username, String password, String name)
@@ -199,16 +194,187 @@ public class Hospital implements Serializable{
 		Scanner input5 = new Scanner (System.in);
 		int choice = input5.nextInt();	
 		boolean keep_going = true;
+		boolean uexist = false;
 		while (keep_going)	
 		{
 			if (choice == 1)
 			{
-				keep_going = false;
+				System.out.println ("Welcome back! Please enter your username:\n");
+				String un = input5.nextLine();
+				System.out.println ("\nPlease enter your password:\n");
+				String pw = input5.nextLine();
+				if (type == 1)
+				{
+					for (int i = 0; i < doc.size(); i++)
+					{
+						Doctor doc1 = new Doctor();
+        	     				doc1 = doc.get(i);
+                 				String une = doc1.getUsername();
+                        			String pwd = doc1.getPassword();
+						if(un == une)
+						{
+       	        					if (pw == pwd)
+							{
+								uexist = true;
+								break;	
+							}
+							else 
+							{
+								System.out.println ("Sorry, wrong password.Try again next time!");
+								exit(0);
+							}
+                				}
+						
+						if (uexist)
+						{
+							System.out.println ("Hello Doctor!");	
+							DoctorMainMenu();
+							exit(0);
+						}
+						else 
+						{
+							System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
+							exit(0);
+						}
+					}
+				}
+
+				else if (type == 2)
+				{
+					for (int i = 0; i < nur.size(); i++)
+                                        {       
+                                                Nurse nur1 = new Nurse();
+                                                nur1 = nur.get(i);
+                                                String une = nur1.getUsername();
+                                                String pwd = nur1.getPassword();
+                                                if(un == une)
+                                                {
+                                                        if (pw == pwd)
+                                                        {
+                                                                uexist = true;
+                                                                break;
+                                                        }
+                                                        else
+                                                        {
+                                                                System.out.println ("Sorry, wrong password.Try again next time!");
+                                                                exit(0);
+                                                        }
+                                                }
+
+                                                if (uexist)
+                                                {
+                                                        System.out.println ("Hello Nurse!");
+                                                        NurseMainMenu();
+                                                        exit(0);
+                                                }
+                                                else
+                                                {
+                                                        System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
+                                                        exit(0);
+                                                }
+					}
+				}
+
+				else if (type == 3)
+				{
+					for (int i = 0; i < fd.size(); i++)
+                                        {
+                                                FrontDesk fd1 = new FrontDesk();
+                                                fd1 = fd.get(i);
+                                                String une = fd1.getUsername();
+                                                String pwd = fd1.getPassword();
+                                                if(un == une)
+                                                {
+                                                        if (pw == pwd)
+                                                        {
+                                                                uexist = true;
+                                                                break;
+                                                        }
+                                                        else
+                                                        {
+                                                                System.out.println ("Sorry, wrong password.Try again next time!");
+                                                                exit(0);
+                                                        }
+                                                }
+
+                                                if (uexist)
+                                                {
+                                                        System.out.println ("Hello Front Desk!");
+                                                        FrontDeskMainMenu();
+                                                        exit(0);
+                                                }
+                                                else
+                                                {
+                                                        System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
+                                                        exit(0);
+                                                }
+					}
+				}
+
+				else 
+				{
+					for (int i = 0; i < fd.size(); i++)
+                                        {
+                                                Patient pt1 = new Patient();
+                                                pt1 = pt.get(i);
+                                                String une = pt1.getUsername();
+                                                String pwd = pt1.getPassword();
+                                                if(un == une)
+                                                {
+                                                        if (pw == pwd)
+                                                        {
+                                                                uexist = true;
+                                                                break;
+                                                        }
+                                                        else
+                                                        {
+                                                                System.out.println ("Sorry, wrong password.Try again next time!");
+                                                                exit(0);
+                                                        }
+                                                }
+
+                                                if (uexist)
+                                                {
+                                                        System.out.println ("Hello Patient!");
+                                                        PatientMainMenu();
+                                                        exit(0);
+                                                }
+                                                else
+                                                {
+                                                        System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");
+                                                        exit(0);
+                                                }
+                                        }
+
+				}
 			}
 
 			else if (choice == 2)
 			{
-				keep_going = false;
+				if (type == 1)
+				{
+					addDoctor();
+					System.out.println ("\nWelcome to the CSCI Hospital, Doctor!\n");
+					DoctorMainMenu();
+				}
+				else if (type == 2)
+				{
+					addNurse();
+					System.out.println ("\nWelcome to the CSCI Hospital, Nurse!\n");
+                                        NurseMainMenu();
+				}
+				else if (type == 3)
+				{
+					addFrontDesk();
+					System.out.println ("\nWelcome to the CSCI Hospital, FrontDesk!\n");
+                                        FrontDeskMainMenu();
+				}
+				else
+				{
+					addPatient();
+					System.out.println ("\nWelcome to the CSCI Hospital, Patient!\n");
+                                        PatientMainMenu();
+				}
 			}
 
 			else 

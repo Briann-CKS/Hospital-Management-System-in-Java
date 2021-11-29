@@ -3,21 +3,15 @@ import java.util.*;
 
 public class Doctor extends Admin implements Serializable {
 
-	public static ArrayList<String> notification = new ArrayList<String>();
-	String username;
-	String password;
-	String name;
+	private static ArrayList<String> notification = new ArrayList<String>();
+	private String username;
+	private String password;
+	private String name;
 	Usertype type = Usertype.DOCTOR;
 	
 	public static void main (String args[])
 	{
 		Doctor doctor = new Doctor ();
-		/*doctor.setNotification("Hello");
-		doctor.setNotification("Its me");
-		doctor.setNotification ("I love you");
-		doctor.readNotification();
-		doctor.deleteNotification(2);
-		doctor.readNotification();*/
 	}
 
 	public Doctor() 
@@ -26,17 +20,27 @@ public class Doctor extends Admin implements Serializable {
 		this.username = "Unknown";
 		this.password = "Unknown";
 		this.name = "Unknown";
+		//notification = new ArrayList<String>();
 	}
 
-	public Doctor (String username, String password, String name)
+	/*public void viewPatientInfo (Patient p)
 	{
-		super();
-		this.username = username;
-		this.password = password;
-		this.name = name;
+		p.getInfo();
 	}
 
-	//public void listPatient
+	public void setPrescription (Patient p)
+	{
+		Patient p1 = new Patient();
+		p1 = p;
+		
+
+	}
+
+
+
+
+	*/
+
 
 	public void readNotification()
 	{
@@ -68,8 +72,7 @@ public class Doctor extends Admin implements Serializable {
 
 	public void setNotification (String message)
 	{
-		this.notification.add(message);
+		this.notification.add(message);	
 	}
 
-	
 }

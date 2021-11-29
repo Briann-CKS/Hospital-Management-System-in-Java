@@ -2,9 +2,9 @@ import java.io.Serializable;
 
 public abstract class Admin implements User, Serializable {
 
-	String username;
-	String password;
-	String name;
+	private String username;
+	private String password;
+	private String name;
 
 	public void setUsername(String username)
 	{

@@ -1,21 +1,22 @@
 import java.io.*;
+import java.util.Scanner;
 
 public class Patient implements User, Serializable {
 
-	public String username;
-	public String password;
-	public String name;
+	private String username;
+	private String password;
+	private String name;
 	//public Date appointment = new Date();
-	public String diagnosis;
-	public String prescription;
-	public int bill = 0;
+	private String diagnosis;
+	private String prescription;
+	private float bill = 0;
 
 	public static void main (String args[])
 	{
 		Patient u1 = new Patient();
-		u1.setUsername ("brcheong");
-		u1.setPassword ("Hello");
-		System.out.println (u1.getUsername() + " " + u1.getPassword());
+		//u1.setUsername ("brcheong");
+		//u1.setPassword ("Hello");
+		//System.out.println (u1.getUsername() + " " + u1.getPassword());
 	}
 
         public void setUsername (String username)
@@ -43,7 +44,7 @@ public class Patient implements User, Serializable {
 	//	this.appointment = appointment;
 	//}
 
-	public void addBill(int amount)
+	public void addBill(float amount)
 	{
 		this.bill += amount;
 	}
@@ -73,12 +74,12 @@ public class Patient implements User, Serializable {
 		return prescription;
 	}
 
-	public int getBill()
+	public float getBill()
 	{
 		return bill;
 	}
 
-	/*public void paymedical_bill()
+	public void paymedical_bill()
 	{
 		if (this.bill == 0)
 		{
@@ -86,9 +87,24 @@ public class Patient implements User, Serializable {
 		}
 		else
 		{
-			System.out.println ("Your medical bill total is $" + this.bill + ", would you like to pay the total amount? (y or n)");
+			System.out.println ("Your medical bill total is $" + this.bill + ", would you like to pay the total amount? (1. Yes  2. No)");
+			Scanner input = new Scanner(System.in);
+			int choice = input.nextInt();
+			if (choice == 1)
+			{
+				System.out.println ("Thank you! You have successfully paid your medical bills.");
+				this.bill = 0;
+			}
+
+			if (choice == 2)
+			{
+				System.out.println ("Please enter the amount that you would like to pay:\n");
+				float amount = input.nextFloat(); 			
+				bill -= amount;
+				System.out.println ("Payment successful. Your current medical bill balance is $" + bill + ". Thank you!\n");				
+			}
 		}
 
-	}*/
+	}
 
 }	

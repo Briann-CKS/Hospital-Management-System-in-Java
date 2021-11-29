@@ -30,18 +30,18 @@ public class Hospital implements Serializable{
 
 	public Hospital ()
 	{
-		loadDoctor();
+		loadUser();
 		//doc.add(addDoctor());
 		//System.out.println(doc.get(1).getUsername());
-		doc.get(0).setNotification("Appointment at 1pm");
-		doc.get(0).readNotification();
-		saveDoctorA();
-		//this.main_menu();
+		//doc.get(0).setNotification("Appointment at 1pm");
+		//doc.get(0).readNotification();
+		//saveDoctor();
+		this.main_menu();
 		//saveDoctorA();
 	}
 
 	@SuppressWarnings("unchecked")
-	public void loadDoctor()
+	public void loadUser()
 	{
 		try{
 		FileInputStream doc_file = new FileInputStream("Doctors.dat");
@@ -53,9 +53,42 @@ public class Hospital implements Serializable{
 		} catch (ClassNotFoundException e) {
 			System.out.println (e.getMessage());
 		}
+	
+		/*try{
+		FileInputStream nur_file = new FileInputStream("Nurses.dat");
+		ObjectInputStream inputN = new ObjectInputStream(nur_file);
+		nur = (Vector) inputN.readObject();
+		inputN.close();
+		} catch (IOException e) {
+			System.out.println (e.getMessage());
+		} catch (ClassNotFoundException e) {
+			System.out.println (e.getMessage());
+		}
+	
+		try{
+		FileInputStream fd_file = new FileInputStream("FrontDesks.dat");
+		ObjectInputStream inputF = new ObjectInputStream(fd_file);
+		fd = (Vector) inputF.readObject();
+		inputF.close();
+		} catch (IOException e) {
+			System.out.println (e.getMessage());
+		} catch (ClassNotFoundException e) {
+			System.out.println (e.getMessage());
+		}
+	
+		try{
+		FileInputStream pt_file = new FileInputStream("Patients.dat");
+		ObjectInputStream inputP = new ObjectInputStream(pt_file);
+		pt = (Vector) inputP.readObject();
+		inputP.close();
+		} catch (IOException e) {
+			System.out.println (e.getMessage());
+		} catch (ClassNotFoundException e) {
+			System.out.println (e.getMessage());
+		}*/
 	}
 
-	public void saveDoctor (Doctor d)
+	/*public void saveDoctor (Doctor d)
 	{
 		try{
                 FileOutputStream doc_file = new FileOutputStream("Doctors.dat");
@@ -78,9 +111,9 @@ public class Hospital implements Serializable{
 		} catch(Exception e){
                         System.out.println(e.getMessage());
                 }
-	}
+	}*/
 
-	public void saveDoctorA()
+	public void saveDoctor()
 	{
 		try{
                 FileOutputStream doc_file = new FileOutputStream("Doctors.dat");
@@ -92,6 +125,46 @@ public class Hospital implements Serializable{
                         System.out.println(e.getMessage());
                 }
 	}
+
+	public void saveNurse()
+	{
+		try{
+                FileOutputStream nur_file = new FileOutputStream("Nurses.dat");
+                ObjectOutputStream out = new ObjectOutputStream(nur_file);
+                out.writeObject(nur);
+                out.close();
+                nur_file.close();
+                } catch(Exception e){
+                        System.out.println(e.getMessage());
+                }
+	}
+
+	public void saveFrontDesk()
+	{
+		try{
+                FileOutputStream fd_file = new FileOutputStream("FrontDesks.dat");
+                ObjectOutputStream out = new ObjectOutputStream(fd_file);
+                out.writeObject(fd);
+                out.close();
+                fd_file.close();
+                } catch(Exception e){
+                        System.out.println(e.getMessage());
+                }
+	}
+
+	public void savePatient()
+	{
+		try{
+                FileOutputStream pt_file = new FileOutputStream("Patients.dat");
+                ObjectOutputStream out = new ObjectOutputStream(pt_file);
+                out.writeObject(pt);
+                out.close();
+                pt_file.close();
+                } catch(Exception e){
+                        System.out.println(e.getMessage());
+                }
+	}
+
 	
 	//public static Doctor addDoctor (String username, String password, String name)
 	public Doctor addDoctor()
@@ -110,10 +183,16 @@ public class Hospital implements Serializable{
 			String untry = input1.nextLine();
 			for (int i = 0; i< doc.size(); i++)
 			{
-				doc2 = doc.get(i);
-				if (doc2.getUsername() == untry)
+				//doc2 = doc.get(i);
+				if (doc.get(i).getUsername() == untry)
 				{
 					not_exist = false;
+					System.out.println("\nSorry, this username has been used. Please try another username!");
+					break;
+				}
+				else
+				{
+					
 				}	
 			}
 			if (not_exist == false)
@@ -136,8 +215,8 @@ public class Hospital implements Serializable{
 			String pwtry = input2.nextLine();
 			for (int i = 0; i< doc.size(); i++)
 			{
-				doc2 = doc.get(i);
-				if (doc2.getPassword() == pwtry)
+				//doc2 = doc.get(i);
+				if (doc.get(i).getPassword() == pwtry)
 				{
 					not_exist = false;
 				}	
@@ -360,7 +439,6 @@ public class Hospital implements Serializable{
 				doc.add(addDoctor());
 				System.out.println ("\nWelcome to the CSCI Hospital, Doctor!\n");
 				DoctorMainMenu dmm = new DoctorMainMenu();
-				//DoctorMainMenu();
 			}
 			/*else if (type == 2)
 			{

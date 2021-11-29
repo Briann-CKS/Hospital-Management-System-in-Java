@@ -74,6 +74,13 @@ public class Patient implements User, Serializable {
 		return prescription;
 	}
 
+	/*public printPrescription()
+	{
+		String pres;
+		//pres = 	
+		
+	}*/
+
 	public float getBill()
 	{
 		return bill;

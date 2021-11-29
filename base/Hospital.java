@@ -164,27 +164,22 @@ public class Hospital implements Serializable{
                         System.out.println(e.getMessage());
                 }
 	}
-
 	
-	//public static Doctor addDoctor (String username, String password, String name)
 	public Doctor addDoctor()
 	{
 		String username;
 		String password;
 		String name;
 		boolean not_exist = true;
-		//Doctor doc1 = new Doctor ();
-		//Doctor doc2 = new Doctor ();
 		boolean keep_going = true;
 		Scanner input1 = new Scanner (System.in);
 		while (keep_going)
 		{
+			not_exist = true;
 			System.out.println("\nPlease enter a username:");
-			//Scanner input1 = new Scanner (System.in);
 			String untry = input1.nextLine();
 			for (int i = 0; i< doc.size(); i++)
 			{
-				//doc2 = doc.get(i);
 				if (untry.equals(doc.get(i).getUsername()))
 				{
 					not_exist = false;
@@ -203,18 +198,17 @@ public class Hospital implements Serializable{
 		}
 
 		keep_going = true;
-		not_exist = true;
 		while (keep_going)
 		{
+			not_exist = true;	
 			System.out.println("\nPlease enter a password:");
-			Scanner input2 = new Scanner (System.in);
-			String pwtry = input2.nextLine();
+			String pwtry = input1.nextLine();
 			for (int i = 0; i< doc.size(); i++)
 			{
-				//doc2 = doc.get(i);
-				if (doc.get(i).getPassword() == pwtry)
+				if (pwtry.equals(doc.get(i).getPassword()))
 				{
 					not_exist = false;
+					break;
 				}	
 			}
 			if (not_exist == false)
@@ -229,8 +223,7 @@ public class Hospital implements Serializable{
 		}
 
 		System.out.println("\nPlease enter your Full Name:");
-		Scanner input3 = new Scanner (System.in);
-		name = input3.nextLine();	
+		name = input1.nextLine();	
 		doc1.setName(name);
 		return doc1;
 	}

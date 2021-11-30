@@ -3,6 +3,7 @@ import java.lang.*;
 import java.util.Scanner;
 import java.util.Vector;
 import java.util.*;
+import java.util.Formatter;
 
 public class Hospital implements Serializable{
 
@@ -10,10 +11,12 @@ public class Hospital implements Serializable{
 	public Vector<Nurse> nur = new Vector<Nurse>();
 	public Vector<FrontDesk> fd = new Vector<FrontDesk>();
 	public Vector<Patient> pt = new Vector<Patient>();
+	public ArrayList<String> special = new ArrayList<String>(Arrays.asList("Allergist", "Dermatologist", "Cardiologist", "Psychiatrist", "General surgeon", "Orthopedic surgeon", "Cardiac surgeon", "Anesthesiologist"));
 	Doctor doc1 = new Doctor();
 	Nurse nur1 = new Nurse();
 	FrontDesk fd1 = new FrontDesk();
 	Patient pt1 = new Patient();
+	Scanner gen = new Scanner(System.in);
 
 	public static void main (String[] args)
 	{
@@ -75,31 +78,6 @@ public class Hospital implements Serializable{
 		}
 	}
 
-	/*public void saveDoctor (Doctor d)
-	{
-		try{
-                FileOutputStream doc_file = new FileOutputStream("Doctors.dat");
-                ObjectOutputStream out = new ObjectOutputStream(doc_file);
-                for(int i=0; i<doc.size(); i++)
-		{
-              		//Doctor doc1 = new Doctor();
-        	     	doc1 = doc.get(i);
-                 	String un = doc1.getUsername();
-                        String pw = doc1.getPassword();
-			if(d.getUsername() == un)
-			{
-        	        	doc.set(i, d);
-				break;
-                	}
-		}
-		out.writeObject(doc);
-                out.close();
-                doc_file.close();
-		} catch(Exception e){
-                        System.out.println(e.getMessage());
-                }
-	}*/
-
 	public void saveUser()
 	{
 		try{
@@ -145,6 +123,7 @@ public class Hospital implements Serializable{
 	
 	public Doctor addDoctor()
 	{
+		int spec;
 		String name;
 		boolean not_exist = true;
 		boolean keep_going = true;
@@ -184,9 +163,21 @@ public class Hospital implements Serializable{
 			}
 		}
 
-		System.out.println("\nPlease enter your Full Name:");
+		System.out.println("\nPlease enter a full name:");
 		name = input1.nextLine();	
 		doc1.setName(name);
+		
+		Formatter f = new Formatter(); 	
+		System.out.println (f.format("\n%-5s%-20s\n", "No.", "Specialty"));
+		for (int i = 0; i < special.size(); i++)
+		{
+			f = new Formatter();
+			System.out.println (f.format("%-5s%-20s", i+1 +")", special.get(i)));	
+		}
+		System.out.println ("");		
+		System.out.println ("Please select one specialty listed above:");
+		spec = input1.nextInt();
+		doc1.setSpecialty(special.get(spec-1));
 		return doc1;
 	}
 	
@@ -231,7 +222,7 @@ public class Hospital implements Serializable{
 			}
 		}
 
-		System.out.println("\nPlease enter your Full Name:");
+		System.out.println("\nPlease enter a full name:");
 		name = input1.nextLine();	
 		nur1.setName(name);
 		return nur1;
@@ -278,7 +269,7 @@ public class Hospital implements Serializable{
 			}
 		}
 
-		System.out.println("\nPlease enter your Full Name:");
+		System.out.println("\nPlease enter a full name:");
 		name = input1.nextLine();	
 		fd1.setName(name);
 		return fd1;
@@ -324,7 +315,7 @@ public class Hospital implements Serializable{
 			}
 		}
 
-		System.out.println("\nPlease enter your Full Name:");
+		System.out.println("\nPlease enter a full name:");
 		name = input1.nextLine();	
 		pt1.setName(name);
 		return pt1;
@@ -378,7 +369,7 @@ public class Hospital implements Serializable{
 						{
 							uexist = true;
 							System.out.println("Hello Doctor!");
-							DoctorMainMenu dmm = new DoctorMainMenu (doc.get(i));
+							DoctorMainMenu dmm = new DoctorMainMenu (doc.get(i), nur, fd, pt);
 							saveUser();
 							System.exit(0);	
 						}
@@ -502,7 +493,7 @@ public class Hospital implements Serializable{
 				doc.add(addDoctor());
 				System.out.println ("\nWelcome to the CSCI Hospital, Doctor!\n");
 				DoctorMainMenu dmm = new DoctorMainMenu(doc.get(doc.size()-1));
-				//saveUser();
+				saveUser();
 				System.exit(0);
 			}
 			else if (type == 2)
@@ -597,5 +588,72 @@ public class Hospital implements Serializable{
 		return false;
 	}
 
-		
+	public void listPatient()
+	{
+		Formatter f = new Formatter();
+		System.out.println (f.format("%-5s%-20s%-30s", "No.", "Username", "Full Name")); 
+		for (int i = 0; i < pt.size(); i++)	
+		{
+			f = new Formatter();
+			System.out.println (f.format("%-5s%-20s%-30s", i+1 + ")", pt.get(i).getUsername(), pt.get(i).getName()));
+		}
+	}
+	
+	public void listDoctor()
+	{
+		Formatter f = new Formatter();
+		System.out.println (f.format("%-5s%-20s%-30s", "No.", "Username", "Full Name")); 
+		for (int i = 0; i < doc.size(); i++)	
+		{
+			f = new Formatter();
+			System.out.println (f.format("%-5s%-20s%-30s", i+1 + ")", doc.get(i).getUsername(), doc.get(i).getName()));
+		}
+	}
+
+	public void listFrontDesk()
+	{
+		Formatter f = new Formatter();
+		System.out.println (f.format("%-5s%-20s%-30s", "No.", "Username", "Full Name")); 
+		for (int i = 0; i < fd.size(); i++)	
+		{
+			f = new Formatter();
+			System.out.println (f.format("%-5s%-20s%-30s", i+1 + ")", fd.get(i).getUsername(), fd.get(i).getName()));
+		}
+	}
+
+	public void listNurse()
+	{
+		Formatter f = new Formatter();
+		System.out.println (f.format("%-5s%-20s%-30s", "No.", "Username", "Full Name")); 
+		for (int i = 0; i < nur.size(); i++)	
+		{
+			f = new Formatter();
+			System.out.println (f.format("%-5s%-20s%-30s", i+1 + ")", nur.get(i).getUsername(), nur.get(i).getName()));
+		}
+	}
+
+/*	public void viewPatientInfo()
+	{		
+		listPatient();
+		System.out.println ("\nWhich patient info would you like to view?\n");
+		int choice = gen.nextInt();
+		System.out.println ("Name: " + pt.get(choice-1).getName());
+		if (pt.get(choice-1).getDiagnosis().equals(""))
+		{
+			System.out.println ("Diagnosis: " + "None at the moment");
+		}
+		else
+		{
+			System.out.println ("Diagnosis: " + pt.get(choice-1).getDiagnosis());
+		}
+		if (pt.get(choice-1).getPrescription().equals(""))
+		{
+			System.out.println ("Past Prescriptions: " + "None at the moment");
+		}
+		else
+		{
+			System.out.println ("Past Prescriptions: " + pt.get(choice-1).getPrescription());
+		}	
+		System.out.println ("");
+	}*/
 }

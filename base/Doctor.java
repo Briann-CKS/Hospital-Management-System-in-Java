@@ -7,6 +7,7 @@ public class Doctor extends Admin implements Serializable {
 	private String username;
 	private String password;
 	private String name;
+	private String specialty;
 	Usertype type = Usertype.DOCTOR;
 	
 	public static void main (String args[])
@@ -14,12 +15,13 @@ public class Doctor extends Admin implements Serializable {
 		Doctor doctor = new Doctor ();
 	}
 
-	public Doctor(String username, String password, String name) 
+	public Doctor(String username, String password, String name, String specialty) 
 	{
 		super();
 		this.username = username;
 		this.password = password;
 		this.name = name;
+		this.specialty = specialty;
 		//notification = new ArrayList<String>();
 	}
 
@@ -29,7 +31,7 @@ public class Doctor extends Admin implements Serializable {
 		this.username = "";
 		this.password = "";
 		this.name = "";
-		//c static ArrayList<String> notification = new ArrayList<String>();
+		this.specialty = "";
 	}	
 
 	/*public void viewPatientInfo (Patient p)
@@ -42,27 +44,32 @@ public class Doctor extends Admin implements Serializable {
 		Patient p1 = new Patient();
 		p1 = p;
 		
-
 	}
 
-
-
-
 	*/
+	
+	public String getSpecialty()
+	{
+		return specialty;
+	}
 
+	public void setSpecialty(String specialty)
+	{
+		this.specialty = specialty;
+	}
 
 	public void readNotification()
 	{
-		System.out.println ("You have " + notification.size() + " notification(s): \n");
+		System.out.println ("You have " + notification.size() + " notification(s). \n");
 		for (int i = 0; i< notification.size(); i++)
 		{
 			System.out.println (i+1 + ") " + notification.get(i));
 		}
 		System.out.println ("");
-		/*if (notification.size() > 10)
+		if (notification.size() > 10)
 		{
 			System.out.println ("Looks like you have quite a few notifications stored in your account. Clearing some old messages will help you organize better!\n");
-		}*/
+		}
 	}
 
 	public void deleteNotification(int num)

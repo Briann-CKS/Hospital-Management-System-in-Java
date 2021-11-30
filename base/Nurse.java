@@ -51,7 +51,7 @@ public class Nurse extends Admin implements Serializable {
 
 	public void readNote ()
 	{
-		System.out.println ("You have " + note.size() + " notification(s): \n");
+		System.out.println ("You have " + note.size() + " notification(s). \n");
 		for (int i = 0; i < note.size(); i++)
 		{
 			System.out.println (i+1 + ") " + note.get(i));

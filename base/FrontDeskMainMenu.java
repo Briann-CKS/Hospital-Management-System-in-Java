@@ -1,6 +1,9 @@
+import java.util.Formatter;
 import java.io.*;
+import java.lang.*;
 import java.util.Scanner;
 import java.util.Vector;
+import java.util.*;
 
 public class FrontDeskMainMenu implements Serializable {
 
@@ -68,4 +71,14 @@ public class FrontDeskMainMenu implements Serializable {
 		}
 	}
 
+	/*public void listPatient()
+	{
+		Formatter f = new Formatter();
+		System.out.println (f.format("%05s %15s %25s", "No.", "Username", "Full Name")); 
+		for (int i = 0; i < pt.size(); i++)	
+		{
+			f = new Formatter();
+			System.out.println (f.format("%05s %15s %25s", i+1 + ")", pt.get(i).getUsername(), pt.get(i).getName()));
+		}
+	}*/
 }

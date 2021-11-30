@@ -41,7 +41,7 @@ public class Hospital implements Serializable{
 			System.out.println (e.getMessage());
 		}
 	
-		/*try{
+		try{
 		FileInputStream nur_file = new FileInputStream("Nurses.dat");
 		ObjectInputStream inputN = new ObjectInputStream(nur_file);
 		nur = (Vector) inputN.readObject();
@@ -72,7 +72,7 @@ public class Hospital implements Serializable{
 			System.out.println (e.getMessage());
 		} catch (ClassNotFoundException e) {
 			System.out.println (e.getMessage());
-		}*/
+		}
 	}
 
 	/*public void saveDoctor (Doctor d)
@@ -190,7 +190,7 @@ public class Hospital implements Serializable{
 		return doc1;
 	}
 	
-	/*public static Nurse addNurse (String username, String password, String name)
+	public Nurse addNurse ()
 	{
 		String name;
 		boolean not_exist = true;
@@ -237,7 +237,7 @@ public class Hospital implements Serializable{
 		return nur1;
 	}
 
-	public static FrontDesk addFrontDesk (String username, String password, String name)
+	public FrontDesk addFrontDesk ()
 	{
 		String name;
 		boolean not_exist = true;
@@ -284,7 +284,7 @@ public class Hospital implements Serializable{
 		return fd1;
 	}
 
-	public static Patient addPatient (String username, String password, String name)
+	public Patient addPatient ()
 	{
 		String name;
 		boolean not_exist = true;
@@ -328,7 +328,7 @@ public class Hospital implements Serializable{
 		name = input1.nextLine();	
 		pt1.setName(name);
 		return pt1;
-	}*/
+	}
 
 	public void main_menu()
 	{
@@ -401,7 +401,7 @@ public class Hospital implements Serializable{
 
 			
 
-			/*else if (type == 2)
+			else if (type == 2)
 			{
 				for (int i = 0; i < nur.size(); i++)
 				{       
@@ -412,7 +412,7 @@ public class Hospital implements Serializable{
                                         	if (pw.equals(pwd))
 						{
 							uexist = true;
-							System.out.println (Hello Nurse!");
+							System.out.println ("Hello Nurse!");
 							NurseMainMenu nmm = new NurseMainMenu(nur.get(i));
 							saveUser();
                                                         System.exit(0);
@@ -476,7 +476,7 @@ public class Hospital implements Serializable{
 						{
 							uexist = true;
 							System.out.println ("Hello Front Patient!");
-                                                        PatientMainMenu = new PatientMainMenu(pt.get(i));
+                                                        PatientMainMenu pmm = new PatientMainMenu(pt.get(i));
                                                         System.exit(0);
                                                 }
                                                 else
@@ -492,7 +492,7 @@ public class Hospital implements Serializable{
 					System.exit(0);
 				}
 
-			}*/
+			}
 		}
 
 		else if (choice == 2)
@@ -505,7 +505,7 @@ public class Hospital implements Serializable{
 				//saveUser();
 				System.exit(0);
 			}
-			/*else if (type == 2)
+			else if (type == 2)
 			{
 				nur.add(addNurse());
 				System.out.println ("\nWelcome to the CSCI Hospital, Nurse!\n");                                       
@@ -525,10 +525,10 @@ public class Hospital implements Serializable{
 			{
 				pt.add(addPatient());
 				System.out.println ("\nWelcome to the CSCI Hospital, Patient!\n");               
-				PatientMainMenu ptmm = newPatientMainMenu(pt.get(pt.size()-1));
+				PatientMainMenu ptmm = new PatientMainMenu(pt.get(pt.size()-1));
 				saveUser();
 				System.exit(0);
-			}*/
+			}
 		}
 
 		else 

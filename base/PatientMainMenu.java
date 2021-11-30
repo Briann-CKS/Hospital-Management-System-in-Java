@@ -28,7 +28,7 @@ public class PatientMainMenu implements Serializable {
 			if (choice == 1)
 			{
 				System.out.println("Here is the diagnosis given by your doctor:\n");
-				System.out.println(p1.printDiagnosis()+ "\n");
+				//System.out.println(p1.printDiagnosis()+ "\n");
 			}
 			else if (choice == 2)
 			{

@@ -27,30 +27,30 @@ public class FrontDeskMainMenu implements Serializable {
 			int choice  = input.nextInt();
 			if (choice == 1)
 			{
-
+				keep_going = false;
 			}
 			else if (choice == 2)
 			{
-
+				keep_going = false;
 			}
 			else if (choice == 3)
 			{
-				keep_going = true;
+				keep_going = false;
 
 			}
 			else if (choice == 4)
 			{
-				keep_going = true;
+				keep_going = false;
 	
 			}
 			else if (choice == 5)
 			{
-				keep_going = true;
+				keep_going = false;
 
 			}
 			else if (choice == 6)
 			{
-				keep_going = true;	
+				keep_going = false;	
 
 			}
 			else if (choice == 7)

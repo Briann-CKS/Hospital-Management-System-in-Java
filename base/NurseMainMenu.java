@@ -47,17 +47,17 @@ public class NurseMainMenu implements Serializable {
 			}
 			else if (choice == 3)
 			{
-				keep_going = true;
+				keep_going = false;
 
 			}
 			else if (choice == 4)
 			{
-				keep_going = true;
+				keep_going = false;
 	
 			}
 			else if (choice == 5)
 			{
-				keep_going = true;
+				keep_going = false;
 			}
 			else if (choice == 6)
 			{

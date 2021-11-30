@@ -369,7 +369,7 @@ public class Hospital implements Serializable{
 						{
 							uexist = true;
 							System.out.println("Hello Doctor!");
-							DoctorMainMenu dmm = new DoctorMainMenu (doc.get(i));
+							DoctorMainMenu dmm = new DoctorMainMenu (doc.get(i), doc, nur, fd, pt);
 							saveUser();
 							System.exit(0);	
 						}
@@ -404,7 +404,7 @@ public class Hospital implements Serializable{
 						{
 							uexist = true;
 							System.out.println ("Hello Nurse!");
-							NurseMainMenu nmm = new NurseMainMenu(nur.get(i));
+							NurseMainMenu nmm = new NurseMainMenu(nur.get(i), doc, nur, fd, pt);
 							saveUser();
                                                         System.exit(0);
 						}
@@ -437,7 +437,7 @@ public class Hospital implements Serializable{
                                                 {
                                                 	uexist = true;
                                                        	System.out.println ("Hello Front Desk!");
-                                                       	FrontDeskMainMenu fdmm = new FrontDeskMainMenu(fd.get(i));
+                                                       	FrontDeskMainMenu fdmm = new FrontDeskMainMenu(fd.get(i), doc, nur, fd, pt);
                                                        	System.exit(0);
 						}
                                                 else
@@ -467,7 +467,7 @@ public class Hospital implements Serializable{
 						{
 							uexist = true;
 							System.out.println ("Hello Front Patient!");
-                                                        PatientMainMenu pmm = new PatientMainMenu(pt.get(i));
+                                                        PatientMainMenu pmm = new PatientMainMenu(pt.get(i), doc, nur, fd, pt);
                                                         System.exit(0);
                                                 }
                                                 else
@@ -492,7 +492,7 @@ public class Hospital implements Serializable{
 			{
 				doc.add(addDoctor());
 				System.out.println ("\nWelcome to the CSCI Hospital, Doctor!\n");
-				DoctorMainMenu dmm = new DoctorMainMenu(doc.get(doc.size()-1));
+				DoctorMainMenu dmm = new DoctorMainMenu(doc.get(doc.size()-1), doc, nur, fd, pt );
 				saveUser();
 				System.exit(0);
 			}
@@ -500,7 +500,7 @@ public class Hospital implements Serializable{
 			{
 				nur.add(addNurse());
 				System.out.println ("\nWelcome to the CSCI Hospital, Nurse!\n");                                       
-				NurseMainMenu nmm = new NurseMainMenu(nur.get(nur.size()-1));
+				NurseMainMenu nmm = new NurseMainMenu(nur.get(nur.size()-1), doc, nur, fd, pt);
 				saveUser();
 				System.exit(0);
 			}
@@ -508,7 +508,7 @@ public class Hospital implements Serializable{
 			{
 				fd.add(addFrontDesk());
 				System.out.println ("\nWelcome to the CSCI Hospital, FrontDesk!\n");                              
-				FrontDeskMainMenu fdmm = new FrontDeskMainMenu(fd.get(fd.size()-1));
+				FrontDeskMainMenu fdmm = new FrontDeskMainMenu(fd.get(fd.size()-1), doc, nur, fd, pt);
 				saveUser();
 				System.exit(0);
 			}
@@ -516,7 +516,7 @@ public class Hospital implements Serializable{
 			{
 				pt.add(addPatient());
 				System.out.println ("\nWelcome to the CSCI Hospital, Patient!\n");               
-				PatientMainMenu ptmm = new PatientMainMenu(pt.get(pt.size()-1));
+				PatientMainMenu ptmm = new PatientMainMenu(pt.get(pt.size()-1), doc, nur, fd, pt);
 				saveUser();
 				System.exit(0);
 			}

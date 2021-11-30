@@ -19,19 +19,20 @@ public class DoctorMainMenu implements Serializable {
 	public DoctorMainMenu() {
 	}
 
-	public DoctorMainMenu (Doctor d1)
+	public DoctorMainMenu (Doctor d1, Vector d, Vector n, Vector f, Vector p)
 	{
 		boolean keep_going = true;
 		System.out.println ("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
 		System.out.println ("Welcome to the Doctor Menu!\n");
 		System.out.println ("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
-
+		
 		while (keep_going)
 		{
 			System.out.println ("Please enter your choice: \n");
 			System.out.println ("1. Read Notification\n2. Delete a notification\n3. View A Patient's Info\n4. Make diagnosis for a patient\n5. Set prescriptions for a patient\n6. Write a note to the nurse\n7. Sign out\n");
 			Scanner input = new Scanner(System.in);
 			int choice  = input.nextInt();
+			
 			if (choice == 1)
 			{
 				d1.readNotification();
@@ -40,6 +41,7 @@ public class DoctorMainMenu implements Serializable {
 					System.out.println ("Looks like you have quite a few notifications stored in your account. Clearing some old messages will help you organize better!\n");
 				}			
 			}
+
 			else if (choice == 2)
 			{
 				d1.readNotification();
@@ -48,34 +50,37 @@ public class DoctorMainMenu implements Serializable {
 				int num = input1.nextInt();
 				d1.deleteNotification(num);
 			}
+
 			else if (choice == 3)
 			{
-				Formatter f = new Formatter();
-				System.out.println (f.format("%-5s%-20s%-30s", "No.", "Username", "Full Name")); 
-				for (int i = 0; i < pat.size(); i++)	
+				Formatter fo = new Formatter();
+				System.out.println (fo.format("%-5s%-20s%-30s", "No.", "Username", "Full Name")); 
+				for (int i = 0; i < p.size(); i++)	
 				{
-					f = new Formatter();
-					System.out.println (f.format("%-5s%-20s%-30s", i+1 + ")", pat.get(i).getUsername(), pat.get(i).getName()));
+					pt1 = (Patient) p.get(i);
+					fo = new Formatter();
+					System.out.println (fo.format("%-5s%-20s%-30s", i+1 + ")", pt1.getUsername(), pt1.getName()));
 				}
 
 				System.out.println ("\nWhich patient info would you like to view?\n");
 				int num = gen.nextInt();
-				System.out.println ("Name: " + pat.get(num-1).getName());
-				if (pat.get(num-1).getDiagnosis().equals(""))
+				pt1 = (Patient) p.get(num-1);
+				System.out.println ("Name: " + pt1.getName());
+				if (pt1.getDiagnosis().equals(""))
 				{
 					System.out.println ("Diagnosis: " + "None at the moment");
 				}
 				else
 				{
-					System.out.println ("Diagnosis: " + pat.get(num-1).getDiagnosis());
+					System.out.println ("Diagnosis: " + pt1.getDiagnosis());
 				}
-				if (pat.get(num-1).getPrescription().equals(""))
+				if (pt1.getPrescription().equals(""))
 				{
 					System.out.println ("Past Prescriptions: " + "None at the moment");
 				}
 				else
 				{
-					System.out.println ("Past Prescriptions: " + pat.get(num-1).getPrescription());
+					System.out.println ("Past Prescriptions: " + pt1.getPrescription());
 				}	
 				System.out.println ("");
 			}

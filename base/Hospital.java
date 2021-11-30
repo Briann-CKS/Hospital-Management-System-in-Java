@@ -369,7 +369,7 @@ public class Hospital implements Serializable{
 						{
 							uexist = true;
 							System.out.println("Hello Doctor!");
-							DoctorMainMenu dmm = new DoctorMainMenu (doc.get(i), nur, fd, pt);
+							DoctorMainMenu dmm = new DoctorMainMenu (doc.get(i));
 							saveUser();
 							System.exit(0);	
 						}

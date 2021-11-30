@@ -6,7 +6,11 @@ import java.util.Formatter;
 public class DoctorMainMenu implements Serializable {
 
 	Scanner gen = new Scanner (System.in);
-
+	Doctor doc1 = new Doctor();
+	Nurse nur1 = new Nurse();
+	FrontDesk fd1 = new FrontDesk();
+	Patient pt1 = new Patient();
+	
 	public static void main (String args[])
 	{
 		new DoctorMainMenu ();
@@ -15,7 +19,7 @@ public class DoctorMainMenu implements Serializable {
 	public DoctorMainMenu() {
 	}
 
-	public DoctorMainMenu (Doctor d1, Vector nurse, Vector frontd, Vector pat)
+	public DoctorMainMenu (Doctor d1)
 	{
 		boolean keep_going = true;
 		System.out.println ("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");

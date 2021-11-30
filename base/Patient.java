@@ -114,4 +114,29 @@ public class Patient implements User, Serializable {
 
 	}
 
+	/*public void viewPatientInfo()
+	{		
+		listPatient();
+		System.out.println ("\nWhich patient info would you like to view?\n");
+		int choice = gen.nextInt();
+		System.out.println ("Name: " + pt.get(choice-1).getName());
+		if (pt.get(choice-1).getDiagnosis().equals(""))
+		{
+			System.out.println ("Diagnosis: " + "None at the moment");
+		}
+		else
+		{
+			System.out.println ("Diagnosis: " + pt.get(choice-1).getDiagnosis());
+		}
+		if (pt.get(choice-1).getPrescription().equals(""))
+		{
+			System.out.println ("Past Prescriptions: " + "None at the moment");
+		}
+		else
+		{
+			System.out.println ("Past Prescriptions: " + pt.get(choice-1).getPrescription());
+		}	
+		System.out.println ("");
+	}*/
+
 }	

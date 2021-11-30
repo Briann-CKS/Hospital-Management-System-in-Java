@@ -69,7 +69,7 @@ public class DoctorMainMenu implements Serializable {
 			{
 				System.out.println ("Thank you for your time. Have a good day!");
 				keep_going = false;
-				//saveDoctor (d1);
+				//saveUser ();
 			}
 			else
 			{

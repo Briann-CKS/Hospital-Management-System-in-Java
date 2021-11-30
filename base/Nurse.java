@@ -3,10 +3,10 @@ import java.util.*;
 
 public class Nurse extends Admin implements Serializable {
 
-	ArrayList<String> note = new ArrayList<String>();
-	String username;
-	String password;
-	String name;	
+	public ArrayList<String> note = new ArrayList<String>();
+	private String username;
+	private String password;
+	private String name;	
 	Usertype type = Usertype.NURSE;
 
 	public static void main (String args[])

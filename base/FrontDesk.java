@@ -3,10 +3,10 @@ import java.util.*;
 
 public class FrontDesk extends Admin implements Serializable {
 
-	ArrayList<String> memo = new ArrayList<String>();
-	String username;
-	String password;
-	String name;	
+	public ArrayList<String> memo = new ArrayList<String>();
+	private String username;
+	private String password;
+	private String name;	
 	Usertype type = Usertype.FRONTDESK;
 
 	public static void main (String args[])

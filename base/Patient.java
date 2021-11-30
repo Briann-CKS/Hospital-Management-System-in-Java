@@ -14,9 +14,6 @@ public class Patient implements User, Serializable {
 	public static void main (String args[])
 	{
 		Patient u1 = new Patient();
-		//u1.setUsername ("brcheong");
-		//u1.setPassword ("Hello");
-		//System.out.println (u1.getUsername() + " " + u1.getPassword());
 	}
 
         public void setUsername (String username)

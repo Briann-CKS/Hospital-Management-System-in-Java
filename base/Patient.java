@@ -9,11 +9,17 @@ public class Patient implements User, Serializable {
 	//public Date appointment = new Date();
 	private String diagnosis;
 	private String prescription;
-	private float bill = 0;
+	private float bill = 0.0f;
 
 	public static void main (String args[])
 	{
 		Patient u1 = new Patient();
+	}
+
+	public Patient()
+	{
+		this.diagnosis = "";
+		this.prescription = "";
 	}
 
         public void setUsername (String username)
@@ -71,12 +77,12 @@ public class Patient implements User, Serializable {
 		return prescription;
 	}
 
-	/*public printPrescription()
-	{
-		String pres;
+	//public printPrescription()
+	//{
+	//	String pres;
 		//pres = 	
 		
-	}*/
+	//}
 
 	public float getBill()
 	{
@@ -91,21 +97,23 @@ public class Patient implements User, Serializable {
 		}
 		else
 		{
-			System.out.println ("Your medical bill total is $" + this.bill + ", would you like to pay the total amount? (1. Yes  2. No)");
+			String b = String.format("%0.2f", this.bill);
+			System.out.println ("Your medical bill total is $" + b + ", would you like to pay the total amount? (1. Yes  2. No)");
 			Scanner input = new Scanner(System.in);
 			int choice = input.nextInt();
 			if (choice == 1)
 			{
 				System.out.println ("Thank you! You have successfully paid your medical bills.");
-				this.bill = 0;
+				this.bill = (float) 0.0;
 			}
 
 			if (choice == 2)
 			{
 				System.out.println ("Please enter the amount that you would like to pay:\n");
 				float amount = input.nextFloat(); 			
-				bill -= amount;
-				System.out.println ("Payment successful. Your current medical bill balance is $" + bill + ". Thank you!\n");				
+				this.bill -= amount;
+				b = String.format ("%0.2f", this.bill);
+				System.out.println ("Payment successful. Your current medical bill balance is $" + b + ". Thank you!\n");				
 			}
 		}
 

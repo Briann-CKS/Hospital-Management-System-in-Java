@@ -27,7 +27,7 @@ public class Hospital implements Serializable{
 	{
 		loadUser();
 		this.main_menu();
-		//saveDoctor();
+		saveUser();
 	}
 
 	@SuppressWarnings("unchecked")

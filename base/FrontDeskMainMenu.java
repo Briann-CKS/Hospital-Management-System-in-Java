@@ -6,7 +6,7 @@ import java.util.Formatter;
 import java.util.*;
 
 public class FrontDeskMainMenu implements Serializable {
-
+	
 	Scanner gen = new Scanner (System.in);
 	Doctor doc1 = new Doctor();
 	Nurse nur1 = new Nurse();
@@ -31,12 +31,11 @@ public class FrontDeskMainMenu implements Serializable {
 		while (keep_going)
 		{
 			System.out.println ("Please enter your choice: \n");
-			System.out.println ("1. Read Memo\n2. Add Memo\n3. Delete Memo\n4. List all Patients\n5. List all Admins\n6. View A Patient's Info\n7. Set Medical Bill for a Patient\n8. Write a note to an Admin\n9. Add a Patient\n7. Add an Admin\n8. Delete a Patient\n9. Delete an Admin\n10. Sign out\n");
+			System.out.println ("1. Read Memo\n2. Add Memo\n3. Delete Memo\n4. List all Patients\n5. List all Admins\n6. View A Patient's Info\n7. Set Medical Bill for a Patient\n8. Write a note to an Admin\n9. Add a Patient\n10. Add an Admin\n11. Delete a Patient\n12. Delete an Admin\n13. Sign out\n");
 			int choice  = gen.nextInt();
 			if (choice == 1)
 			{
 				fd1.readMemo();
-				keep_going = false;
 			}
 			else if (choice == 2)
 			{
@@ -58,7 +57,9 @@ public class FrontDeskMainMenu implements Serializable {
 			}
 			else if (choice == 5)
 			{
-				listAdmin (d, n, f);
+				listDoctor (d);
+				listNurse (n);
+				listFrontDesk (f);
 			}
 			else if (choice == 6)
 			{
@@ -73,12 +74,42 @@ public class FrontDeskMainMenu implements Serializable {
 				pt1 = (Patient) p.get(num-1); 
 				System.out.println ("\nWhat is the amount you want to add to " + pt1.getName() + "'s medical bill?\n");	
 				float amount = gen.nextFloat();
+				String am = String.format("%.2f", amount);
 				pt1.addBill(amount);
-				//System.out.println ("\nSuccessfully added $" + amount + " to " + pt1.getName() + "'s medical bill.\n");
+				System.out.println ("\nSuccessfully added $" + am + " to " + pt1.getName() + "'s medical bill.\n");
 			}
 			else if (choice == 8)
 			{
-				keep_going = false;
+				String not;
+				System.out.println ("Which type of admin do you want to send a note to?\n");
+				System.out.println ("1. Doctor\n2. Nurse\n");
+				int type = gen.nextInt();
+				if (type == 1)
+				{
+					listDoctor(d);
+					System.out.println ("\nPlease select a doctor:\n");
+					int ch = gen.nextInt();
+					doc1 = (Doctor) d.get(ch-1);
+					System.out.println ("Please enter the note you want to send to the doctor:\n");
+					not = gen.nextLine();
+					doc1.setNotification(not);
+					System.out.println ("\nYour note was sent successfully!\n");
+				} 
+				else if (type == 2)
+				{
+					listNurse(n);
+                                        System.out.println ("\nPlease select a nurse:\n");
+                                        int ch = gen.nextInt();
+                                        nur1 = (Nurse) n.get(ch-1);
+                                        System.out.println ("\nPlease enter the note you want to send to the nurse:\n");
+                                        not = gen.nextLine();
+                                        nur1.setNote(not);
+                                        System.out.println ("\nYour note was sent successfully!\n");	
+				}			
+				else
+				{
+					System.out.println ("\nNot a valid choice! Try again next time.\n");
+				}
 			}
 			else if (choice == 9)
 			{
@@ -101,48 +132,57 @@ public class FrontDeskMainMenu implements Serializable {
 	public void listPatient(Vector p)
 	{
 		Formatter fo = new Formatter();
-		System.out.println (fo.format("%05s %15s %25s", "No.", "Username", "Full Name")); 
+		System.out.println (fo.format("%-5s%-15s%-25s", "No.", "Username", "Full Name")); 
 		for (int i = 0; i < p.size(); i++)	
 		{
 			fo = new Formatter();
 			pt1 = (Patient) p.get(i);
-			System.out.println (fo.format("%05s %15s %25s", i+1 + ")", pt1.getUsername(), pt1.getName()));
+			System.out.println (fo.format("%-5s%-15s%-25s", i+1 + ")", pt1.getUsername(), pt1.getName()));
 		}
+		System.out.println ("");
 	}
 
-	public void listAdmin (Vector d, Vector n, Vector f)
+	public void listDoctor (Vector d)
 	{
-		System.out.println ("\nDoctors\n");
+		System.out.println ("\nDoctors");
 		Formatter fo = new Formatter();
-		System.out.println (fo.format("%-5s%-20s%-30s%-15s", "No.", "Username", "Full Name", "Specialty")); 
+		System.out.println (fo.format("%-5s%-15s%-25s%-15s", "No.", "Username", "Full Name", "Specialty")); 
 		for (int i = 0; i < d.size(); i++)	
 		{
 			doc1 = (Doctor) d.get(i);
 			fo = new Formatter();
-			System.out.println (fo.format("%-5s%-20s%-30s%-15s", i+1 + ")", doc1.getUsername(), doc1.getName(), doc1.getSpecialty()));
+			System.out.println (fo.format("%-5s%-15s%-25s%-15s", i+1 + ")", doc1.getUsername(), doc1.getName(), doc1.getSpecialty()));
 		}
+		System.out.println ("");
+	}
+	
 
-		System.out.println ("\nNurses\n");
-		fo = new Formatter();
-		System.out.println (fo.format("%-5s%-20s%-30s", "No.", "Username", "Full Name")); 
+	public void listNurse (Vector n)
+	{
+		System.out.println ("\nNurses");
+		Formatter fo = new Formatter();
+		System.out.println (fo.format("%-5s%-15s%-25s", "No.", "Username", "Full Name")); 
 		for (int i = 0; i < n.size(); i++)	
 		{
 			nur1 = (Nurse) n.get(i);
 			fo = new Formatter();
-			System.out.println (fo.format("%-5s%-20s%-30s", i+1 + ")", nur1.getUsername(), nur1.getName()));
+			System.out.println (fo.format("%-5s%-15s%-25s", i+1 + ")", nur1.getUsername(), nur1.getName()));
 		}	
-		
-		System.out.println ("\nFront Desks\n");
-		fo = new Formatter();
-		System.out.println (fo.format("%-5s%-20s%-30s", "No.", "Username", "Full Name")); 
+		System.out.println ("");
+	}
+
+	public void listFrontDesk (Vector f)
+	{	
+		System.out.println ("\nFront Desks");
+		Formatter fo = new Formatter();
+		System.out.println (fo.format("%-5s%-15s%-25s", "No.", "Username", "Full Name")); 
 		for (int i = 0; i < f.size(); i++)	
 		{
 			fd1 = (FrontDesk) f.get(i);
 			fo = new Formatter();
-			System.out.println (fo.format("%-5s%-20s%-30s", i+1 + ")", fd1.getUsername(), fd1.getName()));
+			System.out.println (fo.format("%-5s%-15s%-25s", i+1 + ")", fd1.getUsername(), fd1.getName()));
 		}
-
-
+		System.out.println ("");
 	}
 
 	public void viewPatientInfo(Vector p)
@@ -151,6 +191,7 @@ public class FrontDeskMainMenu implements Serializable {
 		int choice = gen.nextInt();
 		pt1 = (Patient) p.get(choice-1);
 		System.out.println ("Name: " + pt1.getName());
+		//System.out.println (pt1.getDiagnosis());
 		if (pt1.getDiagnosis().equals(""))
 		{
 			System.out.println ("Diagnosis: " + "None at the moment");
@@ -159,7 +200,7 @@ public class FrontDeskMainMenu implements Serializable {
 		{
 			System.out.println ("Diagnosis: " + pt1.getDiagnosis());
 		}
-		if (pt1.getPrescription().equals(""))
+		/*if (pt1.getPrescription().equals(""))
 		{
 			System.out.println ("Past Prescriptions: " + "None at the moment");
 		}
@@ -167,6 +208,6 @@ public class FrontDeskMainMenu implements Serializable {
 		{
 			System.out.println ("Past Prescriptions: " + pt1.getPrescription());
 		}	
-		System.out.println (""); 
+		System.out.println ("");*/ 
 	}
 }

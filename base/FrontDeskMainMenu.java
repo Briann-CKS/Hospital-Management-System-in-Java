@@ -53,8 +53,7 @@ public class FrontDeskMainMenu implements Serializable {
 				fd1.deleteMemo(num);
 			}
 			else if (choice == 4)
-			{
-				
+			{	
 				listPatient(p);
 			}
 			else if (choice == 5)
@@ -68,7 +67,14 @@ public class FrontDeskMainMenu implements Serializable {
 			}
 			else if (choice == 7)
 			{
-				keep_going = false;
+				listPatient(p);
+				System.out.println ("\nPick a patient to update his/her medical bill:\n");
+				int num = gen.nextInt();
+				pt1 = (Patient) p.get(num-1); 
+				System.out.println ("\nWhat is the amount you want to add to " + pt1.getName() + "'s medical bill?\n");	
+				float amount = gen.nextFloat();
+				pt1.addBill(amount);
+				//System.out.println ("\nSuccessfully added $" + amount + " to " + pt1.getName() + "'s medical bill.\n");
 			}
 			else if (choice == 8)
 			{
@@ -143,7 +149,7 @@ public class FrontDeskMainMenu implements Serializable {
 	{		
 		System.out.println ("\nWhich patient info would you like to view?\n");
 		int choice = gen.nextInt();
-		pt1 = p.get(choice-1);
+		pt1 = (Patient) p.get(choice-1);
 		System.out.println ("Name: " + pt1.getName());
 		if (pt1.getDiagnosis().equals(""))
 		{
@@ -162,4 +168,5 @@ public class FrontDeskMainMenu implements Serializable {
 			System.out.println ("Past Prescriptions: " + pt1.getPrescription());
 		}	
 		System.out.println (""); 
+	}
 }

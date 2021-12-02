@@ -78,7 +78,7 @@ public class FrontDeskMainMenu implements Serializable {
 			else if (choice == 7)
 			{
 				listPatient(p);
-				System.out.println ("\nPlease a patient to update his/her medical bill:\n");
+				System.out.println ("\nPlease a patient to update his/her medical bill:");
 				int num = gen.nextInt();
 				if (num > p.size())
 				{
@@ -104,7 +104,7 @@ public class FrontDeskMainMenu implements Serializable {
 				if (type == 1)
 				{
 					listDoctor(d);
-					System.out.println ("\nPlease select a doctor:\n");
+					System.out.println ("\nPlease select a doctor:");
 					int ch = gen.nextInt();
 					if (ch > d.size())
                                 	{
@@ -113,7 +113,7 @@ public class FrontDeskMainMenu implements Serializable {
                                 	else
                                 	{
 						doc1 = (Doctor) d.get(ch-1);
-						System.out.println ("Please enter the note you want to send to the doctor:\n");
+						System.out.println ("\nPlease enter the note you want to send to the doctor:");
 						not = str.nextLine();
 						doc1.setNotification(not);
 						System.out.println ("\nYour note was sent successfully!\n");
@@ -122,7 +122,7 @@ public class FrontDeskMainMenu implements Serializable {
 				else if (type == 2)
 				{
 					listNurse(n);
-                                        System.out.println ("\nPlease select a nurse:\n");
+                                        System.out.println ("\nPlease select a nurse:");
                                         int ch = gen.nextInt();
 					if (ch > n.size())
                                 	{
@@ -131,7 +131,7 @@ public class FrontDeskMainMenu implements Serializable {
                                 	else
                                 	{
 						nur1 = (Nurse) n.get(ch-1);
-						System.out.println ("\nPlease enter the note you want to send to the nurse:\n");
+						System.out.println ("\nPlease enter the note you want to send to the nurse:");
                                         	not = str.nextLine();
                                         	nur1.setNote(not);
                                         	System.out.println ("\nYour note was sent successfully!\n");	
@@ -244,11 +244,11 @@ public class FrontDeskMainMenu implements Serializable {
 						{
 							System.out.println (i+1 + ") " + sp.get(i));	
 						}
-						System.out.println ("\nPlease select a specialty for the doctor:\n");
+						System.out.println ("\nPlease select a specialty for the doctor:");
 						nspecial = gen.nextInt();
 						if (nspecial > sp.size())
 						{
-							System.out.println ("Invalid option! Please try again.\n");
+							System.out.println ("\nInvalid option! Please try again.\n");
 						}
 						else 
 						{
@@ -311,7 +311,7 @@ public class FrontDeskMainMenu implements Serializable {
 			else if (choice == 11)
 			{
 				listPatient (p);
-				System.out.println ("\nPlease select a patient to delete:\n");
+				System.out.println ("\nPlease select a patient to delete:");
 				int num = gen.nextInt();
 				if (num > p.size())
 				{
@@ -332,7 +332,7 @@ public class FrontDeskMainMenu implements Serializable {
 				if (type == 1)
 				{
 					listDoctor(d);
-					System.out.println ("\nPlease select a doctor to delete:\n");
+					System.out.println ("\nPlease select a doctor to delete:");
 					int ch = gen.nextInt();
 					if (ch > d.size())
                                 	{
@@ -347,7 +347,7 @@ public class FrontDeskMainMenu implements Serializable {
 				else if (type == 2)
 				{
 					listNurse(n);
-                                        System.out.println ("\nPlease select a nurse to delete:\n");
+                                        System.out.println ("\nPlease select a nurse to delete:");
                                         int ch = gen.nextInt();
 					if (ch > n.size())
                                 	{
@@ -366,7 +366,7 @@ public class FrontDeskMainMenu implements Serializable {
 			}
 			else if (choice == 13)
 			{
-				System.out.println ("Thank you for your time. Have a good day!");
+				System.out.println ("Thank you for your time. Have a good day!\n");
 				keep_going = false;
 			}
 			else
@@ -436,7 +436,7 @@ public class FrontDeskMainMenu implements Serializable {
 
 	public void viewPatientInfo(Vector p)
 	{		
-		System.out.println ("\nWhich patient info would you like to view?\n");
+		System.out.println ("\nWhich patient info would you like to view?");
 		int choice = gen.nextInt();
 		pt1 = (Patient) p.get(choice-1);
 		System.out.println ("Name: " + pt1.getName());

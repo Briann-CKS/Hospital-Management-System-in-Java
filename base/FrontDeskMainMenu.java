@@ -39,8 +39,9 @@ public class FrontDeskMainMenu implements Serializable {
 			}
 			else if (choice == 2)
 			{
+				Scanner me = new Scanner (System.in);
 				System.out.println ("\nWhat do you want to add to your memo?");
-				String str = gen.nextLine();
+				String str = me.nextLine();
 				fd1.setMemo(str);
 				System.out.println ("\nMemo successfully added!\n");
 			}
@@ -191,7 +192,6 @@ public class FrontDeskMainMenu implements Serializable {
 		int choice = gen.nextInt();
 		pt1 = (Patient) p.get(choice-1);
 		System.out.println ("Name: " + pt1.getName());
-		//System.out.println (pt1.getDiagnosis());
 		if (pt1.getDiagnosis().equals(""))
 		{
 			System.out.println ("Diagnosis: " + "None at the moment");
@@ -200,7 +200,7 @@ public class FrontDeskMainMenu implements Serializable {
 		{
 			System.out.println ("Diagnosis: " + pt1.getDiagnosis());
 		}
-		/*if (pt1.getPrescription().equals(""))
+		if (pt1.getPrescription().equals(""))
 		{
 			System.out.println ("Past Prescriptions: " + "None at the moment");
 		}
@@ -208,6 +208,6 @@ public class FrontDeskMainMenu implements Serializable {
 		{
 			System.out.println ("Past Prescriptions: " + pt1.getPrescription());
 		}	
-		System.out.println ("");*/ 
+		System.out.println (""); 
 	}
 }

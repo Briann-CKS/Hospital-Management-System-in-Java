@@ -438,19 +438,20 @@ public class Hospital implements Serializable{
                                                 	uexist = true;
                                                        	System.out.println ("Hello Front Desk!");
                                                        	FrontDeskMainMenu fdmm = new FrontDeskMainMenu(fd.get(i), doc, nur, fd, pt);
-                                                       	System.exit(0);
+                                                       	saveUser();
+							System.exit(0);
 						}
                                                 else
                                                 {
                                 	                System.out.println ("Sorry, wrong password.Try again next time!");
-                                                        System.exit(0);
+							System.exit(0);
                                                 }
 					}
 
 				}                  
 				if (uexist == false)
                                 {                
-					System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");                                                
+					System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!"); 
 					System.exit(0);
 				}
 			}
@@ -468,7 +469,8 @@ public class Hospital implements Serializable{
 							uexist = true;
 							System.out.println ("Hello Front Patient!");
                                                         PatientMainMenu pmm = new PatientMainMenu(pt.get(i), doc, nur, fd, pt);
-                                                        System.exit(0);
+                                                        saveUser();
+							System.exit(0);
                                                 }
                                                 else
                                                 {
@@ -479,7 +481,7 @@ public class Hospital implements Serializable{
 				}
 				if (uexist == false)
 				{                                                
-					System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!");                                                
+					System.out.println ("Sorry, we cannot find an account that matches your credentials! Try again next time!"); 
 					System.exit(0);
 				}
 

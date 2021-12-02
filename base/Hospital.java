@@ -437,7 +437,7 @@ public class Hospital implements Serializable{
                                                 {
                                                 	uexist = true;
                                                        	System.out.println ("Hello Front Desk!");
-                                                       	FrontDeskMainMenu fdmm = new FrontDeskMainMenu(fd.get(i), doc, nur, fd, pt);
+                                                       	FrontDeskMainMenu fdmm = new FrontDeskMainMenu(fd.get(i), doc, nur, fd, pt, special);
                                                        	saveUser();
 							System.exit(0);
 						}
@@ -494,7 +494,7 @@ public class Hospital implements Serializable{
 			{
 				doc.add(addDoctor());
 				System.out.println ("\nWelcome to the CSCI Hospital, Doctor!\n");
-				DoctorMainMenu dmm = new DoctorMainMenu(doc.get(doc.size()-1), doc, nur, fd, pt );
+				DoctorMainMenu dmm = new DoctorMainMenu(doc.get(doc.size()-1), doc, nur, fd, pt);
 				saveUser();
 				System.exit(0);
 			}
@@ -510,7 +510,7 @@ public class Hospital implements Serializable{
 			{
 				fd.add(addFrontDesk());
 				System.out.println ("\nWelcome to the CSCI Hospital, FrontDesk!\n");                              
-				FrontDeskMainMenu fdmm = new FrontDeskMainMenu(fd.get(fd.size()-1), doc, nur, fd, pt);
+				FrontDeskMainMenu fdmm = new FrontDeskMainMenu(fd.get(fd.size()-1), doc, nur, fd, pt, special);
 				saveUser();
 				System.exit(0);
 			}
@@ -634,28 +634,4 @@ public class Hospital implements Serializable{
 		}
 	}
 
-/*	public void viewPatientInfo()
-	{		
-		listPatient();
-		System.out.println ("\nWhich patient info would you like to view?\n");
-		int choice = gen.nextInt();
-		System.out.println ("Name: " + pt.get(choice-1).getName());
-		if (pt.get(choice-1).getDiagnosis().equals(""))
-		{
-			System.out.println ("Diagnosis: " + "None at the moment");
-		}
-		else
-		{
-			System.out.println ("Diagnosis: " + pt.get(choice-1).getDiagnosis());
-		}
-		if (pt.get(choice-1).getPrescription().equals(""))
-		{
-			System.out.println ("Past Prescriptions: " + "None at the moment");
-		}
-		else
-		{
-			System.out.println ("Past Prescriptions: " + pt.get(choice-1).getPrescription());
-		}	
-		System.out.println ("");
-	}*/
 }

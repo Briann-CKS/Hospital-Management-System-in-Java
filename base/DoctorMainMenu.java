@@ -207,6 +207,7 @@ public class DoctorMainMenu implements Serializable {
 						doc1 = (Doctor) d.get(ch-1);
 						System.out.println ("Please enter the note you want to send to " + doc1.getName() + ":");
 						not = str.nextLine();
+						
 						doc1.setNotification(not);
 						System.out.println ("\nYour note was sent successfully!\n");
 					}	
@@ -285,6 +286,19 @@ public class DoctorMainMenu implements Serializable {
 			doc1 = (Doctor) d.get(i);
 			fo = new Formatter();
 			System.out.println (fo.format("%-5s%-15s%-22s%-15s", i+1 + ")", doc1.getUsername(), doc1.getName(), doc1.getSpecialty()));
+		}
+		System.out.println ("");
+	}
+
+	public void listFrontDesk(Vector f)
+	{
+		Formatter fo = new Formatter();
+		System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
+		for (int i = 0; i < f.size(); i++)	
+		{
+			fo = new Formatter();
+			fd1 = (FrontDesk) f.get(i);
+			System.out.println (fo.format("%-5s%-15s%-22s", i+1 + ")", fd1.getUsername(), fd1.getName()));
 		}
 		System.out.println ("");
 	}

@@ -21,6 +21,7 @@ public class Patient implements User, Serializable {
 	{
 		this.diagnosis = "";
 		this.prescription = "";
+		this.bill = (float) 0.0;
 	}
 
         public void setUsername (String username)
@@ -96,7 +97,7 @@ public class Patient implements User, Serializable {
 		}
 		else
 		{
-			String b = String.format("%0.2f", this.bill);
+			String b = String.format("%.2f", this.bill);
 			System.out.println ("Your medical bill total is $" + b + ", would you like to pay the total amount? (1. Yes  2. No)");
 			Scanner input = new Scanner(System.in);
 			int choice = input.nextInt();

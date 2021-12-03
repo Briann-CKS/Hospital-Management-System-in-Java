@@ -30,7 +30,7 @@ public class PatientMainMenu implements Serializable {
 		while (keep_going)
 		{
 			System.out.println ("Please enter your choice: \n");
-			System.out.println ("1. Get Diagnosis\n2. Get Prescription\n3. Pay Medical Bill\n4. View Medical Bill\n5. Schedule an appointment with a doctor\n6. View Appointments\n7. Cancel Appointment\n7. Sign out\n");
+			System.out.println ("1. Get Diagnosis\n2. Get Prescription\n3. Pay Medical Bill\n4. View Medical Bill\n5. Schedule an appointment with a doctor\n6. View Appointments\n7. Cancel Appointment\n8. Sign out\n");
 			int choice  = gen.nextInt();
 			if (choice == 1)
 			{
@@ -64,22 +64,25 @@ public class PatientMainMenu implements Serializable {
 
 			else if (choice == 4)
 			{
-				Formatter fo = new Formatter();
-				System.out.println(fo.format("%.2f", p1.getBill());
+				String bil = String.format("%.2f", p1.getBill());
 				System.out.println ("\nYour current medical bill is $" + bil + " in total.\n");  
 			}
 
 			else if (choice == 5)
 			{
-				keep_going = false;
+				Systme.out.println ("Please enter the\n ");
 			}
 
 			else if (choice == 6)
 			{
-				keep_going = false;
 
 			}
 			else if (choice == 7)
+			{
+
+
+			}
+			else if (choice == 8)
 			{
 				System.out.println ("Thank you for your time. Have a good day!");
 				keep_going = false;

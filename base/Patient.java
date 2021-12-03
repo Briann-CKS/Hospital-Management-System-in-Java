@@ -112,7 +112,7 @@ public class Patient implements User, Serializable {
 				System.out.println ("Please enter the amount that you would like to pay:\n");
 				float amount = input.nextFloat(); 			
 				this.bill -= amount;
-				b = String.format ("%0.2f", this.bill);
+				b = String.format ("%.2f", this.bill);
 				System.out.println ("Payment successful. Your current medical bill balance is $" + b + ". Thank you!\n");				
 			}
 		}

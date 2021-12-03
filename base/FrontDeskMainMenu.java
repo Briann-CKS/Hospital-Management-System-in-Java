@@ -115,6 +115,7 @@ public class FrontDeskMainMenu implements Serializable {
 						doc1 = (Doctor) d.get(ch-1);
 						System.out.println ("\nPlease enter the note you want to send to the doctor:");
 						not = str.nextLine();
+						not = not + "	- from Front Desk"; 
 						doc1.setNotification(not);
 						System.out.println ("\nYour note was sent successfully!\n");
 					}	
@@ -133,7 +134,8 @@ public class FrontDeskMainMenu implements Serializable {
 						nur1 = (Nurse) n.get(ch-1);
 						System.out.println ("\nPlease enter the note you want to send to the nurse:");
                                         	not = str.nextLine();
-                                        	nur1.setNote(not);
+                                        	not = not + "	- from Front Desk";
+						nur1.setNote(not);
                                         	System.out.println ("\nYour note was sent successfully!\n");	
 					}
 				}			

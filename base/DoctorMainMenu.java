@@ -191,7 +191,7 @@ public class DoctorMainMenu implements Serializable {
 			{
 				String not;
 				System.out.println ("Which type of admin do you want to send a note to?\n");
-				System.out.println ("1. Doctor\n2. Nurse\n");
+				System.out.println ("1. Doctor\n2. Nurse\n3. Front Desk\n");
 				int type = gen.nextInt();
 				if (type == 1)
 				{
@@ -207,7 +207,7 @@ public class DoctorMainMenu implements Serializable {
 						doc1 = (Doctor) d.get(ch-1);
 						System.out.println ("Please enter the note you want to send to " + doc1.getName() + ":");
 						not = str.nextLine();
-						
+						not = not + "	- from Doctor " + d1.getName();
 						doc1.setNotification(not);
 						System.out.println ("\nYour note was sent successfully!\n");
 					}	
@@ -226,10 +226,30 @@ public class DoctorMainMenu implements Serializable {
 						nur1 = (Nurse) n.get(ch-1);
 						System.out.println ("Please enter the note you want to send to " + nur1.getName() + ":");
                                         	not = str.nextLine();
-                                        	nur1.setNote(not);
+                                        	not = not + "	- from Doctor " + d1.getName();
+						nur1.setNote(not);
                                         	System.out.println ("\nYour note was sent successfully!\n");	
 					}
-				}			
+				}
+				else if (type == 3)
+				{
+					listFrontDesk(f);
+                                        System.out.println ("\nPlease select a front desk:");
+                                        int ch = gen.nextInt();
+					if (ch > f.size())
+                                	{
+                                	        System.out.println ("\nSorry, no front desk found for the number you entered!\n");
+                                	}
+                                	else
+                                	{
+						fd1 = (FrontDesk) f.get(ch-1);
+						System.out.println ("Please enter the note you want to send to " + fd1.getName() + ":");
+                                        	not = str.nextLine();
+						not = not + "	- from Doctor " + d1.getName();
+                                        	fd1.setMemo(not);
+                                        	System.out.println ("\nYour note was sent successfully!\n");	
+					}
+				}
 				else
 				{
 					System.out.println ("\nNot a valid choice! Try again next time.\n");

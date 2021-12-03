@@ -1,12 +1,13 @@
 import java.io.*;
 import java.util.Scanner;
+import java.util.*;
 
 public class Patient implements User, Serializable {
 
 	private String username;
 	private String password;
 	private String name;
-	//public Date appointment = new Date();
+	public LinkedList <Date> appointment = new LinkedList<Date>();
 	protected String diagnosis;
 	protected String prescription;
 	protected float bill = 0.0f;
@@ -47,10 +48,10 @@ public class Patient implements User, Serializable {
 		this.prescription = prescription;
 	}
 
-	//public void setAppointment (Date appointment)
-	//{
-	//	this.appointment = appointment;
-	//}
+	public void addAppointment (Date nappointment)
+	{
+		this.appointment.add(nappointment);
+	}
 
 	public void addBill(float amount)
 	{

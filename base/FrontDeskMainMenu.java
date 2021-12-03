@@ -442,19 +442,19 @@ public class FrontDeskMainMenu implements Serializable {
 		System.out.println ("Name: " + pt1.getName());
 		if (pt1.getDiagnosis().equals(""))
 		{
-			System.out.println ("Diagnosis: " + "None at the moment");
+			System.out.println ("Recent Diagnosis: " + "None at the moment");
 		}
 		else
 		{
-			System.out.println ("Diagnosis: " + pt1.getDiagnosis());
+			System.out.println ("Recent Diagnosis: " + pt1.getDiagnosis());
 		}
 		if (pt1.getPrescription().equals(""))
 		{
-			System.out.println ("Past Prescriptions: " + "None at the moment");
+			System.out.println ("Current Prescription: " + "None at the moment");
 		}
 		else
 		{
-			System.out.println ("Past Prescriptions: " + pt1.getPrescription());
+			System.out.println ("Current Prescription: " + pt1.getPrescription());
 		}	
 		System.out.println (""); 
 	}

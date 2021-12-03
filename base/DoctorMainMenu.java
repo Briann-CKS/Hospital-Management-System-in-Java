@@ -5,6 +5,7 @@ import java.util.Formatter;
 
 public class DoctorMainMenu implements Serializable {
 
+	Scanner str = new Scanner (System.in);
 	Scanner gen = new Scanner (System.in);
 	Doctor doc1 = new Doctor();
 	Nurse nur1 = new Nurse();
@@ -29,26 +30,40 @@ public class DoctorMainMenu implements Serializable {
 		while (keep_going)
 		{
 			System.out.println ("Please enter your choice: \n");
-			System.out.println ("1. Read Notification\n2. Delete a notification\n3. View A Patient's Info\n4. Make diagnosis for a patient\n5. Set prescription for a patient\n6. Write a note to the nurse\n7. Sign out\n");
+			System.out.println ("1. Read Notification\n2. Delete a notification\n3. View A Patient's Info\n4. Make a diagnosis for a patient\n5. Set prescription for a patient\n6. Write a note to the nurse\n7. Sign out\n");
 			Scanner input = new Scanner(System.in);
 			int choice  = input.nextInt();
 			
 			if (choice == 1)
 			{
-				d1.readNotification();
-				if (d1.notification.size() > 10)
+				if (d1.notification.size() == 0)
 				{
-					System.out.println ("Looks like you have quite a few notifications stored in your account. Clearing some old messages will help you organize better!\n");
-				}			
+					System.out.println ("\nYou don't have any new messages at the moment.\n");
+				}
+				else
+				{
+					d1.readNotification();
+					if (d1.notification.size() > 10)
+					{
+						System.out.println ("Looks like you have quite a few notifications stored in your account. Clearing some old messages will help you organize better!\n");
+					}			
+				}
 			}
 
 			else if (choice == 2)
 			{
-				d1.readNotification();
-				System.out.println("Please select a message to be deleted.");
-				Scanner input1 = new Scanner (System.in);
-				int num = input1.nextInt();
-				d1.deleteNotification(num);
+				if (d1.notification.size() == 0)
+				{
+					System.out.println ("\nYou don't have any new messages at the moment.\n");
+				}
+				else
+				{
+					d1.readNotification();
+					System.out.println("Please select a message to be deleted.");
+					Scanner input1 = new Scanner (System.in);
+					int num = input1.nextInt();
+					d1.deleteNotification(num);
+				}
 			}
 
 			else if (choice == 3)
@@ -86,17 +101,98 @@ public class DoctorMainMenu implements Serializable {
 			}
 			else if (choice == 4)
 			{
-				keep_going = true;
-	
+				listPatient (p);
+				System.out.println ("\nPlease select a patient to add a diagnosis:");	
+				int diagp = gen.nextInt();
+				if (diagp > p.size())
+                                {
+                                       	System.out.println ("\nSorry, no patient found for the number you entered!\n");
+                               	}
+                               	else
+                               	{
+					pt1 = (Patient) p.get(diagp - 1);
+					System.out.println ("Name: " + pt1.getName());
+					if (pt1.getDiagnosis().equals(""))
+					{
+						System.out.println ("Recent Diagnosis: " + "None at the moment");
+					}
+					else
+					{
+						System.out.println ("Recent Diagnosis: " + pt1.getDiagnosis());
+					}
+					if (pt1.getPrescription().equals(""))
+					{
+						System.out.println ("Past Prescription: " + "None at the moment");
+					}
+					else
+					{
+						System.out.println ("Past Prescription: " + pt1.getPrescription());
+					}	
+					System.out.println ("\nWhat diagnosis do you want to make for " + pt1.getName() + "?");
+					String ndiag = str.nextLine();
+					pt1.setDiagnosis(ndiag);
+					System.out.println ("\nDiagnosis has been updated successfully!\n");
+				}
 			}
 			else if (choice == 5)
 			{
-				keep_going = true;
-
+				listPatient (p);
+                                System.out.println ("\nPlease select a patient to add a prescription:");
+                                int diagp = gen.nextInt();
+                                if (diagp > p.size())
+                                {
+                                        System.out.println ("\nSorry, no patient found for the number you entered!\n");
+                                }
+                                else
+                                {
+					String npres;
+                                        pt1 = (Patient) p.get(diagp - 1);
+                                        System.out.println ("Name: " + pt1.getName());
+                                        if (pt1.getDiagnosis().equals(""))
+                                        {
+                                                System.out.println ("Recent Diagnosis: " + "None at the moment");
+                                        }
+                                        else
+                                        {
+						System.out.println ("Recent Diagnosis: " + pt1.getDiagnosis());
+                                        }
+                                        if (pt1.getPrescription().equals(""))
+                                        {
+                                                System.out.println ("Past Prescription: " + "None at the moment");
+                                        }
+                                        else
+                                        {
+						System.out.println ("Past Prescription: " + pt1.getPrescription());
+                                        }
+                                        System.out.println ("\nDo you want to add a prescription or change the prescription for " + pt1.getName() + "?\n\n1. add a prescription\n2. Change the prescription\n");
+					int aoc = gen.nextInt();
+					if (aoc == 1)
+					{
+						System.out.println ("\nWhat do you want to add to the current prescription?");
+                                        	npres = str.nextLine();
+						String naddpres = pt1.getPrescription() + ", " + npres;
+						pt1.setPrescription(naddpres);
+                                        	System.out.println ("\nPrescription has been added successfully!\n");
+					}
+					else if (aoc == 2)
+					{
+						System.out.println ("\nWhat is the new prescription?");
+                                        	npres = str.nextLine();
+						pt1.setPrescription(npres);
+                                        	System.out.println ("\nPrescription has been updated successfully!\n");
+					}
+					else
+					{
+						System.out.println ("\nInvalid option! Try again next time!\n");
+					}			
+				}
 			}
 			else if (choice == 6)
 			{
-				keep_going = true;	
+				listNurse (Vector n);		
+				System.out.println ("Please select a nurse to send a note:"); 			
+				int nnote = gen.nextInt();
+				/////////////////////
 
 			}
 			else if (choice == 7)
@@ -112,4 +208,55 @@ public class DoctorMainMenu implements Serializable {
 		}
 	}
 
+	public void listPatient(Vector p)
+	{
+		Formatter fo = new Formatter();
+		System.out.println (fo.format("%-5s%-15s%-25s", "No.", "Username", "Full Name")); 
+		for (int i = 0; i < p.size(); i++)	
+		{
+			fo = new Formatter();
+			pt1 = (Patient) p.get(i);
+			System.out.println (fo.format("%-5s%-15s%-25s", i+1 + ")", pt1.getUsername(), pt1.getName()));
+		}
+		System.out.println ("");
+	}
+
+	public void listNurse (Vector n)
+	{
+		System.out.println ("\nNurses");
+		Formatter fo = new Formatter();
+		System.out.println (fo.format("%-5s%-15s%-25s", "No.", "Username", "Full Name")); 
+		for (int i = 0; i < n.size(); i++)	
+		{
+			nur1 = (Nurse) n.get(i);
+			fo = new Formatter();
+			System.out.println (fo.format("%-5s%-15s%-25s", i+1 + ")", nur1.getUsername(), nur1.getName()));
+		}	
+		System.out.println ("");
+	}
+
+	public void viewPatientInfo(Vector p)
+	{		
+		System.out.println ("\nWhich patient info would you like to view?");
+		int choice = gen.nextInt();
+		pt1 = (Patient) p.get(choice-1);
+		System.out.println ("Name: " + pt1.getName());
+		if (pt1.getDiagnosis().equals(""))
+		{
+			System.out.println ("Diagnosis: " + "None at the moment");
+		}
+		else
+		{
+			System.out.println ("Diagnosis: " + pt1.getDiagnosis());
+		}
+		if (pt1.getPrescription().equals(""))
+		{
+			System.out.println ("Past Prescriptions: " + "None at the moment");
+		}
+		else
+		{
+			System.out.println ("Past Prescriptions: " + pt1.getPrescription());
+		}	
+		System.out.println (""); 
+	}
 }

@@ -33,19 +33,32 @@ public class PatientMainMenu implements Serializable {
 			int choice  = gen.nextInt();
 			if (choice == 1)
 			{
-				System.out.println("Here is the diagnosis given by your doctor:\n");
-				//System.out.println(p1.printDiagnosis()+ "\n");
+				if (p1.getDiagnosis().equals(""))
+				{
+					System.out.println ("You don't have a diagnosis yet. Try consulting a doctor!\n");
+				}
+				else
+				{
+					System.out.println("Here is the diagnosis given by your doctor:\n");
+					System.out.println(p1.getDiagnosis()+ "\n");
+				}
 			}
 			else if (choice == 2)
 			{
-				System.out.println("Here are your prescriptions:\n");
-				//System.out.println(p1.printPrescription() + "\n");	
+				if (p1.getPrescription().equals(""))
+				{
+					System.out.println ("You don't have a prescription yet. Try consulting a doctor!\n");
+				}
+				else
+				{
+					System.out.println("Here is the prescription given by your doctor:\n");
+					System.out.println(p1.getPrescription()+ "\n");
+				}
 			}
 
 			else if (choice == 3)
 			{
 				p1.paymedical_bill();
-				keep_going = false;
 			}
 
 			else if (choice == 4)

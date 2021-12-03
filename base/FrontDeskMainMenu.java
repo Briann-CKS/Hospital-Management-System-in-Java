@@ -381,12 +381,12 @@ public class FrontDeskMainMenu implements Serializable {
 	public void listPatient(Vector p)
 	{
 		Formatter fo = new Formatter();
-		System.out.println (fo.format("%-5s%-15s%-25s", "No.", "Username", "Full Name")); 
+		System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
 		for (int i = 0; i < p.size(); i++)	
 		{
 			fo = new Formatter();
 			pt1 = (Patient) p.get(i);
-			System.out.println (fo.format("%-5s%-15s%-25s", i+1 + ")", pt1.getUsername(), pt1.getName()));
+			System.out.println (fo.format("%-5s%-15s%-22s", i+1 + ")", pt1.getUsername(), pt1.getName()));
 		}
 		System.out.println ("");
 	}
@@ -395,12 +395,12 @@ public class FrontDeskMainMenu implements Serializable {
 	{
 		System.out.println ("\nDoctors");
 		Formatter fo = new Formatter();
-		System.out.println (fo.format("%-5s%-15s%-25s%-15s", "No.", "Username", "Full Name", "Specialty")); 
+		System.out.println (fo.format("%-5s%-15s%-22s%-15s", "No.", "Username", "Full Name", "Specialty")); 
 		for (int i = 0; i < d.size(); i++)	
 		{
 			doc1 = (Doctor) d.get(i);
 			fo = new Formatter();
-			System.out.println (fo.format("%-5s%-15s%-25s%-15s", i+1 + ")", doc1.getUsername(), doc1.getName(), doc1.getSpecialty()));
+			System.out.println (fo.format("%-5s%-15s%-22s%-15s", i+1 + ")", doc1.getUsername(), doc1.getName(), doc1.getSpecialty()));
 		}
 		System.out.println ("");
 	}
@@ -410,12 +410,12 @@ public class FrontDeskMainMenu implements Serializable {
 	{
 		System.out.println ("\nNurses");
 		Formatter fo = new Formatter();
-		System.out.println (fo.format("%-5s%-15s%-25s", "No.", "Username", "Full Name")); 
+		System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
 		for (int i = 0; i < n.size(); i++)	
 		{
 			nur1 = (Nurse) n.get(i);
 			fo = new Formatter();
-			System.out.println (fo.format("%-5s%-15s%-25s", i+1 + ")", nur1.getUsername(), nur1.getName()));
+			System.out.println (fo.format("%-5s%-15s%-22s", i+1 + ")", nur1.getUsername(), nur1.getName()));
 		}	
 		System.out.println ("");
 	}
@@ -424,12 +424,12 @@ public class FrontDeskMainMenu implements Serializable {
 	{	
 		System.out.println ("\nFront Desks");
 		Formatter fo = new Formatter();
-		System.out.println (fo.format("%-5s%-15s%-25s", "No.", "Username", "Full Name")); 
+		System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
 		for (int i = 0; i < f.size(); i++)	
 		{
 			fd1 = (FrontDesk) f.get(i);
 			fo = new Formatter();
-			System.out.println (fo.format("%-5s%-15s%-25s", i+1 + ")", fd1.getUsername(), fd1.getName()));
+			System.out.println (fo.format("%-5s%-15s%-22s", i+1 + ")", fd1.getUsername(), fd1.getName()));
 		}
 		System.out.println ("");
 	}

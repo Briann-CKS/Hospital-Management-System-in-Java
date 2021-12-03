@@ -30,7 +30,7 @@ public class DoctorMainMenu implements Serializable {
 		while (keep_going)
 		{
 			System.out.println ("Please enter your choice: \n");
-			System.out.println ("1. Read Notification\n2. Delete a notification\n3. View A Patient's Info\n4. Make a diagnosis for a patient\n5. Set prescription for a patient\n6. Write a note to the nurse\n7. Sign out\n");
+			System.out.println ("1. Read Notification\n2. Delete a notification\n3. View A Patient's Info\n4. Make a diagnosis for a patient\n5. Set prescription for a patient\n6. Write a note to an admin\n7. Sign out\n");
 			Scanner input = new Scanner(System.in);
 			int choice  = input.nextInt();
 			
@@ -69,12 +69,12 @@ public class DoctorMainMenu implements Serializable {
 			else if (choice == 3)
 			{
 				Formatter fo = new Formatter();
-				System.out.println (fo.format("%-5s%-20s%-30s", "No.", "Username", "Full Name")); 
+				System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
 				for (int i = 0; i < p.size(); i++)	
 				{
 					pt1 = (Patient) p.get(i);
 					fo = new Formatter();
-					System.out.println (fo.format("%-5s%-20s%-30s", i+1 + ")", pt1.getUsername(), pt1.getName()));
+					System.out.println (fo.format("%-5s%-15s%-22s", i+1 + ")", pt1.getUsername(), pt1.getName()));
 				}
 
 				System.out.println ("\nWhich patient info would you like to view?\n");
@@ -189,10 +189,50 @@ public class DoctorMainMenu implements Serializable {
 			}
 			else if (choice == 6)
 			{
-				listNurse (Vector n);		
-				System.out.println ("Please select a nurse to send a note:"); 			
-				int nnote = gen.nextInt();
-				/////////////////////
+				String not;
+				System.out.println ("Which type of admin do you want to send a note to?\n");
+				System.out.println ("1. Doctor\n2. Nurse\n");
+				int type = gen.nextInt();
+				if (type == 1)
+				{
+					listDoctor(d);
+					System.out.println ("\nPlease select a doctor:");
+					int ch = gen.nextInt();
+					if (ch > d.size())
+                                	{
+                                        	System.out.println ("\nSorry, no doctor found for the number you entered!\n");
+                                	}
+                                	else
+                                	{
+						doc1 = (Doctor) d.get(ch-1);
+						System.out.println ("Please enter the note you want to send to " + doc1.getName() + ":");
+						not = str.nextLine();
+						doc1.setNotification(not);
+						System.out.println ("\nYour note was sent successfully!\n");
+					}	
+				} 
+				else if (type == 2)
+				{
+					listNurse(n);
+                                        System.out.println ("\nPlease select a nurse:");
+                                        int ch = gen.nextInt();
+					if (ch > n.size())
+                                	{
+                                	        System.out.println ("\nSorry, no nurse found for the number you entered!\n");
+                                	}
+                                	else
+                                	{
+						nur1 = (Nurse) n.get(ch-1);
+						System.out.println ("Please enter the note you want to send to " + nur1.getName() + ":");
+                                        	not = str.nextLine();
+                                        	nur1.setNote(not);
+                                        	System.out.println ("\nYour note was sent successfully!\n");	
+					}
+				}			
+				else
+				{
+					System.out.println ("\nNot a valid choice! Try again next time.\n");
+				}
 
 			}
 			else if (choice == 7)
@@ -211,12 +251,12 @@ public class DoctorMainMenu implements Serializable {
 	public void listPatient(Vector p)
 	{
 		Formatter fo = new Formatter();
-		System.out.println (fo.format("%-5s%-15s%-25s", "No.", "Username", "Full Name")); 
+		System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
 		for (int i = 0; i < p.size(); i++)	
 		{
 			fo = new Formatter();
 			pt1 = (Patient) p.get(i);
-			System.out.println (fo.format("%-5s%-15s%-25s", i+1 + ")", pt1.getUsername(), pt1.getName()));
+			System.out.println (fo.format("%-5s%-15s%-22s", i+1 + ")", pt1.getUsername(), pt1.getName()));
 		}
 		System.out.println ("");
 	}
@@ -225,13 +265,27 @@ public class DoctorMainMenu implements Serializable {
 	{
 		System.out.println ("\nNurses");
 		Formatter fo = new Formatter();
-		System.out.println (fo.format("%-5s%-15s%-25s", "No.", "Username", "Full Name")); 
+		System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
 		for (int i = 0; i < n.size(); i++)	
 		{
 			nur1 = (Nurse) n.get(i);
 			fo = new Formatter();
-			System.out.println (fo.format("%-5s%-15s%-25s", i+1 + ")", nur1.getUsername(), nur1.getName()));
+			System.out.println (fo.format("%-5s%-15s%-22s", i+1 + ")", nur1.getUsername(), nur1.getName()));
 		}	
+		System.out.println ("");
+	}
+
+	public void listDoctor (Vector d)
+	{
+		System.out.println ("\nDoctors");
+		Formatter fo = new Formatter();
+		System.out.println (fo.format("%-5s%-15s%-22s%-15s", "No.", "Username", "Full Name", "Specialty")); 
+		for (int i = 0; i < d.size(); i++)	
+		{
+			doc1 = (Doctor) d.get(i);
+			fo = new Formatter();
+			System.out.println (fo.format("%-5s%-15s%-22s%-15s", i+1 + ")", doc1.getUsername(), doc1.getName(), doc1.getSpecialty()));
+		}
 		System.out.println ("");
 	}
 

@@ -1,8 +1,5 @@
-Admin.class: Admin.java User.java
-	javac Admin.java
-
-Hospital.class: Admin.java User.java Patient.java Date.java Hospital.java Doctor.java FrontDesk.java Nurse.java
-	javac Admin.java User.java Patient.java Date.java Hospital.java Doctor.java FrontDesk.java Nurse.java
+Hospital.class: Admin.java Doctor.java DoctorMainMenu.java FrontDesk.java FrontDeskMainMenu.java Hospital.java Nurse.java NurseMainMenu.java Patient.java PatientMainMenu.java User.java Usertype.java Date.java
+	javac Admin.java Doctor.java DoctorMainMenu.java FrontDesk.java FrontDeskMainMenu.java Hospital.java Nurse.java NurseMainMenu.java Patient.java PatientMainMenu.java User.java Usertype.java Date.java
 
 run: Hospital.class
 	java Hospital

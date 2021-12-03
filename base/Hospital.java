@@ -353,9 +353,9 @@ public class Hospital implements Serializable{
 		boolean uexist = false;
 		if (choice == 1)
 		{
-			System.out.println ("Welcome back! Please enter your username:\n");
+			System.out.println ("Welcome back! Please enter your username:");
 			String un = input6.nextLine();
-			System.out.println ("\nPlease enter your password:\n");
+			System.out.println ("\nPlease enter your password:");
 			String pw = input7.nextLine();
 			if (type == 1)
 			{
@@ -589,49 +589,4 @@ public class Hospital implements Serializable{
 		}
 		return false;
 	}
-
-	public void listPatient()
-	{
-		Formatter f = new Formatter();
-		System.out.println (f.format("%-5s%-20s%-30s", "No.", "Username", "Full Name")); 
-		for (int i = 0; i < pt.size(); i++)	
-		{
-			f = new Formatter();
-			System.out.println (f.format("%-5s%-20s%-30s", i+1 + ")", pt.get(i).getUsername(), pt.get(i).getName()));
-		}
-	}
-	
-	public void listDoctor()
-	{
-		Formatter f = new Formatter();
-		System.out.println (f.format("%-5s%-20s%-30s", "No.", "Username", "Full Name")); 
-		for (int i = 0; i < doc.size(); i++)	
-		{
-			f = new Formatter();
-			System.out.println (f.format("%-5s%-20s%-30s", i+1 + ")", doc.get(i).getUsername(), doc.get(i).getName()));
-		}
-	}
-
-	public void listFrontDesk()
-	{
-		Formatter f = new Formatter();
-		System.out.println (f.format("%-5s%-20s%-30s", "No.", "Username", "Full Name")); 
-		for (int i = 0; i < fd.size(); i++)	
-		{
-			f = new Formatter();
-			System.out.println (f.format("%-5s%-20s%-30s", i+1 + ")", fd.get(i).getUsername(), fd.get(i).getName()));
-		}
-	}
-
-	public void listNurse()
-	{
-		Formatter f = new Formatter();
-		System.out.println (f.format("%-5s%-20s%-30s", "No.", "Username", "Full Name")); 
-		for (int i = 0; i < nur.size(); i++)	
-		{
-			f = new Formatter();
-			System.out.println (f.format("%-5s%-20s%-30s", i+1 + ")", nur.get(i).getUsername(), nur.get(i).getName()));
-		}
-	}
-
 }

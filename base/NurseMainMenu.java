@@ -150,7 +150,7 @@ public class NurseMainMenu implements Serializable {
 
 	public void listNurse (Vector n)
 	{
-		System.out.println ("\nNurses");
+		System.out.println ("Nurses");
 		Formatter fo = new Formatter();
 		System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
 		for (int i = 0; i < n.size(); i++)	
@@ -164,7 +164,7 @@ public class NurseMainMenu implements Serializable {
 
 	public void listDoctor (Vector d)
 	{
-		System.out.println ("\nDoctors");
+		System.out.println ("Doctors");
 		Formatter fo = new Formatter();
 		System.out.println (fo.format("%-5s%-15s%-22s%-15s", "No.", "Username", "Full Name", "Specialty")); 
 		for (int i = 0; i < d.size(); i++)	
@@ -178,6 +178,7 @@ public class NurseMainMenu implements Serializable {
 
 	public void listFrontDesk(Vector f)
 	{
+		System.out.println ("Front Desks");
 		Formatter fo = new Formatter();
 		System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
 		for (int i = 0; i < f.size(); i++)	
@@ -190,7 +191,8 @@ public class NurseMainMenu implements Serializable {
 	}
 
 	public void viewPatientInfo(Vector p)
-	{		
+	{	
+		listPatient(p);	
 		System.out.println ("\nWhich patient info would you like to view?");
 		int choice = gen.nextInt();
 		pt1 = (Patient) p.get(choice-1);

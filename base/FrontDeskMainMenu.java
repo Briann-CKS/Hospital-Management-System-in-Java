@@ -23,7 +23,7 @@ public class FrontDeskMainMenu implements Serializable {
 	}
 
 	@SuppressWarnings("unchecked")
-	public FrontDeskMainMenu (FrontDesk fd1, Vector d, Vector n, Vector f, Vector p, ArrayList sp)
+	public FrontDeskMainMenu (FrontDesk f1, Vector d, Vector n, Vector f, Vector p, ArrayList sp)
 	{
 		boolean keep_going = true;
 		System.out.println ("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
@@ -37,27 +37,27 @@ public class FrontDeskMainMenu implements Serializable {
 			int choice  = gen.nextInt();
 			if (choice == 1)
 			{
-				fd1.readMemo();
+				f1.readMemo();
 			}
 			else if (choice == 2)
 			{
-				System.out.println ("\nWhat do you want to add to your memo?");
+				System.out.println ("What do you want to add to your memo?");
 				String strin = str.nextLine();
-				fd1.setMemo(strin);
+				f1.setMemo(strin);
 				System.out.println ("\nMemo successfully added!\n");
 			}
 			else if (choice == 3)
 			{
-				fd1.readMemo();
+				f1.readMemo();
 				System.out.println ("\nWhich string do you want to delete from your memo?");
 				int num = gen.nextInt();
-				if (num > fd1.memo.size())
+				if (num > f1.memo.size())
 				{
 					System.out.println ("\nSorry, no string found for the number you entered!\n");
 				}
 				else
 				{
-					fd1.deleteMemo(num);
+					f1.deleteMemo(num);
 				}
 			}
 			else if (choice == 4)
@@ -104,7 +104,7 @@ public class FrontDeskMainMenu implements Serializable {
 				if (type == 1)
 				{
 					listDoctor(d);
-					System.out.println ("\nPlease select a doctor:");
+					System.out.println ("Please select a doctor:");
 					int ch = gen.nextInt();
 					if (ch > d.size())
                                 	{
@@ -115,7 +115,7 @@ public class FrontDeskMainMenu implements Serializable {
 						doc1 = (Doctor) d.get(ch-1);
 						System.out.println ("\nPlease enter the note you want to send to the doctor:");
 						not = str.nextLine();
-						not = not + "	- from Front Desk"; 
+						not = not + "	- from Front Desk " + f1.getName(); 
 						doc1.setNotification(not);
 						System.out.println ("\nYour note was sent successfully!\n");
 					}	
@@ -123,7 +123,7 @@ public class FrontDeskMainMenu implements Serializable {
 				else if (type == 2)
 				{
 					listNurse(n);
-                                        System.out.println ("\nPlease select a nurse:");
+                                        System.out.println ("Please select a nurse:");
                                         int ch = gen.nextInt();
 					if (ch > n.size())
                                 	{
@@ -134,7 +134,7 @@ public class FrontDeskMainMenu implements Serializable {
 						nur1 = (Nurse) n.get(ch-1);
 						System.out.println ("\nPlease enter the note you want to send to the nurse:");
                                         	not = str.nextLine();
-                                        	not = not + "	- from Front Desk";
+                                        	not = not + "	- from Front Desk " + f1.getName();
 						nur1.setNote(not);
                                         	System.out.println ("\nYour note was sent successfully!\n");	
 					}
@@ -313,7 +313,7 @@ public class FrontDeskMainMenu implements Serializable {
 			else if (choice == 11)
 			{
 				listPatient (p);
-				System.out.println ("\nPlease select a patient to delete:");
+				System.out.println ("Please select a patient to delete:");
 				int num = gen.nextInt();
 				if (num > p.size())
 				{
@@ -334,7 +334,7 @@ public class FrontDeskMainMenu implements Serializable {
 				if (type == 1)
 				{
 					listDoctor(d);
-					System.out.println ("\nPlease select a doctor to delete:");
+					System.out.println ("Please select a doctor to delete:");
 					int ch = gen.nextInt();
 					if (ch > d.size())
                                 	{
@@ -349,7 +349,7 @@ public class FrontDeskMainMenu implements Serializable {
 				else if (type == 2)
 				{
 					listNurse(n);
-                                        System.out.println ("\nPlease select a nurse to delete:");
+                                        System.out.println ("Please select a nurse to delete:");
                                         int ch = gen.nextInt();
 					if (ch > n.size())
                                 	{
@@ -382,6 +382,7 @@ public class FrontDeskMainMenu implements Serializable {
 
 	public void listPatient(Vector p)
 	{
+		System.out.println ("Patients");
 		Formatter fo = new Formatter();
 		System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
 		for (int i = 0; i < p.size(); i++)	
@@ -395,7 +396,7 @@ public class FrontDeskMainMenu implements Serializable {
 
 	public void listDoctor (Vector d)
 	{
-		System.out.println ("\nDoctors");
+		System.out.println ("Doctors");
 		Formatter fo = new Formatter();
 		System.out.println (fo.format("%-5s%-15s%-22s%-15s", "No.", "Username", "Full Name", "Specialty")); 
 		for (int i = 0; i < d.size(); i++)	
@@ -410,7 +411,7 @@ public class FrontDeskMainMenu implements Serializable {
 
 	public void listNurse (Vector n)
 	{
-		System.out.println ("\nNurses");
+		System.out.println ("Nurses");
 		Formatter fo = new Formatter();
 		System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
 		for (int i = 0; i < n.size(); i++)	
@@ -424,7 +425,7 @@ public class FrontDeskMainMenu implements Serializable {
 
 	public void listFrontDesk (Vector f)
 	{	
-		System.out.println ("\nFront Desks");
+		System.out.println ("Front Desks");
 		Formatter fo = new Formatter();
 		System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
 		for (int i = 0; i < f.size(); i++)	

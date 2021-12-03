@@ -70,7 +70,7 @@ public class PatientMainMenu implements Serializable {
 
 			else if (choice == 5)
 			{
-				System.out.println ("\nDoctors");
+				System.out.println ("Doctors");
 				Formatter fo = new Formatter();
 				System.out.println (fo.format("%-5s%-15s%-22s%-15s", "No.", "Username", "Full Name", "Specialty")); 
 				for (int i = 0; i < d.size(); i++)	
@@ -81,7 +81,7 @@ public class PatientMainMenu implements Serializable {
 				}
 				System.out.println ("");
 				
-				System.out.println ("\nNurses");
+				System.out.println ("Nurses");
 				fo = new Formatter();
 				System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
 				for (int i = 0; i < n.size(); i++)	
@@ -92,7 +92,7 @@ public class PatientMainMenu implements Serializable {
 				}	
 				System.out.println ("");
 
-				System.out.println ("\nFront Desks");
+				System.out.println ("Front Desks");
 				fo = new Formatter();
 				System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
 				for (int i = 0; i < f.size(); i++)	

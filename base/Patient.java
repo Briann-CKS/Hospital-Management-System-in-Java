@@ -7,7 +7,6 @@ public class Patient implements User, Serializable {
 	private String username;
 	private String password;
 	private String name;
-	public LinkedList <Date> appointment = new LinkedList<Date>();
 	protected String diagnosis;
 	protected String prescription;
 	protected float bill = 0.0f;
@@ -49,11 +48,6 @@ public class Patient implements User, Serializable {
 		this.prescription = prescription;
 	}
 
-	public void addAppointment (Date nappointment)
-	{
-		this.appointment.add(nappointment);
-	}
-
 	public void addBill(float amount)
 	{
 		this.bill += amount;
@@ -93,7 +87,7 @@ public class Patient implements User, Serializable {
 	{
 		if (this.bill == 0)
 		{
-			System.out.println ("You don't have any medical bills at the moment! Thanks for checking with us.");
+			System.out.println ("You don't have any medical bills at the moment! Thanks for checking with us.\n");
 		}
 		else
 		{
@@ -111,9 +105,20 @@ public class Patient implements User, Serializable {
 			{
 				System.out.println ("Please enter the amount that you would like to pay:\n");
 				float amount = input.nextFloat(); 			
-				this.bill -= amount;
-				b = String.format ("%.2f", this.bill);
-				System.out.println ("Payment successful. Your current medical bill balance is $" + b + ". Thank you!\n");				
+				if (amount > this.bill)
+				{
+					System.out.println ("You have successfully paid your medical bill in the full amount!\n");	
+					float change = (float) (amount - this.bill);
+					String schange = String.format ("%.2f", change);
+					this.bill = (float) 0.0;
+					System.out.println ("Your change of $" + schange + " has been transferred to your bank account.\n");
+				}
+				else
+				{
+					this.bill -= amount;
+					b = String.format ("%.2f", this.bill);
+					System.out.println ("Payment successful. Your current medical bill balance is $" + b + ". Thank you!\n");				
+				}
 			}
 		}
 

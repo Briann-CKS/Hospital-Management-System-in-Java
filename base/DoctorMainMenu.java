@@ -271,6 +271,7 @@ public class DoctorMainMenu implements Serializable {
 
 	public void listPatient(Vector p)
 	{
+		System.out.println ("\nPatients");
 		Formatter fo = new Formatter();
 		System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
 		for (int i = 0; i < p.size(); i++)	
@@ -312,6 +313,7 @@ public class DoctorMainMenu implements Serializable {
 
 	public void listFrontDesk(Vector f)
 	{
+		System.out.println ("\nFront Desks");
 		Formatter fo = new Formatter();
 		System.out.println (fo.format("%-5s%-15s%-22s", "No.", "Username", "Full Name")); 
 		for (int i = 0; i < f.size(); i++)	

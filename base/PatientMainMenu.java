@@ -32,7 +32,7 @@ public class PatientMainMenu implements Serializable {
 		while (keep_going)
 		{
 			System.out.println ("Please enter your choice: \n");
-			System.out.println ("1. Get Diagnosis\n2. Get Prescription\n3. Pay Medical Bill\n4. View Medical Bill\n5. View all admins of this hospital\n6. Schedule an appointment with a doctor\n7. View all scheduled appointments\n8. Delete past appointments\n9. Sign out\n");
+			System.out.println ("1. Get Diagnosis\n2. Get Prescription\n3. Pay Medical Bill\n4. View Medical Bill\n5. View all admins of this hospital\n6. Schedule an appointment with a doctor\n7. View all scheduled appointments\n8. Delete a past appointment record\n9. Sign out\n");
 			int choice  = gen.nextInt();
 			if (choice == 1)
 			{

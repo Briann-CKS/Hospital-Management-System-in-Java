@@ -5,12 +5,13 @@ import java.util.Formatter;
 
 public class NurseMainMenu implements Serializable {
 
+	private Doctor doc1 = new Doctor();
+	private Nurse nur1 = new Nurse();
+	private FrontDesk fd1 = new FrontDesk();
+	private Patient pt1 = new Patient();
 	Scanner str = new Scanner (System.in);
 	Scanner gen = new Scanner (System.in);
-	Doctor doc1 = new Doctor();
-	Nurse nur1 = new Nurse();
-	FrontDesk fd1 = new FrontDesk();
-	Patient pt1 = new Patient();
+	
 
 	public static void main (String args[])
 	{

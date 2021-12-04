@@ -7,12 +7,13 @@ import java.util.*;
 
 public class FrontDeskMainMenu implements Serializable {
 	
-	Scanner str = new Scanner (System.in);
+	private Doctor doc1 = new Doctor();
+	private Nurse nur1 = new Nurse();
+	private FrontDesk fd1 = new FrontDesk();
+	private Patient pt1 = new Patient();
 	Scanner gen = new Scanner (System.in);
-	Doctor doc1 = new Doctor();
-	Nurse nur1 = new Nurse();
-	FrontDesk fd1 = new FrontDesk();
-	Patient pt1 = new Patient();
+	Scanner str = new Scanner (System.in);
+	
 
 	public static void main (String args[])
 	{

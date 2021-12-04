@@ -9,8 +9,8 @@ public class PatientMainMenu implements Serializable {
 	private Nurse nur1 = new Nurse();
 	private FrontDesk fd1 = new FrontDesk();
 	private Patient pt1 = new Patient();
-	Time time = new Time();
-	Time endTime = new Time();
+	private Time time = new Time();
+	private Time endTime = new Time();
 	Scanner gen = new Scanner (System.in);
 	Scanner str = new Scanner (System.in);
 

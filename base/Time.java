@@ -1,22 +1,25 @@
 import java.io.*;
 
-public class Date implements Serializable {
+public class Time implements Serializable {
 
 	int day = 0;
 	int month = 0;
 	int year = 0;
+	int hr;
+	//int startMin;
+	int min, 
+	//int endMin;
 	String fullDate;
 
 	public static void main (String args[])
 	{
-		Date date = new Date();
-		System.out.println (date.getFullDate());
+		Time time = new Time();
 	}
 
-	Date () {
+	Time () {
 	}
 
-	Date (int day, int month, int year)
+	Time (int day, int month, int year)
 	{
 		this.day = day;
 		this.month = month;
@@ -37,6 +40,17 @@ public class Date implements Serializable {
 	{
 		this.year = year;
 	}
+
+	public void setStartTime (int hr, int min)
+	{
+		this.startHr = hr;
+		this.startMin = min;
+	}
+
+	public void setEndTime (int hr, int min)
+	{
+		this.end
+	}	
 
 	public int getDay ()
 	{

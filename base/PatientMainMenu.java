@@ -5,12 +5,14 @@ import java.util.Formatter;
 
 public class PatientMainMenu implements Serializable {
 
+	private Doctor doc1 = new Doctor();
+	private Nurse nur1 = new Nurse();
+	private FrontDesk fd1 = new FrontDesk();
+	private Patient pt1 = new Patient();
+	Time time = new Time();
+	Time endTime = new Time();
 	Scanner gen = new Scanner (System.in);
-	Doctor doc1 = new Doctor();
-	Nurse nur1 = new Nurse();
-	FrontDesk fd1 = new FrontDesk();
-	Patient pt1 = new Patient();
-	//Date dt1 = new Date();
+	Scanner str = new Scanner (System.in);
 
 	public static void main (String args[])
 	{
@@ -30,7 +32,7 @@ public class PatientMainMenu implements Serializable {
 		while (keep_going)
 		{
 			System.out.println ("Please enter your choice: \n");
-			System.out.println ("1. Get Diagnosis\n2. Get Prescription\n3. Pay Medical Bill\n4. View Medical Bill\n5. View all admins of this hospital\n6. Sign out\n");
+			System.out.println ("1. Get Diagnosis\n2. Get Prescription\n3. Pay Medical Bill\n4. View Medical Bill\n5. View all admins of this hospital\n6. Schedule an appointment with a doctor\n7. View all scheduled appointments\n8. Delete past appointments\n9. Sign out\n");
 			int choice  = gen.nextInt();
 			if (choice == 1)
 			{
@@ -105,6 +107,224 @@ public class PatientMainMenu implements Serializable {
 			}
 			else if (choice == 6)
 			{
+				System.out.println ("Doctors");
+				Formatter fo = new Formatter();
+				System.out.println (fo.format("%-5s%-15s%-22s%-15s", "No.", "Username", "Full Name", "Specialty")); 
+				for (int i = 0; i < d.size(); i++)	
+				{
+					doc1 = (Doctor) d.get(i);
+					fo = new Formatter();
+					System.out.println (fo.format("%-5s%-15s%-22s%-15s", i+1 + ")", doc1.getUsername(), doc1.getName(), doc1.getSpecialty()));
+				}
+				System.out.println ("\nPlease select a doctor you want to schedule an appointment with: ");
+				int ch = gen.nextInt();
+				if (ch > d.size())
+                               	{
+                                       	System.out.println ("\nSorry, no doctor found for the number you entered!\n");
+                               	}
+                               	else
+                               	{
+					int month = 0;
+					int day = 0;
+					int period = 0;
+					int hour = 0;
+					int minute = 0;
+					boolean proceed = true;
+					doc1 = (Doctor) d.get(ch-1);
+					System.out.println ("\n*Do take note that our hospital has restricted all appointments to be 1 hour long.*");
+					System.out.println ("\nPlease select the year of your intended appointment:\n\n1. 2021\n2. 2022\n");						
+					int pickYear = gen.nextInt();
+					if (pickYear == 1)
+					{
+						time.setYear(2021);
+						endTime.setYear(2021);
+					}
+					else if (pickYear == 2)
+					{
+						time.setYear(2022);
+						endTime.setYear(2022);
+					}
+					else
+					{
+						System.out.println ("\nInvalid input!\n");
+						proceed = false;
+					}
+			
+					if (proceed == true)
+					{
+						System.out.println ("\nPlease enter the month of your intended appointment (integer 1 to 12):");
+						month = gen.nextInt();
+						if (month >= 1 && month <= 12)
+						{
+							time.setMonth(month);
+							endTime.setMonth(month);
+						}
+						else 
+						{
+							System.out.println ("\nInvalid input!\n");
+							proceed = false;
+						}
+					}
+					
+					if (proceed == true)
+					{								
+						System.out.println ("\nPlease enter the day of your intended appointment (integer 1 to 31):");
+						day = gen.nextInt();
+						if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+						{
+							if (day > 0 && day < 32)
+							{
+								time.setDay(day);
+								endTime.setDay(day);
+							}
+							else
+							{
+								System.out.println ("\nThere is no " + day + " days in month " + month + "!\n");
+								proceed = false;
+							}
+						}
+						else if (month == 4 || month == 6 || month == 9 || month == 11)
+						{
+							if (day > 0 && day < 31)
+							{
+								time.setDay(day);
+								endTime.setDay(day);
+							}
+							else
+							{
+								System.out.println ("\nThere is no " + day + " days in month " + month + "!\n");
+								proceed = false;
+							}
+						
+						}
+						else
+						{
+							if (day > 0 && day < 29)
+							{
+								time.setDay(day);
+								endTime.setDay(day);
+							}
+							else
+							{
+								System.out.println ("\nInvalid input!\n");
+								proceed = false;
+							}
+						}
+					}		
+
+					if (proceed == true)
+					{
+						System.out.println ("\nPlease select the best time period for your appointment:\n\n1. From 8:00am to 11:00am\n2. From 12:00pm to 5:00pm\n");
+						period = gen.nextInt();
+						if (period == 1)
+						{
+							time.setAMorPM("am");
+							endTime.setAMorPM("am");
+						}
+						else if (period == 2)
+						{
+							time.setAMorPM("pm");
+							endTime.setAMorPM("pm");
+						}
+						else
+						{
+							System.out.println ("\nInvalid input!\n");
+							proceed = false;
+						}
+						
+					}
+					
+					if (proceed == true)
+					{
+						if (period == 1)
+						{
+							System.out.println ("\nPlease enter the hour in integer for your intended appointment time (8, 9, or 10 am):\n");
+							hour = gen.nextInt();
+							if (hour >= 8 && hour <= 10)
+							{
+								time.setHour(hour);
+								endTime.setHour(hour+1);
+							}
+							else 
+							{
+								System.out.println ("\nInvalid option!\n");
+								proceed = false;
+							}
+						}
+						else if (period == 2)
+						{
+							System.out.println ("\nPlease enter the hour in integer for your intended appointment time (12, 1, 2, 3, or 4 pm):\n");
+							hour = gen.nextInt();
+							if (hour >= 1 && hour <= 4)
+							{
+								time.setHour(hour);
+								endTime.setHour(hour+1);
+							}
+							else if (hour == 12)
+							{
+								time.setHour(hour);
+								endTime.setHour(1);
+							}
+							else 
+							{
+								System.out.println ("\nInvalid option!\n");
+								proceed = false;
+							}
+						}
+						else 
+						{
+							System.out.println ("\nInvalid input!\n");
+							proceed = false;
+						}
+					}
+
+					if (proceed == true)
+					{
+						System.out.println ("\nPlease include a short message about your purpose of scheduling an appointment with a doctor:");
+						String anote = str.nextLine();
+						Appointment app = new Appointment (time, endTime, p1.getName(), anote);
+						boolean successful = doc1.addAppointment(app);
+						if (successful)
+						{
+							p1.addAppointment(app);
+							System.out.println ("\nAppointment successfully scheduled! Details are as follow:\n");
+							app.printAppointment();
+						}
+						else 
+						{
+							System.out.println ("Sorry, the doctor is busy during your intended appointment time. Please try scheduling an appointment for a different time!");
+						}
+					}	
+					else
+					{
+						System.out.println ("\nAppointment is not scheduled successfully. Please try again next time!\n"); 
+					}	
+				}
+			}		
+
+			else if (choice == 7)
+			{
+				p1.printPAppointment();
+			}
+
+			else if (choice == 8)
+			{
+				p1.printPAppointment();
+				System.out.println ("Please select a past appointment record to be deleted:");
+				int pa = gen.nextInt();
+				if (pa > p1.appointment.size())
+				{
+					System.out.println ("\nThe appointment record you entered could not be found!\n");
+				}
+				else
+				{
+					p1.appointment.remove(pa-1);
+					System.out.println ("\nThe appointment record was deleted successfully!\n");
+				}
+			}
+	
+			else if (choice == 9)
+			{
 				System.out.println ("Thank you for your time. Have a good day!");
 				keep_going = false;
 			}
@@ -115,3 +335,4 @@ public class PatientMainMenu implements Serializable {
 		}
 	}
 }
+

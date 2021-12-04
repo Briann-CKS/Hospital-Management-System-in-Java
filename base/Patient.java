@@ -10,6 +10,7 @@ public class Patient implements User, Serializable {
 	protected String diagnosis;
 	protected String prescription;
 	protected float bill = 0.0f;
+	public ArrayList <Appointment> appointment = new ArrayList <Appointment>();
 
 	public static void main (String args[])
 	{
@@ -51,6 +52,22 @@ public class Patient implements User, Serializable {
 	public void addBill(float amount)
 	{
 		this.bill += amount;
+	}
+
+	public void addAppointment (Appointment app) 
+	{
+		this.appointment.add(app);
+	}
+
+	public void printPAppointment ()
+	{
+		System.out.println ("\nAppointment details:\n");
+		for (int i = 0; i < appointment.size(); i++)
+		{
+			System.out.println (i+1 + ")");
+			appointment.get(i).printAppointment();
+		}
+
 	}
 
         public String getUsername ()
@@ -123,5 +140,4 @@ public class Patient implements User, Serializable {
 		}
 
 	}
-
 }	

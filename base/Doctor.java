@@ -9,7 +9,7 @@ public class Doctor extends Admin implements Serializable {
 	private String name;
 	private String code;
 	protected String specialty;
-	//public ArrayList<Appointment> appointment = new ArrayList <Appointment>();
+	public ArrayList<Appointment> appointment = new ArrayList <Appointment>();
 	Usertype type = Usertype.DOCTOR;
 	
 	public static void main (String args[])
@@ -80,15 +80,25 @@ public class Doctor extends Admin implements Serializable {
 		this.notification.add(message);	
 	}
 
-/*	public void addAppointment (Appointment app)
+	public boolean addAppointment (Appointment app)
 	{
-		
-
-
-
-
-
-
+		for (int i = 0; i < appointment.size(); i++)
+		{
+			if (app.start.getYear() == appointment.get(i).start.getYear())
+			{
+				if (app.start.getMonth() == appointment.get(i).start.getMonth()) 		
+				{
+					if (app.start.getDay() == appointment.get(i).start.getDay())
+					{
+						if (app.start.getHour() == appointment.get(i).start.getHour())
+						{
+							return false;
+						}
+					}
+				}
+			}	
+		}
+		appointment.add(app);
+		return true;
 	}
-*/
 }

@@ -2,14 +2,11 @@ import java.io.*;
 
 public class Time implements Serializable {
 
-	int day = 0;
-	int month = 0;
-	int year = 0;
-	//int hr;
-	//int startMin;
-	int min; 
-	//int endMin;
-	String fullDate;
+	private int day;
+	private int month;
+	private int year;
+	private int hour;
+	private String AMorPM;
 
 	public static void main (String args[])
 	{
@@ -17,13 +14,20 @@ public class Time implements Serializable {
 	}
 
 	public Time () {
+		this.day = 0;
+		this.month = 0;
+		this.year = 0;
+		this.hour = 0;
+		this.AMorPM = "";
 	}
 
-	public Time (int day, int month, int year)
+	public Time (int day, int month, int year, int hour, String AMorPM)
 	{
 		this.day = day;
 		this.month = month;
 		this.year = year;
+		this.hour = hour;
+		this.AMorPM = AMorPM;
 	}
 		
 	public void setDay (int day)
@@ -41,16 +45,15 @@ public class Time implements Serializable {
 		this.year = year;
 	}
 
-	public void setStartTime (int hr, int min)
+	public void setHour (int hour)
 	{
-	//	this.startHr = hr;
-	//	this.startMin = min;
+		this.hour = hour;
 	}
 
-	public void setEndTime (int hr, int min)
+	public void setAMorPM (String AMorPM)
 	{
-		//this.end
-	}	
+		this.AMorPM = AMorPM;
+	}
 
 	public int getDay ()
 	{
@@ -67,10 +70,19 @@ public class Time implements Serializable {
 		return year;
 	}
 
-	public String getFullDate()
+	public int getHour()
 	{
-		this.fullDate = day + "/" + month + "/" + year + " ";
-		return fullDate;
+		return hour;
 	}
 
+	public String getAMorPM()
+	{
+		return AMorPM;
+	}
+
+	public String stringTime()
+	{
+		String full = month + "/" + day + "/" + year + ", " + hour + ":00" + AMorPM; 
+		return full;
+	}
 } 	

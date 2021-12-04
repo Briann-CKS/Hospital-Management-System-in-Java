@@ -7,8 +7,9 @@ public class Doctor extends Admin implements Serializable {
 	private String username;
 	private String password;
 	private String name;
+	private String code;
 	protected String specialty;
-	public ArrayList<Appointment> appointment = new ArrayList <Appointment>();
+	//public ArrayList<Appointment> appointment = new ArrayList <Appointment>();
 	Usertype type = Usertype.DOCTOR;
 	
 	public static void main (String args[])
@@ -23,6 +24,7 @@ public class Doctor extends Admin implements Serializable {
 		this.password = password;
 		this.name = name;
 		this.specialty = specialty;
+		this.code = "DOCCSCI240";
 	}
 
 	public Doctor()
@@ -32,6 +34,7 @@ public class Doctor extends Admin implements Serializable {
 		this.password = "";
 		this.name = "";
 		this.specialty = "";
+		this.code = "DOCCSCI240";
 	}	
 
 	public String getSpecialty()
@@ -77,7 +80,7 @@ public class Doctor extends Admin implements Serializable {
 		this.notification.add(message);	
 	}
 
-	public void addAppointment (Appointment app)
+/*	public void addAppointment (Appointment app)
 	{
 		
 
@@ -87,5 +90,5 @@ public class Doctor extends Admin implements Serializable {
 
 
 	}
-
+*/
 }

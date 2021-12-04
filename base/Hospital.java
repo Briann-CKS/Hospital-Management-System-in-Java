@@ -17,7 +17,8 @@ public class Hospital implements Serializable{
 	FrontDesk fd1 = new FrontDesk();
 	Patient pt1 = new Patient();
 	Scanner gen = new Scanner(System.in);
-
+	Scanner str = new Scanner(System.in);
+	
 	public static void main (String[] args)
 	{
 		Hospital account = new Hospital();
@@ -492,27 +493,57 @@ public class Hospital implements Serializable{
 		{
 			if (type == 1)
 			{
-				doc.add(addDoctor());
-				System.out.println ("\nWelcome to the CSCI Hospital, Doctor!\n");
-				DoctorMainMenu dmm = new DoctorMainMenu(doc.get(doc.size()-1), doc, nur, fd, pt);
-				saveUser();
-				System.exit(0);
+				System.out.println ("\nPlease enter the doctor code to help us verify your identity:");
+				String identity = str.nextLine();
+				if (identity.equals("DOCCSCI240"))
+				{
+					doc.add(addDoctor());
+					System.out.println ("\nWelcome to the CSCI Hospital, Doctor!\n");
+					DoctorMainMenu dmm = new DoctorMainMenu(doc.get(doc.size()-1), doc, nur, fd, pt);
+					saveUser();
+					System.exit(0);
+				}
+				else
+				{
+					System.out.println ("\nSorry, the code you entered does not match the doctor code. Try again next time!");
+					System.exit(0);
+				}
 			}
 			else if (type == 2)
 			{
-				nur.add(addNurse());
-				System.out.println ("\nWelcome to the CSCI Hospital, Nurse!\n");                                       
-				NurseMainMenu nmm = new NurseMainMenu(nur.get(nur.size()-1), doc, nur, fd, pt);
-				saveUser();
-				System.exit(0);
+				System.out.println ("\nPlease enter the nurse code to help us verify your identity:");
+				String identity = str.nextLine();
+				if (identity.equals("NURCSCI240"))
+				{
+					nur.add(addNurse());
+					System.out.println ("\nWelcome to the CSCI Hospital, Nurse!\n");                                       
+					NurseMainMenu nmm = new NurseMainMenu(nur.get(nur.size()-1), doc, nur, fd, pt);
+					saveUser();
+					System.exit(0);
+				}
+				else
+				{
+					System.out.println ("\nSorry, the code you entered does not match the nurse code. Try again next time!");
+					System.exit(0);
+				}
 			}
 			else if (type == 3)
 			{
-				fd.add(addFrontDesk());
-				System.out.println ("\nWelcome to the CSCI Hospital, FrontDesk!\n");                              
-				FrontDeskMainMenu fdmm = new FrontDeskMainMenu(fd.get(fd.size()-1), doc, nur, fd, pt, special);
-				saveUser();
-				System.exit(0);
+				System.out.println ("\nPlease enter the front desk code to help us verify your identity:");
+				String identity = str.nextLine();
+				if (identity.equals("FDCSCI240"))
+				{
+					fd.add(addFrontDesk());
+					System.out.println ("\nWelcome to the CSCI Hospital, FrontDesk!\n");                              
+					FrontDeskMainMenu fdmm = new FrontDeskMainMenu(fd.get(fd.size()-1), doc, nur, fd, pt, special);
+					saveUser();
+					System.exit(0);
+				}
+				else
+				{
+					System.out.println ("\nSorry, the code you entered does not match the front desk code. Try again next time!");
+					System.exit(0);
+				}
 			}
 			else
 			{

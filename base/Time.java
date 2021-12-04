@@ -5,9 +5,9 @@ public class Time implements Serializable {
 	int day = 0;
 	int month = 0;
 	int year = 0;
-	int hr;
+	//int hr;
 	//int startMin;
-	int min, 
+	int min; 
 	//int endMin;
 	String fullDate;
 
@@ -16,10 +16,10 @@ public class Time implements Serializable {
 		Time time = new Time();
 	}
 
-	Time () {
+	public Time () {
 	}
 
-	Time (int day, int month, int year)
+	public Time (int day, int month, int year)
 	{
 		this.day = day;
 		this.month = month;
@@ -43,13 +43,13 @@ public class Time implements Serializable {
 
 	public void setStartTime (int hr, int min)
 	{
-		this.startHr = hr;
-		this.startMin = min;
+	//	this.startHr = hr;
+	//	this.startMin = min;
 	}
 
 	public void setEndTime (int hr, int min)
 	{
-		this.end
+		//this.end
 	}	
 
 	public int getDay ()

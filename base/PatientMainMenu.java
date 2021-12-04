@@ -10,7 +10,7 @@ public class PatientMainMenu implements Serializable {
 	Nurse nur1 = new Nurse();
 	FrontDesk fd1 = new FrontDesk();
 	Patient pt1 = new Patient();
-	Date dt1 = new Date();
+	//Date dt1 = new Date();
 
 	public static void main (String args[])
 	{

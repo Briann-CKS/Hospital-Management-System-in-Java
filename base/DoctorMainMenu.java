@@ -5,13 +5,13 @@ import java.util.Formatter;
 
 public class DoctorMainMenu implements Serializable {
 
+	private Doctor doc1 = new Doctor();
+	private Nurse nur1 = new Nurse();
+	private FrontDesk fd1 = new FrontDesk();
+	private Patient pt1 = new Patient();
 	Scanner str = new Scanner (System.in);
 	Scanner gen = new Scanner (System.in);
-	Doctor doc1 = new Doctor();
-	Nurse nur1 = new Nurse();
-	FrontDesk fd1 = new FrontDesk();
-	Patient pt1 = new Patient();
-	
+
 	public static void main (String args[])
 	{
 		new DoctorMainMenu ();
@@ -164,26 +164,36 @@ public class DoctorMainMenu implements Serializable {
                                         {
 						System.out.println ("Past Prescription: " + pt1.getPrescription());
                                         }
-                                        System.out.println ("\nDo you want to add a prescription or change the prescription for " + pt1.getName() + "?\n\n1. add a prescription\n2. Change the prescription\n");
-					int aoc = gen.nextInt();
-					if (aoc == 1)
+					if (pt1.getDiagnosis().equals(""))
 					{
-						System.out.println ("\nWhat do you want to add to the current prescription?");
-                                        	npres = str.nextLine();
-						String naddpres = pt1.getPrescription() + ", " + npres;
-						pt1.setPrescription(naddpres);
-                                        	System.out.println ("\nPrescription has been added successfully!\n");
-					}
-					else if (aoc == 2)
-					{
-						System.out.println ("\nWhat is the new prescription?");
+						System.out.println ("\nWhat do you want to add to " + pt1.getName() + "'s prescription?");
                                         	npres = str.nextLine();
 						pt1.setPrescription(npres);
-                                        	System.out.println ("\nPrescription has been updated successfully!\n");
+                                       		System.out.println ("\nPrescription has been updated successfully!\n");
 					}
-					else
+                                        else
 					{
-						System.out.println ("\nInvalid option! Try again next time!\n");
+						System.out.println ("\nDo you want to add a prescription or change the prescription for " + pt1.getName() + "?\n\n1. Add a prescription\n2. Change the prescription\n");
+						int aoc = gen.nextInt();
+						if (aoc == 1)
+						{
+							System.out.println ("\nWhat do you want to add to the current prescription?");
+                                        		npres = str.nextLine();
+							String naddpres = pt1.getPrescription() + ", " + npres;
+							pt1.setPrescription(naddpres);
+                                        		System.out.println ("\nPrescription has been added successfully!\n");
+						}
+						else if (aoc == 2)
+						{
+							System.out.println ("\nWhat is the new prescription?");
+                                	        	npres = str.nextLine();
+							pt1.setPrescription(npres);
+                                        		System.out.println ("\nPrescription has been updated successfully!\n");
+						}
+						else
+						{
+							System.out.println ("\nInvalid option! Try again next time!\n");
+						}
 					}			
 				}
 			}

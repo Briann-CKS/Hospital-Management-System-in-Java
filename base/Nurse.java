@@ -6,7 +6,8 @@ public class Nurse extends Admin implements Serializable {
 	public ArrayList<String> note = new ArrayList<String>();
 	private String username;
 	private String password;
-	private String name;	
+	private String name;
+	private String code;
 	Usertype type = Usertype.NURSE;
 
 	public static void main (String args[])
@@ -20,6 +21,7 @@ public class Nurse extends Admin implements Serializable {
 		this.username = "Unknown";
 		this.password = "Unknown";
 		this.name = "Unknown";
+		this.code = "NURCSCI240";
 	}
 
 	public Nurse (String username, String password, String name)
@@ -28,6 +30,7 @@ public class Nurse extends Admin implements Serializable {
 		this.username = username;
 		this.password = password;
 		this.name = name;
+		this.code = "NURCSCI240";
 	}
 
 	public void setNote (String message)

@@ -5,6 +5,7 @@ public abstract class Admin implements User, Serializable {
 	private String username;
 	private String password;
 	private String name;
+	private String code;
 
 	public void setUsername(String username)
 	{
@@ -19,6 +20,11 @@ public abstract class Admin implements User, Serializable {
 	public void setName (String name)
 	{
 		this.name = name;
+	}
+
+	public void setCode (String code)
+	{
+		this.code = code;
 	}
 
 	public String getUsername ()
@@ -36,4 +42,8 @@ public abstract class Admin implements User, Serializable {
 		return name;
 	}
  
+	public String getCode()
+	{
+		return code;
+	}
 }

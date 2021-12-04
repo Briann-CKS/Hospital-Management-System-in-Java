@@ -7,6 +7,7 @@ public class FrontDesk extends Admin implements Serializable {
 	private String username;
 	private String password;
 	private String name;	
+	private String code;
 	Usertype type = Usertype.FRONTDESK;
 
 	public static void main (String args[])
@@ -20,6 +21,7 @@ public class FrontDesk extends Admin implements Serializable {
 		this.username = "Unknown";
 		this.password = "Unknown";
 		this.name = "Unknown";
+		this.code = "FDCSCI240";
 	}
 
 	public FrontDesk (String username, String password, String name)
@@ -28,6 +30,7 @@ public class FrontDesk extends Admin implements Serializable {
 		this.username = username;
 		this.password = password;
 		this.name = name;
+		this.code = "FDCSCI240";
 	}
 
 	public void setMemo (String message)

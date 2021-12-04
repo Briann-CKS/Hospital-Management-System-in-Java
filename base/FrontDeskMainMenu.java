@@ -303,7 +303,7 @@ public class FrontDeskMainMenu implements Serializable {
 					name = str.nextLine();	
 					nn.setName(name);
 					n.add(nn);	
-					System.out.println ("\nA new patient account has been created successfully!\n");
+					System.out.println ("\nA new nurse account has been created successfully!\n");
 				}
 				else 
 				{

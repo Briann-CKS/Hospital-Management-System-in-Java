@@ -101,4 +101,14 @@ public class Doctor extends Admin implements Serializable {
 		appointment.add(app);
 		return true;
 	}
+
+	public void printDAppointment ()
+	{
+		System.out.println ("\nAppointment details:\n");
+		for (int i = 0; i < appointment.size(); i++)
+		{
+			System.out.println(i+1 + ")");
+			appointment.get(i).printAppointment(); 
+		}
+	}
 }

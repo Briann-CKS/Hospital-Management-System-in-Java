@@ -32,7 +32,7 @@ public class PatientMainMenu implements Serializable {
 		while (keep_going)
 		{
 			System.out.println ("Please enter your choice: \n");
-			System.out.println ("1. Get Diagnosis\n2. Get Prescription\n3. Pay Medical Bill\n4. View Medical Bill\n5. View all admins of this hospital\n6. Schedule an appointment with a doctor\n7. View all scheduled appointments\n8. Delete a past appointment record\n9. Sign out\n");
+			System.out.println ("1. Get Diagnosis\n2. Get Prescription\n3. Pay Medical Bill\n4. View Medical Bill\n5. View all admins of this hospital\n6. Schedule an appointment with a doctor\n7. View all scheduled appointments\n8. Delete a past appointment record\n9. Cancel an appointment\n10. Sign out\n");
 			int choice  = gen.nextInt();
 			if (choice == 1)
 			{
@@ -132,7 +132,7 @@ public class PatientMainMenu implements Serializable {
 					boolean proceed = true;
 					doc1 = (Doctor) d.get(ch-1);
 					System.out.println ("\n*Do take note that our hospital has restricted all appointments to be 1 hour long.*");
-					System.out.println ("\nPlease select the year of your intended appointment:\n\n1. 2021\n2. 2022\n");						
+					System.out.println ("\nPlease select the year of your intended appointment:\n\n1. 2021\n2. 2022\n3. 2023\n");						
 					int pickYear = gen.nextInt();
 					if (pickYear == 1)
 					{
@@ -143,6 +143,11 @@ public class PatientMainMenu implements Serializable {
 					{
 						time.setYear(2022);
 						endTime.setYear(2022);
+					}
+					else if (pickYear == 3)
+					{
+						time.setYear(2023);
+						endTime.setYear(2023);
 					}
 					else
 					{
@@ -160,8 +165,8 @@ public class PatientMainMenu implements Serializable {
 							endTime.setMonth(month);
 						}
 						else 
-						{
-							System.out.println ("\nInvalid input!\n");
+						{	
+							System.out.println ("There is no month " + month + " in a year!\n");
 							proceed = false;
 						}
 					}
@@ -179,7 +184,7 @@ public class PatientMainMenu implements Serializable {
 							}
 							else
 							{
-								System.out.println ("\nThere is no " + day + " days in month " + month + "!\n");
+								System.out.println ("\nMonth " + month + " of year " + time.getYear() + " does not have " + day + " days!\n");
 								proceed = false;
 							}
 						}
@@ -192,7 +197,7 @@ public class PatientMainMenu implements Serializable {
 							}
 							else
 							{
-								System.out.println ("\nThere is no " + day + " days in month " + month + "!\n");
+								System.out.println ("\nMonth " + month + " of year " + time.getYear() + " does not have " + day + " days!\n");
 								proceed = false;
 							}
 						
@@ -206,7 +211,7 @@ public class PatientMainMenu implements Serializable {
 							}
 							else
 							{
-								System.out.println ("\nInvalid input!\n");
+								System.out.println ("\nMonth " + month + " of year " + time.getYear() + " does not have " + day + " days!\n");
 								proceed = false;
 							}
 						}
@@ -238,7 +243,7 @@ public class PatientMainMenu implements Serializable {
 					{
 						if (period == 1)
 						{
-							System.out.println ("\nPlease enter the hour in integer for your intended appointment time (8, 9, or 10 am):\n");
+							System.out.println ("\nPlease enter the hour in integer for your intended appointment time (8, 9, or 10 AM):");
 							hour = gen.nextInt();
 							if (hour >= 8 && hour <= 10)
 							{
@@ -253,7 +258,7 @@ public class PatientMainMenu implements Serializable {
 						}
 						else if (period == 2)
 						{
-							System.out.println ("\nPlease enter the hour in integer for your intended appointment time (12, 1, 2, 3, or 4 pm):\n");
+							System.out.println ("\nPlease enter the hour in integer for your intended appointment time (12, 1, 2, 3, or 4 PM):");
 							hour = gen.nextInt();
 							if (hour >= 1 && hour <= 4)
 							{
@@ -282,13 +287,16 @@ public class PatientMainMenu implements Serializable {
 					{
 						System.out.println ("\nPlease include a short message about your purpose of scheduling an appointment with a doctor:");
 						String anote = str.nextLine();
-						Appointment app = new Appointment (time, endTime, p1.getName(), anote);
+						String nop = p1.getName() + " (Patient)";
+						Appointment app = new Appointment (time, endTime, nop, anote);
 						boolean successful = doc1.addAppointment(app);
 						if (successful)
 						{
-							p1.addAppointment(app);
+							anote += "	- Scheduled for Doctor " + doc1.getName();
+							Appointment papp = new Appointment (time, endTime, nop, anote);
+							p1.addAppointment(papp);
 							System.out.println ("\nAppointment successfully scheduled! Details are as follow:\n");
-							app.printAppointment();
+							papp.printAppointment();
 						}
 						else 
 						{
@@ -297,33 +305,62 @@ public class PatientMainMenu implements Serializable {
 					}	
 					else
 					{
-						System.out.println ("\nAppointment is not scheduled successfully. Please try again next time!\n"); 
+						System.out.println ("Appointment is not scheduled successfully. Please try again next time!\n"); 
 					}	
 				}
 			}		
 
 			else if (choice == 7)
 			{
-				p1.printPAppointment();
+				if (p1.appointment.size() == 0)
+				{
+					System.out.println ("You don't have any appointments scheduled at the moment!\n");
+				}
+				else
+				{
+					p1.printPAppointment();
+				}
 			}
 
 			else if (choice == 8)
 			{
-				p1.printPAppointment();
-				System.out.println ("Please select a past appointment record to be deleted:");
-				int pa = gen.nextInt();
-				if (pa > p1.appointment.size())
+				if (p1.appointment.size() == 0)
 				{
-					System.out.println ("\nThe appointment record you entered could not be found!\n");
+					System.out.println ("You don't have any appointments scheduled at the moment!\n");
 				}
 				else
 				{
-					p1.appointment.remove(pa-1);
-					System.out.println ("\nThe appointment record was deleted successfully!\n");
+					p1.printPAppointment();
+					System.out.println ("Please select a past appointment record to be deleted:");
+					int pa = gen.nextInt();
+					if (pa > p1.appointment.size())
+					{
+						System.out.println ("\nThe appointment record you entered could not be found!\n");
+					}
+					else
+					{
+						p1.appointment.remove(pa-1);
+						System.out.println ("\nThe appointment record was deleted successfully!\n");
+					}
 				}
 			}
-	
+
 			else if (choice == 9)
+			{
+				if (p1.appointment.size() == 0)
+				{
+					System.out.println ("You don't have any appointments scheduled at the moment!\n");
+				}
+				else
+				{
+					p1.printPAppointment();
+					System.out.println ("Please select the appointment that you want to cancel:");
+					int capp = gen.nextInt();
+					p1.appointment.remove(capp - 1);
+					// How to implement
+				}	
+			}
+			else if (choice == 10)
 			{
 				System.out.println ("Thank you for your time. Have a good day!");
 				keep_going = false;

@@ -30,7 +30,7 @@ public class DoctorMainMenu implements Serializable {
 		while (keep_going)
 		{
 			System.out.println ("Please enter your choice: \n");
-			System.out.println ("1. Read Notification\n2. Delete a notification\n3. View A Patient's Info\n4. Make a diagnosis for a patient\n5. Set prescription for a patient\n6. Write a note to an admin\n7. Sign out\n");
+			System.out.println ("1. Read Notification\n2. Delete a notification\n3. View A Patient's Info\n4. Make a diagnosis for a patient\n5. Set prescription for a patient\n6. Write a note to an admin\n7. Check all upcoming appointments\n8. Delete past appointment record\n9. Sign out\n");
 			Scanner input = new Scanner(System.in);
 			int choice  = input.nextInt();
 			
@@ -164,7 +164,7 @@ public class DoctorMainMenu implements Serializable {
                                         {
 						System.out.println ("Past Prescription: " + pt1.getPrescription());
                                         }
-					if (pt1.getDiagnosis().equals(""))
+					if (pt1.getPrescription().equals(""))
 					{
 						System.out.println ("\nWhat do you want to add to " + pt1.getName() + "'s prescription?");
                                         	npres = str.nextLine();
@@ -268,6 +268,39 @@ public class DoctorMainMenu implements Serializable {
 			}
 			else if (choice == 7)
 			{
+				if (d1.appointment.size() == 0)
+				{
+					System.out.println ("You don't have any appointments scheduled at the moment!\n"); 
+				}
+				else
+				{
+					d1.printDAppointment();
+				}
+			}
+			else if (choice == 8)
+			{
+				if (d1.appointment.size() == 0)
+				{
+					System.out.println ("You don't have any appointments scheduled at the moment!\n");
+				}
+				else
+				{
+					d1.printDAppointment();
+					System.out.println ("Please select a past appointment record to be deleted:");
+					int da = gen.nextInt();
+					if (da > d1.appointment.size())
+					{
+						System.out.println ("\nThe appointment record you entered could not be found!\n");
+					}
+					else
+					{
+						d1.appointment.remove(da-1);
+						System.out.println ("\nThe appointment record was deleted successfully!\n");
+					}
+				}
+			}
+			else if (choice == 9)
+			{
 				System.out.println ("Thank you for your time. Have a good day!");
 				keep_going = false;
 			}
@@ -351,11 +384,11 @@ public class DoctorMainMenu implements Serializable {
 		}
 		if (pt1.getPrescription().equals(""))
 		{
-			System.out.println ("Past Prescriptions: " + "None at the moment");
+			System.out.println ("Current Prescriptions: " + "None at the moment");
 		}
 		else
 		{
-			System.out.println ("Past Prescriptions: " + pt1.getPrescription());
+			System.out.println ("Current Prescriptions: " + pt1.getPrescription());
 		}	
 		System.out.println (""); 
 	}

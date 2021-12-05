@@ -12,10 +12,10 @@ public class Hospital implements Serializable{
 	public Vector<FrontDesk> fd = new Vector<FrontDesk>();
 	public Vector<Patient> pt = new Vector<Patient>();
 	public ArrayList<String> special = new ArrayList<String>(Arrays.asList("Allergist", "Dermatologist", "Cardiologist", "Psychiatrist", "General surgeon", "Orthopedic surgeon", "Cardiac surgeon", "Anesthesiologist"));
-	Doctor doc1 = new Doctor();
-	Nurse nur1 = new Nurse();
-	FrontDesk fd1 = new FrontDesk();
-	Patient pt1 = new Patient();
+	private Doctor doc1 = new Doctor();
+	private Nurse nur1 = new Nurse();
+	private FrontDesk fd1 = new FrontDesk();
+	private Patient pt1 = new Patient();
 	Scanner gen = new Scanner(System.in);
 	Scanner str = new Scanner(System.in);
 	

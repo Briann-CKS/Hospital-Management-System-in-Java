@@ -327,13 +327,13 @@ public class Hospital implements Serializable{
 		int type;
 		Scanner input4 = new Scanner (System.in);
 		System.out.println ("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
-		System.out.println ("Welcome to CSCI240 Hospital System!\n");	
+		System.out.println ("Welcome to JavA+ Hospital System!\n");	
 		System.out.println ("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
 		boolean not_valid = true;
 		do
 		{
 			System.out.println ("Please select your User Type:\n");
-			System.out.println ("1. Doctor\n2. Nurse\n3. Front Desk\n4. Patient");
+			System.out.println ("1. Doctor\n2. Nurse\n3. Front Desk\n4. Patient\n");
 			type = input4.nextInt();
 			if (type == 1 || type == 2 || type == 3 || type == 4)
 			{

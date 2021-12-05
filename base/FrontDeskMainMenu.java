@@ -38,7 +38,14 @@ public class FrontDeskMainMenu implements Serializable {
 			int choice  = gen.nextInt();
 			if (choice == 1)
 			{
-				f1.readMemo();
+				if (f1.memo.size() == 0)
+				{
+					System.out.println ("\nYou don't have any new messages at the moment.\n");
+				}
+				else
+				{
+					f1.readMemo();
+				}
 			}
 			else if (choice == 2)
 			{

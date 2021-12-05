@@ -31,14 +31,17 @@ public class NurseMainMenu implements Serializable {
 		while (keep_going)
 		{
 			System.out.println ("Please enter your choice: \n");
-			System.out.println ("1. Read Note\n2. Delete a note\n3. List Patient\n4. View A Patient's Info\n5. Write a note to an admin\n6. Sign out\n"); //View appointment dates
+			System.out.println ("1. Read Notification\n2. Delete a Notification\n3. List Patient\n4. View A Patient's Info\n5. Write a note to an admin\n6. Sign out\n"); //View appointment dates
 			int choice = gen.nextInt();
 			if (choice == 1)
 			{
-				n1.readNote();
-				if (n1.note.size() > 10)
+				if (n1.note.size() == 0)
 				{
-					System.out.println ("Looks like you have quite a few notes stored in your account. Clearing some old notes will help you organize better!\n");
+					System.out.println ("\nYou don't have any new messages at the moment.\n");
+				}
+				else
+				{
+					n1.readNote();
 				}
 			}
 			else if (choice == 2)

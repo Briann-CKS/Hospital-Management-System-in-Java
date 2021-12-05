@@ -102,7 +102,7 @@ public class DoctorMainMenu implements Serializable {
 			else if (choice == 4)
 			{
 				listPatient (p);
-				System.out.println ("\nPlease select a patient to add a diagnosis:");	
+				System.out.println ("Please select a patient to add a diagnosis:");	
 				int diagp = gen.nextInt();
 				if (diagp > p.size() || diagp < 1)
                                 {
@@ -137,7 +137,7 @@ public class DoctorMainMenu implements Serializable {
 			else if (choice == 5)
 			{
 				listPatient (p);
-                                System.out.println ("\nPlease select a patient to add a prescription:");
+                                System.out.println ("Please select a patient to add a prescription:");
                                 int diagp = gen.nextInt();
                                 if (diagp > p.size() || diagp < 1)
                                 {

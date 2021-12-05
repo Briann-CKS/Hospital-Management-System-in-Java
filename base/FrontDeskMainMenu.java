@@ -384,7 +384,7 @@ public class FrontDeskMainMenu implements Serializable {
 			else if (choice == 13)
 			{
 				listPatient(p);
-				System.out.println ("\nPlease select a patient to view his/her appointment record:");
+				System.out.println ("Please select a patient to view his/her appointment record:");
 				int par = gen.nextInt();
 				if(par > p.size() || par < 1)
 				{
@@ -407,9 +407,9 @@ public class FrontDeskMainMenu implements Serializable {
 			else if (choice == 14)
 			{
 				listDoctor(d);
-				System.out.println ("\nPlease select a doctor to view his/her appointment record:");
+				System.out.println ("Please select a doctor to view his/her appointment record:");
 				int par = gen.nextInt();
-				if(par > p.size() || par < 1)
+				if(par > d.size() || par < 1)
 				{
 					System.out.println ("\nSorry, no doctor found for the number you entered!\n");
 				}

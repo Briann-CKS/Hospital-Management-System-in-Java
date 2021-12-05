@@ -31,7 +31,7 @@ public class NurseMainMenu implements Serializable {
 		while (keep_going)
 		{
 			System.out.println ("Please enter your choice: \n");
-			System.out.println ("1. Read Notification\n2. Delete a Notification\n3. List Patient\n4. View A Patient's Info\n5. Write a note to an admin\n6. View a patient's appointment record\n7.View a doctor's appointment record\n8. Sign out\n");
+			System.out.println ("1. Read Notification\n2. Delete a Notification\n3. List Patient\n4. View A Patient's Info\n5. Write a note to an admin\n6. View a patient's appointment record\n7. View a doctor's appointment record\n8. Sign out\n");
 			int choice = gen.nextInt();
 			if (choice == 1)
 			{
@@ -75,7 +75,7 @@ public class NurseMainMenu implements Serializable {
 				if (type == 1)
 				{
 					listDoctor(d);
-					System.out.println ("\nPlease select a doctor:");
+					System.out.println ("Please select a doctor:");
 					int ch = gen.nextInt();
 					if (ch > d.size() || ch < 1)
                                 	{
@@ -94,7 +94,7 @@ public class NurseMainMenu implements Serializable {
 				else if (type == 2)
 				{
 					listNurse(n);
-                                        System.out.println ("\nPlease select a nurse:");
+                                        System.out.println ("Please select a nurse:");
                                         int ch = gen.nextInt();
 					if (ch > n.size() || ch < 1)
                                 	{
@@ -113,7 +113,7 @@ public class NurseMainMenu implements Serializable {
 				else if (type == 3)
 				{
 					listFrontDesk(f);
-                                        System.out.println ("\nPlease select a front desk:");
+                                        System.out.println ("Please select a front desk:");
                                         int ch = gen.nextInt();
 					if (ch > f.size() || ch < 1)
                                 	{
@@ -137,7 +137,7 @@ public class NurseMainMenu implements Serializable {
 			else if (choice == 6)
 			{
 				listPatient(p);
-				System.out.println ("\nPlease select a patient to view his/her appointment record:");
+				System.out.println ("Please select a patient to view his/her appointment record:");
 				int par = gen.nextInt();
 				if(par > p.size() || par < 1)
 				{
@@ -160,7 +160,7 @@ public class NurseMainMenu implements Serializable {
 			else if (choice == 7)
 			{
 				listDoctor(d);
-				System.out.println ("\nPlease select a doctor to view his/her appointment record:");
+				System.out.println ("Please select a doctor to view his/her appointment record:");
 				int par = gen.nextInt();
 				if(par > p.size() || par < 1)
 				{

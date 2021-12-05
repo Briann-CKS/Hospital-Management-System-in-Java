@@ -73,6 +73,7 @@ public class PatientMainMenu implements Serializable {
 
 			else if (choice == 5)
 			{
+				System.out.println ("Admins of this hospital:\n");
 				System.out.println ("Doctors");
 				Formatter fo = new Formatter();
 				System.out.println (fo.format("%-5s%-15s%-22s%-15s", "No.", "Username", "Full Name", "Specialty")); 
@@ -314,7 +315,7 @@ public class PatientMainMenu implements Serializable {
 						boolean successful = doc1.addAppointment(app);
 						if (successful)
 						{
-							anote += "	- Scheduled for Doctor " + doc1.getName();
+							anote += "  - Scheduled for Doctor " + doc1.getName();
 							Appointment papp = new Appointment (time, endTime, nop, anote);
 							p1.addAppointment(papp);
 							System.out.println ("\nAppointment successfully scheduled! Details are as follow:\n");
@@ -382,32 +383,9 @@ public class PatientMainMenu implements Serializable {
 	{
 		String nday [] = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 		int monthKeyNo[] = { 0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5};
-		int centuryValue;
-		if ((year/100) % 2 == 0) 
-		{
-			if ((year/100) % 4 == 0)
-			{
-				centuryValue = 6;
-			}
-			else
-			{
-				centuryValue = 2;
-			}
-		}
-		else
-		{
-			if (((year/100) - 1) % 4 == 0)
-			{
-				centuryValue = 4;
-			}
-			else
-			{
-				centuryValue = 0;
-			}
-		}
-
-		int total = (year % 100) + ((year % 100) / 4) + day + monthKeyNo[month - 1] + centuryValue; 
-		
+		int centuryValue = 6;
+		System.out.println ("Century Value = " + centuryValue);
+		int total = (year % 100) + ((year % 100) / 4) + day + monthKeyNo[month - 1] + centuryValue; 	
 		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
 		{	
 			if ((total % 7) > 0)

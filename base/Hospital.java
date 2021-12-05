@@ -369,7 +369,7 @@ public class Hospital implements Serializable{
        	        				if (pw.equals(pwd))
 						{
 							uexist = true;
-							System.out.println("Hello Doctor!");
+							System.out.println("Hello Doctor " + doc.get(i).getName() + "!");
 							DoctorMainMenu dmm = new DoctorMainMenu (doc.get(i), doc, nur, fd, pt);
 							saveUser();
 							System.exit(0);	
@@ -404,7 +404,7 @@ public class Hospital implements Serializable{
                                         	if (pw.equals(pwd))
 						{
 							uexist = true;
-							System.out.println ("Hello Nurse!");
+							System.out.println ("Hello Nurse " + nur.get(i).getName() + "!");
 							NurseMainMenu nmm = new NurseMainMenu(nur.get(i), doc, nur, fd, pt);
 							saveUser();
                                                         System.exit(0);
@@ -437,7 +437,7 @@ public class Hospital implements Serializable{
                                         	if (pw.equals(pwd))
                                                 {
                                                 	uexist = true;
-                                                       	System.out.println ("Hello Front Desk!");
+                                                       	System.out.println ("Hello Front Desk " + fd.get(i).getName() + "!");
                                                        	FrontDeskMainMenu fdmm = new FrontDeskMainMenu(fd.get(i), doc, nur, fd, pt, special);
                                                        	saveUser();
 							System.exit(0);
@@ -468,7 +468,7 @@ public class Hospital implements Serializable{
 						if (pw.equals(pwd))
 						{
 							uexist = true;
-							System.out.println ("Hello Patient!");
+							System.out.println ("Hello Patient " + pt.get(i).getName() + "!");
                                                         PatientMainMenu pmm = new PatientMainMenu(pt.get(i), doc, nur, fd, pt);
                                                         saveUser();
 							System.exit(0);
@@ -498,7 +498,7 @@ public class Hospital implements Serializable{
 				if (identity.equals("DOCCSCI240"))
 				{
 					doc.add(addDoctor());
-					System.out.println ("\nWelcome to the CSCI Hospital, Doctor!\n");
+					System.out.println ("\nWelcome to the CSCI Hospital, Doctor " + doc.get(doc.size()-1).getName() + "!\n");
 					DoctorMainMenu dmm = new DoctorMainMenu(doc.get(doc.size()-1), doc, nur, fd, pt);
 					saveUser();
 					System.exit(0);
@@ -516,7 +516,7 @@ public class Hospital implements Serializable{
 				if (identity.equals("NURCSCI240"))
 				{
 					nur.add(addNurse());
-					System.out.println ("\nWelcome to the CSCI Hospital, Nurse!\n");                                       
+					System.out.println ("\nWelcome to the CSCI Hospital, Nurse" + nur.get(nur.size()-1).getName() + "!\n");                                       
 					NurseMainMenu nmm = new NurseMainMenu(nur.get(nur.size()-1), doc, nur, fd, pt);
 					saveUser();
 					System.exit(0);
@@ -534,7 +534,7 @@ public class Hospital implements Serializable{
 				if (identity.equals("FDCSCI240"))
 				{
 					fd.add(addFrontDesk());
-					System.out.println ("\nWelcome to the CSCI Hospital, FrontDesk!\n");                              
+					System.out.println ("\nWelcome to the CSCI Hospital, FrontDesk " + fd.get(fd.size()-1).getName() + "!\n");                    
 					FrontDeskMainMenu fdmm = new FrontDeskMainMenu(fd.get(fd.size()-1), doc, nur, fd, pt, special);
 					saveUser();
 					System.exit(0);
@@ -548,7 +548,7 @@ public class Hospital implements Serializable{
 			else
 			{
 				pt.add(addPatient());
-				System.out.println ("\nWelcome to the CSCI Hospital, Patient!\n");               
+				System.out.println ("\nWelcome to the CSCI Hospital, Patient " + pt.get(pt.size()-1).getName() + "!\n");               
 				PatientMainMenu ptmm = new PatientMainMenu(pt.get(pt.size()-1), doc, nur, fd, pt);
 				saveUser();
 				System.exit(0);

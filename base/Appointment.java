@@ -70,32 +70,8 @@ public class Appointment implements Serializable {
 	{
 		String nday [] = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 		int monthKeyNo[] = { 0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5};
-		int centuryValue;
-		if ((year/100) % 2 == 0) 
-		{
-			if ((year/100) % 4 == 0)
-			{
-				centuryValue = 6;
-			}
-			else
-			{
-				centuryValue = 2;
-			}
-		}
-		else
-		{
-			if (((year/100) - 1) % 4 == 0)
-			{
-				centuryValue = 4;
-			}
-			else
-			{
-				centuryValue = 0;
-			}
-		}
-
-		int total = (year % 100) + ((year % 100) / 4) + day + monthKeyNo[month - 1] + centuryValue; 
-		
+		int centuryValue = 6;
+		int total = (year % 100) + ((year % 100) / 4) + day + monthKeyNo[month - 1] + centuryValue; 	
 		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
 		{	
 			if ((total % 7) > 0)

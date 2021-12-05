@@ -81,6 +81,7 @@ public class FrontDeskMainMenu implements Serializable {
 			}
 			else if (choice == 5)
 			{
+				System.out.println ("\nAdmins:\n");
 				listDoctor (d);
 				listNurse (n);
 				listFrontDesk (f);

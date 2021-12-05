@@ -55,17 +55,24 @@ public class FrontDeskMainMenu implements Serializable {
 				System.out.println ("\nMemo successfully added!\n");
 			}
 			else if (choice == 3)
-			{
-				f1.readMemo();
-				System.out.println ("\nWhich string do you want to delete from your memo?");
-				int num = gen.nextInt();
-				if (num > f1.memo.size() || num < 1)
+			{	
+				if (f1.memo.size() == 0)
 				{
-					System.out.println ("\nSorry, no string found for the number you entered!\n");
+					System.out.println ("\nYou don't have any new messages at the moment.\n");
 				}
 				else
 				{
-					f1.deleteMemo(num);
+					f1.readMemo();
+					System.out.println ("\nWhich string do you want to delete from your memo?");
+					int num = gen.nextInt();
+					if (num > f1.memo.size() || num < 1)
+					{
+						System.out.println ("\nSorry, no string found for the number you entered!\n");
+					}
+					else
+					{
+						f1.deleteMemo(num);
+					}
 				}
 			}
 			else if (choice == 4)

@@ -46,10 +46,17 @@ public class NurseMainMenu implements Serializable {
 			}
 			else if (choice == 2)
 			{
-				n1.readNote();
-				System.out.println("Please select a message to be deleted.");
-				int num = gen.nextInt();
-				n1.deleteNote(num);
+				if (n1.note.size() == 0)
+				{
+					System.out.println ("\nYou don't have any new messages at the moment.\n");
+				}
+				else
+				{
+					n1.readNote();
+					System.out.println("Please select a message to be deleted.");
+					int num = gen.nextInt();
+					n1.deleteNote(num);
+				}
 			}
 			else if (choice == 3)
 			{

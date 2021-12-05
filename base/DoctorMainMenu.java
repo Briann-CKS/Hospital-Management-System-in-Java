@@ -288,7 +288,7 @@ public class DoctorMainMenu implements Serializable {
 					d1.printDAppointment();
 					System.out.println ("Please select a past appointment record to be deleted:");
 					int da = gen.nextInt();
-					if (da > d1.appointment.size())
+					if (da > d1.appointment.size() || da < 1)
 					{
 						System.out.println ("\nThe appointment record you entered could not be found!\n");
 					}

@@ -69,32 +69,32 @@ public class Appointment implements Serializable {
 	public String findDay(int day, int month, int year)
 	{
 		String nday [] = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-		int magicNo[] = { 0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5};
-		int x;
+		int monthKeyNo[] = { 0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5};
+		int centuryValue;
 		if ((year/100) % 2 == 0) 
 		{
 			if ((year/100) % 4 == 0)
 			{
-				x = 6;
+				centuryValue = 6;
 			}
 			else
 			{
-				x = 2;
+				centuryValue = 2;
 			}
 		}
 		else
 		{
 			if (((year/100) - 1) % 4 == 0)
 			{
-				x = 4;
+				centuryValue = 4;
 			}
 			else
 			{
-				x = 0;
+				centuryValue = 0;
 			}
 		}
 
-		int total = (year % 100) + ((year % 100) / 4) + day + magicNo[month - 1] + x; 
+		int total = (year % 100) + ((year % 100) / 4) + day + monthKeyNo[month - 1] + centuryValue; 
 		
 		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
 		{	

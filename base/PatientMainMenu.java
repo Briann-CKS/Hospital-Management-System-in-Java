@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.Vector;
 import java.util.Formatter;
+import java.util.*;
 
 public class PatientMainMenu implements Serializable {
 
@@ -32,7 +33,7 @@ public class PatientMainMenu implements Serializable {
 		while (keep_going)
 		{
 			System.out.println ("Please enter your choice: \n");
-			System.out.println ("1. Get Diagnosis\n2. Get Prescription\n3. Pay Medical Bill\n4. View Medical Bill\n5. View all admins of this hospital\n6. Schedule an appointment with a doctor\n7. View all scheduled appointments\n8. Delete a past appointment record\n9. Cancel an appointment\n10. Sign out\n");
+			System.out.println ("1. Get Diagnosis\n2. Get Prescription\n3. Pay Medical Bill\n4. View Medical Bill\n5. View all admins of this hospital\n6. Schedule an appointment with a doctor\n7. View all scheduled appointments\n8. Delete a past appointment record\n9. Sign out\n");
 			int choice  = gen.nextInt();
 			if (choice == 1)
 			{
@@ -173,7 +174,7 @@ public class PatientMainMenu implements Serializable {
 					
 					if (proceed == true)
 					{								
-						System.out.println ("\nPlease enter the day of your intended appointment (integer 1 to 31):");
+						System.out.println ("\nPlease enter the day of your intended appointment (integer 1 to 31 based on the month and year):");
 						day = gen.nextInt();
 						if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
 						{
@@ -215,6 +216,27 @@ public class PatientMainMenu implements Serializable {
 								proceed = false;
 							}
 						}
+						boolean reconfirm = true; 
+						String nameday = findDay(day, month, time.getYear());
+						while (reconfirm)
+						{
+							System.out.println ("\nThat's a " + nameday + ". Do you want to proceed? (1. Yes 2. No)");
+							int prochoice = gen.nextInt();
+							if (prochoice == 1)
+							{
+								proceed = true;
+								reconfirm = false;
+							}
+							else if (prochoice == 2)
+							{
+								proceed = false;
+								reconfirm = false;
+							}
+							else 
+							{
+								System.out.println ("\nInvalid option! Try again!\n");
+							}
+						}	
 					}		
 
 					if (proceed == true)
@@ -344,23 +366,7 @@ public class PatientMainMenu implements Serializable {
 					}
 				}
 			}
-
 			else if (choice == 9)
-			{
-				if (p1.appointment.size() == 0)
-				{
-					System.out.println ("You don't have any appointments scheduled at the moment!\n");
-				}
-				else
-				{
-					p1.printPAppointment();
-					System.out.println ("Please select the appointment that you want to cancel:");
-					int capp = gen.nextInt();
-					p1.appointment.remove(capp - 1);
-					// How to implement
-				}	
-			}
-			else if (choice == 10)
 			{
 				System.out.println ("Thank you for your time. Have a good day!");
 				keep_going = false;
@@ -371,5 +377,51 @@ public class PatientMainMenu implements Serializable {
 			}
 		}
 	}
-}
 
+	public String findDay(int day, int month, int year)
+	{
+		String nday [] = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+		int magicNo[] = { 0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5};
+		int x;
+		if ((year/100) % 2 == 0) 
+		{
+			if ((year/100) % 4 == 0)
+			{
+				x = 6;
+			}
+			else
+			{
+				x = 2;
+			}
+		}
+		else
+		{
+			if (((year/100) - 1) % 4 == 0)
+			{
+				x = 4;
+			}
+			else
+			{
+				x = 0;
+			}
+		}
+
+		int total = (year % 100) + ((year % 100) / 4) + day + magicNo[month - 1] + x; 
+		
+		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+		{	
+			if ((total % 7) > 0)
+			{
+				return nday[(total % 7) - 1];
+			}
+			else
+			{
+				return nday[6];
+			}
+		}
+		else
+		{
+			return nday[(total % 7)];
+		}
+	}
+}

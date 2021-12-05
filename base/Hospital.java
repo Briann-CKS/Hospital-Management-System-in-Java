@@ -459,7 +459,7 @@ public class Hospital implements Serializable{
 
 			else 
 			{
-				for (int i = 0; i < fd.size(); i++)
+				for (int i = 0; i < pt.size(); i++)
                                 {
                                         String une = pt.get(i).getUsername();
                                         String pwd = pt.get(i).getPassword();
@@ -468,7 +468,7 @@ public class Hospital implements Serializable{
 						if (pw.equals(pwd))
 						{
 							uexist = true;
-							System.out.println ("Hello Front Patient!");
+							System.out.println ("Hello Patient!");
                                                         PatientMainMenu pmm = new PatientMainMenu(pt.get(i), doc, nur, fd, pt);
                                                         saveUser();
 							System.exit(0);
@@ -493,7 +493,7 @@ public class Hospital implements Serializable{
 		{
 			if (type == 1)
 			{
-				System.out.println ("\nPlease enter the doctor code to help us verify your identity:");
+				System.out.println ("\nPlease enter the doctor code to help us verify your identity (DOCCSCI240):");
 				String identity = str.nextLine();
 				if (identity.equals("DOCCSCI240"))
 				{
@@ -511,7 +511,7 @@ public class Hospital implements Serializable{
 			}
 			else if (type == 2)
 			{
-				System.out.println ("\nPlease enter the nurse code to help us verify your identity:");
+				System.out.println ("\nPlease enter the nurse code to help us verify your identity (NURCSCI240):");
 				String identity = str.nextLine();
 				if (identity.equals("NURCSCI240"))
 				{
@@ -529,7 +529,7 @@ public class Hospital implements Serializable{
 			}
 			else if (type == 3)
 			{
-				System.out.println ("\nPlease enter the front desk code to help us verify your identity:");
+				System.out.println ("\nPlease enter the front desk code to help us verify your identity (FDCSCI240):");
 				String identity = str.nextLine();
 				if (identity.equals("FDCSCI240"))
 				{

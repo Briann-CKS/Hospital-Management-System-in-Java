@@ -59,8 +59,57 @@ public class Appointment implements Serializable {
 
 	public void printAppointment()
 	{
+		String nameDay = findDay (start.getDay(), start.getMonth(), start.getYear());
 		System.out.println ("Name: " + this.name);
 		System.out.println ("Date and time: " + start.stringTime() + " to " + end.stringTime());
+		System.out.println ("Day: " + nameDay);
 		System.out.println ("Note: " + this.note + "\n");
+	}
+
+	public String findDay(int day, int month, int year)
+	{
+		String nday [] = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+		int magicNo[] = { 0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5};
+		int x;
+		if ((year/100) % 2 == 0) 
+		{
+			if ((year/100) % 4 == 0)
+			{
+				x = 6;
+			}
+			else
+			{
+				x = 2;
+			}
+		}
+		else
+		{
+			if (((year/100) - 1) % 4 == 0)
+			{
+				x = 4;
+			}
+			else
+			{
+				x = 0;
+			}
+		}
+
+		int total = (year % 100) + ((year % 100) / 4) + day + magicNo[month - 1] + x; 
+		
+		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+		{	
+			if ((total % 7) > 0)
+			{
+				return nday[(total % 7) - 1];
+			}
+			else
+			{
+				return nday[6];
+			}
+		}
+		else
+		{
+			return nday[(total % 7)];
+		}
 	}
 }

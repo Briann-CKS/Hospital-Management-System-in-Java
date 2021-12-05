@@ -104,7 +104,7 @@ public class DoctorMainMenu implements Serializable {
 				listPatient (p);
 				System.out.println ("\nPlease select a patient to add a diagnosis:");	
 				int diagp = gen.nextInt();
-				if (diagp > p.size())
+				if (diagp > p.size() || diagp < 1)
                                 {
                                        	System.out.println ("\nSorry, no patient found for the number you entered!\n");
                                	}
@@ -139,7 +139,7 @@ public class DoctorMainMenu implements Serializable {
 				listPatient (p);
                                 System.out.println ("\nPlease select a patient to add a prescription:");
                                 int diagp = gen.nextInt();
-                                if (diagp > p.size())
+                                if (diagp > p.size() || diagp < 1)
                                 {
                                         System.out.println ("\nSorry, no patient found for the number you entered!\n");
                                 }
@@ -208,7 +208,7 @@ public class DoctorMainMenu implements Serializable {
 					listDoctor(d);
 					System.out.println ("\nPlease select a doctor:");
 					int ch = gen.nextInt();
-					if (ch > d.size())
+					if (ch > d.size() || ch < 1)
                                 	{
                                         	System.out.println ("\nSorry, no doctor found for the number you entered!\n");
                                 	}
@@ -227,7 +227,7 @@ public class DoctorMainMenu implements Serializable {
 					listNurse(n);
                                         System.out.println ("\nPlease select a nurse:");
                                         int ch = gen.nextInt();
-					if (ch > n.size())
+					if (ch > n.size() || ch < 1)
                                 	{
                                 	        System.out.println ("\nSorry, no nurse found for the number you entered!\n");
                                 	}
@@ -246,7 +246,7 @@ public class DoctorMainMenu implements Serializable {
 					listFrontDesk(f);
                                         System.out.println ("\nPlease select a front desk:");
                                         int ch = gen.nextInt();
-					if (ch > f.size())
+					if (ch > f.size() || ch < 1)
                                 	{
                                 	        System.out.println ("\nSorry, no front desk found for the number you entered!\n");
                                 	}

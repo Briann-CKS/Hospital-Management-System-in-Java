@@ -327,7 +327,7 @@ public class Hospital implements Serializable{
 		int type;
 		Scanner input4 = new Scanner (System.in);
 		System.out.println ("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
-		System.out.println ("Welcome to JavA+ Hospital System!\n");	
+		System.out.println ("Welcome to JavaCare Hospital System!\n");	
 		System.out.println ("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
 		boolean not_valid = true;
 		do

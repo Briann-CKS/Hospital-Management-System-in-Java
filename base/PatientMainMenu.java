@@ -401,4 +401,5 @@ public class PatientMainMenu implements Serializable {
 			return nday[(total % 7)];
 		}
 	}
+	
 }

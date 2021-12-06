@@ -86,7 +86,7 @@ public class NurseMainMenu implements Serializable {
 						doc1 = (Doctor) d.get(ch-1);
 						System.out.println ("Please enter the note you want to send to " + doc1.getName() + ":");
 						not = str.nextLine();
-						not = not + "	- from Nurse " + n1.getName();
+						not = not + "  - from Nurse " + n1.getName();
 						doc1.setNotification(not);
 						System.out.println ("\nYour note was sent successfully!\n");
 					}	
@@ -105,7 +105,7 @@ public class NurseMainMenu implements Serializable {
 						nur1 = (Nurse) n.get(ch-1);
 						System.out.println ("Please enter the note you want to send to " + nur1.getName() + ":");
                                         	not = str.nextLine();
-                                        	not = not + "	- from Nurse " + n1.getName();
+                                        	not = not + "  - from Nurse " + n1.getName();
 						nur1.setNote(not);
                                         	System.out.println ("\nYour note was sent successfully!\n");	
 					}
@@ -124,7 +124,7 @@ public class NurseMainMenu implements Serializable {
 						fd1 = (FrontDesk) f.get(ch-1);
 						System.out.println ("Please enter the note you want to send to " + fd1.getName() + ":");
                                         	not = str.nextLine();
-						not = not + "	- from Nurse " + n1.getName();
+						not = not + "  - from Nurse " + n1.getName();
                                         	fd1.setMemo(not);
                                         	System.out.println ("\nYour note was sent successfully!\n");	
 					}

@@ -5,6 +5,7 @@ import java.util.Vector;
 import java.util.*;
 import java.util.Formatter;
 
+// Start Hospital class
 public class Hospital implements Serializable{
 
 	public Vector<Doctor> doc = new Vector<Doctor>();
@@ -620,4 +621,4 @@ public class Hospital implements Serializable{
 		}
 		return false;
 	}
-}
+} // End Hospital class 

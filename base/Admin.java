@@ -1,5 +1,6 @@
 import java.io.Serializable;
 
+// Start admin abstract class
 public abstract class Admin implements User, Serializable {
 
 	private String username;
@@ -46,4 +47,4 @@ public abstract class Admin implements User, Serializable {
 	{
 		return code;
 	}
-}
+} // end admin abstract class

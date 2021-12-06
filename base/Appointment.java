@@ -1,6 +1,7 @@
 import java.util.*;
 import java.io.*;
 
+// Start Appointment class
 public class Appointment implements Serializable {
 
 	public Time start = new Time();
@@ -88,4 +89,4 @@ public class Appointment implements Serializable {
 			return nday[(total % 7)];
 		}
 	}
-}
+} // End Appointment class

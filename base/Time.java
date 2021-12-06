@@ -1,5 +1,6 @@
 import java.io.*;
 
+// Start Time class
 public class Time implements Serializable {
 
 	private int day;
@@ -85,4 +86,4 @@ public class Time implements Serializable {
 		String full = month + "/" + day + "/" + year + ", " + hour + ":00" + AMorPM; 
 		return full;
 	}
-} 	
+} // End Time class

@@ -1,5 +1,6 @@
 import java.lang.*;
 
+// Start User interface
 public interface User {
 
 	String username = "Unknown";
@@ -13,4 +14,4 @@ public interface User {
 	public String getUsername();
 	public String getPassword();
 	public String getName();
-}
+} // end User interface

@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 
+// Start Nurse class
 public class Nurse extends Admin implements Serializable {
 
 	public ArrayList<String> note = new ArrayList<String>();
@@ -66,4 +67,4 @@ public class Nurse extends Admin implements Serializable {
 		}
 	}
 
-}
+} // End Nurse Class

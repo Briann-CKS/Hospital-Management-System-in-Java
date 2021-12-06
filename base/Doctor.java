@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 
+// Start Doctor class
 public class Doctor extends Admin implements Serializable {
 
 	public ArrayList<String> notification = new ArrayList<String>();
@@ -111,4 +112,4 @@ public class Doctor extends Admin implements Serializable {
 			appointment.get(i).printAppointment(); 
 		}
 	}
-}
+} // End Doctor class

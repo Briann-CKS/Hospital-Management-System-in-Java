@@ -5,6 +5,7 @@ import java.util.Vector;
 import java.util.Formatter;
 import java.util.*;
 
+// Start FrontDeskMainMenu class
 public class FrontDeskMainMenu implements Serializable {
 	
 	private Doctor doc1 = new Doctor();
@@ -592,4 +593,4 @@ public class FrontDeskMainMenu implements Serializable {
 		}
 		return false;
 	}
-}
+} // End FrontDeskMainMenu class

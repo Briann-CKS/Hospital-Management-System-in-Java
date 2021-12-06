@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.*;
 
+// Start patient class
 public class Patient implements User, Serializable {
 
 	private String username;
@@ -140,4 +141,4 @@ public class Patient implements User, Serializable {
 		}
 
 	}
-}	
+} // end patient class

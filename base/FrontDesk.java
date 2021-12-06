@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 
+// Start FrontDesk class
 public class FrontDesk extends Admin implements Serializable {
 
 	public ArrayList<String> memo = new ArrayList<String>();
@@ -65,4 +66,4 @@ public class FrontDesk extends Admin implements Serializable {
 			System.out.println ("Looks like you have quite a few notifications stored in your account. Clearing some old messages will help you organize better!\n");
 		}
 	}
-}
+} // end FrontDesk class

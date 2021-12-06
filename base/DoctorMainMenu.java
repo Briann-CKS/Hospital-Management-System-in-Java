@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.util.Vector;
 import java.util.Formatter;
 
+// Start DoctorMainMenu class
 public class DoctorMainMenu implements Serializable {
 
 	private Doctor doc1 = new Doctor();
@@ -392,4 +393,4 @@ public class DoctorMainMenu implements Serializable {
 		}	
 		System.out.println (""); 
 	}
-}
+} // End DoctorMainMenu class

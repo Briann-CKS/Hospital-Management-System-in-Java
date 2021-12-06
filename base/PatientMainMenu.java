@@ -4,6 +4,7 @@ import java.util.Vector;
 import java.util.Formatter;
 import java.util.*;
 
+// Start PatientMainMenu class
 public class PatientMainMenu implements Serializable {
 
 	private Doctor doc1 = new Doctor();
@@ -379,6 +380,7 @@ public class PatientMainMenu implements Serializable {
 		}
 	}
 
+	// start findDay method
 	public String findDay(int day, int month, int year)
 	{
 		String nday [] = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
@@ -400,6 +402,6 @@ public class PatientMainMenu implements Serializable {
 		{
 			return nday[(total % 7)];
 		}
-	}
+	} // end findDay method
 	
-}
+} // End PatientMainMenu class
